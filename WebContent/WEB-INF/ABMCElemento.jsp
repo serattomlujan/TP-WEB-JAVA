@@ -12,11 +12,11 @@
 
 <form>
 		<title>
-		</title><font face="arial"> <b>ELEMENTO</font>
-	</form><font face="arial">ID<input><form>
-		<font face="arial">Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
+		</title><font face="arial"> <b> ELEMENTO </font>
+	</form> <font face= "Calibri">  ID<input>  <form>
+		<font face="Calibri">Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
 	</form><form>
-		<font face="arial">Tipo Elemento<select style="width: 154px; height: 29px"></select>
+		<font face="calibri">Tipo Elemento<select style="width: 154px; height: 29px"></select>
 	</form><form>
 	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
 	</form></body>

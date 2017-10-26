@@ -1,20 +1,20 @@
-
-  <html style="height: 303px; "> 
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Persona"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<title>MENU</title>
-<center>
-<h1> <b><i><big><FONT FACE="CALIBRI" COLOR="white">• • • B i e n v e n i d o • • •  </FONT></big></i></b></h1>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
 <style>.drop_menu {
 	background:#C0C0C0;
 	padding:0;
 	margin:0;
 	list-style-type:none;
 	height:30px;
+	text-align: center;
 }
 .drop_menu li { float:; }
-.drop_menu li a:hover {background-color:aqua;}
+.drop_menu li a:hover {background-color:#FF66CC;}
 .drop_menu li a {
 	padding:9px 20px;
 	display:block;
@@ -48,19 +48,22 @@
 .drop_menu li:hover ul li a:hover { background:#005555; }</style>
 
 </head> 
-<body bgcolor="black" style="height: 270px; ">
 
+<body bgcolor="Pink" style="height: 291px; ">
+	
+	<h1> Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h1>
+	 <table>
 <div class="drop">
  <ul class="drop_menu">
 
 			  
-<li><a href="Reservar.jsp">RESERVAR ELEMENTO</a></li>
-  <li><a href="ReservasPendientes.jsp"> RESERVAS PENDIENTES</a></li>
+<li><a href="WEB-INF/Reservar.jsp">RESERVAR ELEMENTO</a></li>
+  <li><a href="WEB-INF/ReservasPendientes.jsp"> RESERVAS PENDIENTES</a></li>
 		   	
- <li><a href="ABMCPersona.jsp">PERSONAS</a></li>
-			   <li><a href="ABMCElemento.jsp">ELEMENTOS</a></li>
-			   <li><a href="ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
-			   <li><a href="ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
+ <li><a href="WEB-INF/ABMCPersona.jsp">PERSONAS</a></li>
+			   <li><a href="WEB-INF/ABMCElemento.jsp">ELEMENTOS</a></li>
+			   <li><a href="WEB-INF/ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
+			  <li><a href="WEB-INF/ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
 
 
 
@@ -68,7 +71,7 @@
 			   <li><a href="ListadoTipoElementos.jsp">LISTADO TIPOS ELEMENTOS</a></li>
 
 			  
-			   <li><a href="ListadoPersonas.jsp">LISTADO  PERSONAS</a></li>
+			   <li><a href="ListadoPersonas.jsp">LISTADO  PERSONAS</a></li> 
 	
  
 		   
@@ -81,13 +84,9 @@
 	
 </div>
 
-
-<h1> <b><i><big><FONT FACE="CALIBRI" COLOR="white">Gracias por su visita </FONT></big></i></b></h1>
-
-
-</b></i><i><b></b></i><i><b></b></i><i><b>
-</b></i></form><i><b>
-
-</b></i></center>
+<!--  <div>
+<h1> <b><i><big><FONT FACE="CALIBRI" COLOR="white"> Gracias por su visita </FONT></big></i></b></h1>
+</div>
+-->
 </body>
 </html> 

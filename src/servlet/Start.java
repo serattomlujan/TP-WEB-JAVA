@@ -36,7 +36,8 @@ public class Start extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	
 	}
 
 	/**
@@ -47,6 +48,9 @@ public class Start extends HttpServlet {
 			
 			String user=request.getParameter("user");
 			String pass=request.getParameter("pass");
+			//String user= "Seratto";
+			//String pass = "Paloma";
+			
 			
 			Persona per=new Persona();
 			per.setUsuario(user);
@@ -68,7 +72,8 @@ public class Start extends HttpServlet {
 			
 			logger.log(Level.INFO,"log in "+pers.getDni());
 			
-			request.getRequestDispatcher("WEB-INF/welcome.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("WEB-INF/Main.jsp").forward(request, response);
 			response.getWriter().append(user).append(" ").append(pass);
 			
 			
