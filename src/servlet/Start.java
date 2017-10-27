@@ -48,9 +48,7 @@ public class Start extends HttpServlet {
 			
 			String user=request.getParameter("user");
 			String pass=request.getParameter("pass");
-			//String user= "Seratto";
-			//String pass = "Paloma";
-			
+						
 			
 			Persona per=new Persona();
 			per.setUsuario(user);

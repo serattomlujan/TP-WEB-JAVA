@@ -7,15 +7,17 @@
 
 </head>
 <body>
-<form>
+<form class="form-signin" name="signin" action="Persona" method="post"> <h2 class="form-signin-heading">
+
 		<title>
-		</title><font face="arial"> <b>PERSONA</font>
-	</form><font face="arial">ID<input><form>
-	<font face="arial">DNI <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
-	</form><form>
-	<font face="arial">Nombre<select style="width: 154px; height: 29px"></select><br></font>Apellido<input><br>Usuario<input><br>Constraseña<input><br>Categoría<select style="width: 147px; height: 27px; "></select><br><br><input
-				type="radio">Habilitado</form><form>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+		</title><font face="arial"> <b>PERSONA<br></font></h2>
+	<font face="arial">ID<input>
+	
+	<font face="arial"><br>DNI <input><i><b></b></i>
+	
+	<button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button><font face="arial"><br>Nombre<select style="width: 154px; height: 29px"></select><br></font>Apellido<input><br>Usuario<input><br>Constraseña<input><br>Categoría<select style="width: 147px; height: 27px; "></select><br><br><input
+				type="radio">Habilitado<br><br>
+	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px"; type="submit">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px; type="submit">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px; type="submit">Borrar</button>
 	</form></body>
 </body>
 </html>

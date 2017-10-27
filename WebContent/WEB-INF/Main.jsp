@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="entity.Persona"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -57,26 +57,17 @@
  <ul class="drop_menu">
 
 			  
-<li><a href="WEB-INF/Reservar.jsp">RESERVAR ELEMENTO</a></li>
-  <li><a href="WEB-INF/ReservasPendientes.jsp"> RESERVAS PENDIENTES</a></li>
-		   	
- <li><a href="WEB-INF/ABMCPersona.jsp">PERSONAS</a></li>
+			   <li><a href='Reservar.jsp'>RESERVAR ELEMENTO</a></li>
+			   <li><a href="WEB-INF/ReservasPendientes.jsp"> RESERVAS PENDIENTES</a></li>
+		   		<li><a href="WEB-INF/ABMCPersona.jsp">PERSONAS</a></li>
 			   <li><a href="WEB-INF/ABMCElemento.jsp">ELEMENTOS</a></li>
 			   <li><a href="WEB-INF/ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
-			  <li><a href="WEB-INF/ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
-
-
-
-			   
+			   <li><a href="WEB-INF/ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
 			   <li><a href="ListadoTipoElementos.jsp">LISTADO TIPOS ELEMENTOS</a></li>
-
-			  
 			   <li><a href="ListadoPersonas.jsp">LISTADO  PERSONAS</a></li> 
 	
  
-		   
-
-		 <li><a href="">CERRAR SESION</a></li>
+		  <li><a href="">CERRAR SESION</a></li>
 			   <li><a href="">SALIR</a></li>
 	
 	

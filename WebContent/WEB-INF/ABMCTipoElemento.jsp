@@ -10,14 +10,14 @@
 
 
 <form>
-		<title>
-		</title><font face="arial"> <b>TIPO DE ELEMENTO</font>
-	</form><font face="arial">ID<input><form>
-		<font face="arial">Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
-	</form><form>
-		<font face="arial">Tipo Elemento<select style="width: 154px; height: 29px"></select><br></font>Cantidad Max.<input><br>Tiempo lim.<input><br>Anticipacion (dias)<input><br><br><input
-				type="radio">Encargado</form><form>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
-	</form></body>
+		<font face="arial"> <b>TIPO DE ELEMENTO<br><br></font>
+	<font face="arial">ID<input>
+		<font face="arial"><br>Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
+	
+		<font face="arial"><br>Tipo Elemento<select style="width: 154px; height: 29px"></select><br></font>Cantidad Max.<input><br>Tiempo lim.<input><br>Anticipacion (dias)<input><br><br><input
+				type="radio">Encargado
+	<br><br><br><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+	</form>
+
 </body>
 </html>
