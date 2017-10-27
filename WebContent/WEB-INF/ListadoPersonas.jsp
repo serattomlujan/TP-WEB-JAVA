@@ -9,7 +9,8 @@
 </head><title></title><font face="arial"> <b>Lista de Personas
 <body>
 
-	<jsp:include></jsp:include><form>
+	<!-- <jsp:include></jsp:include><form>
+	-->
 	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
 	</form></body>
 </html>

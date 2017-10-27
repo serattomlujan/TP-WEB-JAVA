@@ -10,13 +10,13 @@ package servlet;
  
  @WebServlet({ "/Reservas", "/reservas", "/reserva", "/Reserva" })
  
- public class Reserva extends HttpServlet {
+ public class ReservaAb extends HttpServlet {
  	private static final long serialVersionUID = 1L;
         
      /**
       * @see HttpServlet#HttpServlet()
       */
-     public Reserva() {
+     public ReservaAb() {
          super();
          // TODO Auto-generated constructor stub
      }

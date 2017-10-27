@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Level;
 
 
 @WebServlet("/Persona")
-public class Persona extends HttpServlet {
+public class PersonaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
@@ -96,8 +96,9 @@ public class Persona extends HttpServlet {
 		 }
 	}
 		 private void list(HttpServletRequest request, HttpServletResponse response)
-		            throws SQLException, IOException, ServletException {
-		        List<Persona> listPersona = CtrlABMPersona.getAll();
+		            throws Exception {
+			    CtrlABMPersona	cpers = new CtrlABMPersona();
+		        List<Persona> listPersona = cpers.getAll();
 		        request.setAttribute("list", listPersona);
 		        RequestDispatcher dispatcher = request.getRequestDispatcher("ListadoPersonas.jsp");
 		        dispatcher.forward(request, response);
@@ -106,8 +107,8 @@ public class Persona extends HttpServlet {
 		
 		 
 		 private void insert(HttpServletRequest request, HttpServletResponse response)
-		            throws SQLException, IOException {
-				
+		            throws Exception {
+			 	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	String nombre = request.getParameter("nombre");
 		        String apellido = request.getParameter("apellido");
 		        String dni = request.getParameter("dni");
@@ -123,15 +124,15 @@ public class Persona extends HttpServlet {
 		   	    per.setDni(dni);
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
-		        CtrlAMBPersona.add(per);
+		        cpers.add(per);
 		        response.sendRedirect("list");
 		        
 		        
 		    }
 		 
 		    private void update(HttpServletRequest request, HttpServletResponse response)
-		            throws SQLException, IOException {
-
+		            throws Exception {
+		    	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	String nombre = request.getParameter("nombre");
 		        String apellido = request.getParameter("apellido");
 		        String dni = request.getParameter("dni");
@@ -147,17 +148,18 @@ public class Persona extends HttpServlet {
 			   	per.setDni(dni);
 			   	per.setUsuario(usuario);
 			   	per.setContrasenia(contrasenia);
-		        CtrlABMPersona.update(per);
+		        cpers.update(per);
 		        response.sendRedirect("list"); 
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
-		            throws SQLException, IOException {
+		            throws Exception {
+		    	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	String dni = request.getParameter("dni");
 		 
 		        Persona per = new Persona();
 		        per.setDni(dni);
-		        CtrlABMPersona.delete(per);
+		        cpers.delete(per);
 		        response.sendRedirect("list");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    

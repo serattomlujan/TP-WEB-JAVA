@@ -7,7 +7,8 @@
 </head><title></title><font face="arial"> <b>Reservas Pendientes
 <body>
 
-	<jsp:include></jsp:include><form>
+<!-- 	<jsp:include></jsp:include><form>
+-->
 	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
 	</form></body>
 </head>
