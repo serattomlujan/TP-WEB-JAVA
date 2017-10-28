@@ -11,14 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controlers.CtrlABMPersona;
-import util.AppDataException;
+
 import entity.Persona;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.Level;
 
 
-@WebServlet("/Persona")
+@WebServlet("/PersonaAb")
 public class PersonaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -31,44 +28,17 @@ public class PersonaAb extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		  throws ServletException, IOException {
-			    String action = request.getServletPath();
-			 
-			    try {
-			        switch (action) {
-			       
-			        case "/insert":
-			            insert(request, response);
-			            break;
-			        case "/delete":
-			            delete(request, response);
-			            break;
-			       
-			        case "/update":
-			            update(request, response);
-			            break;
-			        default:
-			            list(request, response);
-			            break;
-			        }
-			    } catch (SQLException ex) {
-			        throw new ServletException(ex);
-			    }
-			}
-		
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		doPost(request, response);
+	};
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		
-
-		 throws ServletException, IOException {
-		 String action = request.getServletPath();
+	 String action = request.getServletPath();
 		 
 	        try {
 	            switch (action) {
@@ -86,22 +56,22 @@ public class PersonaAb extends HttpServlet {
 	                list(request, response);
 	                break;
 	            }
-	        } 
-	        catch (SQLException ex){     
-	        
-	        
+	        } catch (SQLException ex){ 	        
 	            throw new ServletException(ex);
-	        
-	        }
+	        } catch (Exception e) {
+				// TODO Bloque catch generado automáticamente
+				e.printStackTrace();
+			}
 		 }
-	}
+
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 			    CtrlABMPersona	cpers = new CtrlABMPersona();
 		        List<Persona> listPersona = cpers.getAll();
 		        request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("ListadoPersonas.jsp");
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListadoPersonas.jsp");
 		        dispatcher.forward(request, response);
+		       
 		    }
 		 
 		
@@ -125,7 +95,7 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
 		        cpers.add(per);
-		        response.sendRedirect("list");
+		        response.sendRedirect("WEB-INF/listadoPersonas.jsp");
 		        
 		        
 		    }
@@ -149,7 +119,7 @@ public class PersonaAb extends HttpServlet {
 			   	per.setUsuario(usuario);
 			   	per.setContrasenia(contrasenia);
 		        cpers.update(per);
-		        response.sendRedirect("list"); 
+		        response.sendRedirect("WEB-INF/listadoPersonas.jsp"); 
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
@@ -160,7 +130,7 @@ public class PersonaAb extends HttpServlet {
 		        Persona per = new Persona();
 		        per.setDni(dni);
 		        cpers.delete(per);
-		        response.sendRedirect("list");} // es necesaria esta lista?
+		        response.sendRedirect("WEB-INF/listadoPersonas.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 }

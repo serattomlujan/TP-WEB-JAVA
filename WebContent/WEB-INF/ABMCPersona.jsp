@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<form class="form-signin" name="signin" action="Persona" method="post"> <h2 class="form-signin-heading">
+<form class="form-signin" name="signin" action="PersonaAb" method="POST"> <h2 class="form-signin-heading">
 
 		<title>
 		</title><font face="arial"> <b>PERSONA<br></font></h2>

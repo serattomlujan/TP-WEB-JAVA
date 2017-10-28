@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="servlet.PersonaAb"%>
 <%@page import="entity.Persona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
@@ -6,7 +7,7 @@
 <html>
 <head>
 <style>.drop_menu {
-	background:#C0C0C0;
+	background:#FF66CC;
 	padding:0;
 	margin:0;
 	list-style-type:none;
@@ -52,24 +53,27 @@
 <body bgcolor="Pink" style="height: 291px; ">
 	
 	<h1> Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h1>
+	
 	 <table>
 <div class="drop">
+
+
  <ul class="drop_menu">
 
-			  
-			   <li><a href='Reservar.jsp'>RESERVAR ELEMENTO</a></li>
-			   <li><a href="WEB-INF/ReservasPendientes.jsp"> RESERVAS PENDIENTES</a></li>
-		   		<li><a href="WEB-INF/ABMCPersona.jsp">PERSONAS</a></li>
-			   <li><a href="WEB-INF/ABMCElemento.jsp">ELEMENTOS</a></li>
-			   <li><a href="WEB-INF/ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
-			   <li><a href="WEB-INF/ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
+		  
+			   <li><a href='ReservaAB'>RESERVAR ELEMENTO</a></li>
+			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
+			   <li><a href="PersonaAb">PERSONAS</a></li>
+			   <li><a href="ABMCElemento.jsp">ELEMENTOS</a></li>
+			   <li><a href="ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
+			   <li><a href="ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
 			   <li><a href="ListadoTipoElementos.jsp">LISTADO TIPOS ELEMENTOS</a></li>
 			   <li><a href="ListadoPersonas.jsp">LISTADO  PERSONAS</a></li> 
 	
  
 		  <li><a href="">CERRAR SESION</a></li>
 			   <li><a href="">SALIR</a></li>
-	
+
 	
 </ul>
 	
