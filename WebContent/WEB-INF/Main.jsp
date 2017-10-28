@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="servlet.PersonaAb"%>
+<%@page import="servlet.ListadodePersona"%>
 <%@page import="entity.Persona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
@@ -64,11 +65,11 @@
 			   <li><a href='ReservaAB'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
-			   <li><a href="ABMCElemento.jsp">ELEMENTOS</a></li>
-			   <li><a href="ABMCTipoElemento.jsp">TIPO ELEMENTOS</a>
-			   <li><a href="ListadoElementos.jsp">LISTADO ELEMENTOS</a></li>
-			   <li><a href="ListadoTipoElementos.jsp">LISTADO TIPOS ELEMENTOS</a></li>
-			   <li><a href="ListadoPersonas.jsp">LISTADO  PERSONAS</a></li> 
+			   <li><a href="ElementoAb">ELEMENTOS</a></li>
+			   <li><a href="TipoElementoAb">TIPO ELEMENTOS</a>
+			   <li><a href="ListadoElementos">LISTADO ELEMENTOS</a></li>
+			   <li><a href="ListadoTipoElementos">LISTADO TIPOS ELEMENTOS</a></li>
+			   <li><a href="ListadodePersona">LISTADO  PERSONAS</a></li> 
 	
  
 		  <li><a href="">CERRAR SESION</a></li>

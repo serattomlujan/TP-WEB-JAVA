@@ -68,8 +68,8 @@ public class PersonaAb extends HttpServlet {
 		            throws Exception {
 			    CtrlABMPersona	cpers = new CtrlABMPersona();
 		        List<Persona> listPersona = cpers.getAll();
-		        request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListadoPersonas.jsp");
+		        //request.setAttribute("list", listPersona);
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp");
 		        dispatcher.forward(request, response);
 		       
 		    }
