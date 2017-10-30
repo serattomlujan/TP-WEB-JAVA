@@ -10,14 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlers.CtrlABMPersona;
-import controlers.CtrlABMPersona;
-import entity.Persona;
-import entity.Persona;
+import controlers.CtrlABMTipoElemento;
+import entity.Tipo_Elemento;
 
 
-@WebServlet("/ListadodePersona")
-public class ListadodePersona extends HttpServlet {
+
+@WebServlet("/ListadoTipoElementos")
+public class ListadoTipoElementos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
@@ -50,10 +49,10 @@ public class ListadodePersona extends HttpServlet {
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-			 	CtrlABMPersona	cpers = new CtrlABMPersona();
-		        List<Persona> listPersona = cpers.getAll();
-		        request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListadoPersonas.jsp");
+			 CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
+		        List<Tipo_Elemento> listTipoEle = ctipoele.getAll();
+		        request.setAttribute("list", listTipoEle);
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListadoTipoElementos.jsp");
 		        dispatcher.forward(request, response);
 		       
 		    }

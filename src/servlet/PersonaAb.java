@@ -68,7 +68,7 @@ public class PersonaAb extends HttpServlet {
 		            throws Exception {
 			    CtrlABMPersona	cpers = new CtrlABMPersona();
 		        List<Persona> listPersona = cpers.getAll();
-		        //request.setAttribute("list", listPersona);
+		        request.setAttribute("list", listPersona);
 		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp");
 		        dispatcher.forward(request, response);
 		       
@@ -95,7 +95,7 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
 		        cpers.add(per);
-		        response.sendRedirect("WEB-INF/listadoPersonas.jsp");
+		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");
 		        
 		        
 		    }
@@ -119,7 +119,7 @@ public class PersonaAb extends HttpServlet {
 			   	per.setUsuario(usuario);
 			   	per.setContrasenia(contrasenia);
 		        cpers.update(per);
-		        response.sendRedirect("WEB-INF/listadoPersonas.jsp"); 
+		        response.sendRedirect("WEB-INF/ABMCPersona.jsp"); 
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
@@ -130,7 +130,7 @@ public class PersonaAb extends HttpServlet {
 		        Persona per = new Persona();
 		        per.setDni(dni);
 		        cpers.delete(per);
-		        response.sendRedirect("WEB-INF/listadoPersonas.jsp");} // es necesaria esta lista?
+		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 }

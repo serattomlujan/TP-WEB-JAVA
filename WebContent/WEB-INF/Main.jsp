@@ -1,6 +1,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="servlet.PersonaAb"%>
+<%@page import="servlet.ElementoAb"%>
+<%@page import="servlet.ListadoElementos"%>
+<%@page import="servlet.ListadoTipoElementos"%>
+<%@page import="servlet.ReservaAb"%>
+<%@page import="servlet.ReservasPendientes"%>
+<%@page import="servlet.TipoElementoAb"%>
 <%@page import="servlet.ListadodePersona"%>
+
+
+
 <%@page import="entity.Persona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
@@ -62,7 +71,7 @@
  <ul class="drop_menu">
 
 		  
-			   <li><a href='ReservaAB'>RESERVAR ELEMENTO</a></li>
+			   <li><a href='ReservaAb'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
 			   <li><a href="ElementoAb">ELEMENTOS</a></li>

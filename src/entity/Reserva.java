@@ -1,10 +1,10 @@
 
 package entity;
-import java.sql.Date;
+
 import java.io.Serializable;
-
-
 import java.sql.Time;
+import java.util.Date;
+
 
 public class Reserva  implements Serializable{
 	private int id_reserva;

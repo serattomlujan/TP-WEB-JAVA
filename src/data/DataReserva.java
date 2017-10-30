@@ -118,7 +118,8 @@ public class DataReserva {
  					+ "values (?,?,?,?,?,?)",
  					PreparedStatement.RETURN_GENERATED_KEYS
  					);
- 			stmt.setDate(1, r.getFecha());
+ 		   java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+ 			stmt.setDate(1,sqlDate);
  			stmt.setTime(2, r.getHora());
  			stmt.setInt(3, r.getPersona().getIdpersona());
  			stmt.setInt(4, r.getElemento().getIdelemento());
@@ -155,7 +156,8 @@ public class DataReserva {
  					+ " where id_reserva=?"
  					
  					);
-  			stmt.setDate(1, r.getFecha());
+ 			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+  			stmt.setDate(1, sqlDate);
  			stmt.setTime(2, r.getHora());
  			stmt.setInt(3, r.getPersona().getIdpersona());
  			stmt.setInt(4, r.getElemento().getIdelemento());

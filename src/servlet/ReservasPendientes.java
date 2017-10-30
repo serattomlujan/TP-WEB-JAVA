@@ -10,14 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlers.CtrlABMPersona;
-import controlers.CtrlABMPersona;
-import entity.Persona;
-import entity.Persona;
+import controlers.CtrlReserva;
+import entity.Reserva;
 
 
-@WebServlet("/ListadodePersona")
-public class ListadodePersona extends HttpServlet {
+
+@WebServlet("/ReservasPendientes")
+public class ReservasPendientes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
@@ -50,10 +49,10 @@ public class ListadodePersona extends HttpServlet {
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-			 	CtrlABMPersona	cpers = new CtrlABMPersona();
-		        List<Persona> listPersona = cpers.getAll();
-		        request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ListadoPersonas.jsp");
+			 	CtrlReserva	cres = new CtrlReserva();
+		        List<Reserva> listResPen = cres.getAllPendientes();
+		        request.setAttribute("list", listResPen);
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ReservasPendientes.jsp");
 		        dispatcher.forward(request, response);
 		       
 		    }
@@ -61,4 +60,3 @@ public class ListadodePersona extends HttpServlet {
 		 
 		
 }
-

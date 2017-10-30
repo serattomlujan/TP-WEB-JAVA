@@ -9,7 +9,7 @@
 <body>
 
 
-<form>
+<form class="form-signin" name="signin" action="TipoElementoAb" method="POST">
 		<font face="arial"> <b>TIPO DE ELEMENTO<br><br></font>
 	<font face="arial">ID<input>
 		<font face="arial"><br>Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>

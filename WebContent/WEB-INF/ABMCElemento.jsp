@@ -10,7 +10,8 @@
 
 
 
-<form>
+<form class="form-signin" name="signin" action="ElementoAb" method="POST">
+		
 		<font face="arial"> <b>ELEMENTO<br><br><br></font>
 	<font face="arial">ID<input><br>
 		<font face="arial">Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>

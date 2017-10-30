@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="update" method="post">
+<form class="form-signin" name="signin" action="ReservaAb" method="POST">
 	
 		<font face="arial"> <b>Reserva</font>
 	<br><br><br><font face="arial">ID Reserva<input><br><font face="arial"> <i><b></b></i></font>
