@@ -4,19 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<title>ABMC Tipos de Elementos</title>
 </head>
 <body>
 
 
 <form class="form-signin" name="signin" action="TipoElementoAb" method="POST">
-		<font face="arial"> <b>TIPO DE ELEMENTO<br><br></font>
-	<font face="arial">ID<input>
-		<font face="arial"><br>Nombre <input><i><b></b></i><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button>
-	
-		<font face="arial"><br>Tipo Elemento<select style="width: 154px; height: 29px"></select><br></font>Cantidad Max.<input><br>Tiempo lim.<input><br>Anticipacion (dias)<input><br><br><input
-				type="radio">Encargado
-	<br><br><br><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+		<font face="arial"> <b>TIPOS  DE ELEMENTOS<br><br></font>
+	<font face="arial">ID <input name="idtipo_elemento" type="text" disabled="true">
+		<font face="arial"><br><br>Nombre <input name="nombre_tipo"><i><b></b></i>
+		<button type="submit" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
+		<font face="arial"><br><br></font>Cantidad Máxima <input name="cant_max"><br><br>
+		Tiempo límite <input name="lim_tiempo"><br><br>Anticipación (dias) <input name="dias"><br><br>
+		<input name="encargado" type="checkbox">Encargado
+	<br><br><br><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 120px">Agregar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
 	</form>
 
 </body>

@@ -22,8 +22,8 @@ import controlers.CtrlReserva;
 import util.Fechas;
 
 
-@WebServlet("/ReservaAb")
-public class ReservaAb extends HttpServlet {
+@WebServlet("/ReservaElemento")
+public class ReservaElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**

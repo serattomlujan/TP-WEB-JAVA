@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>Play JavaCraft!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="style/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="style/start.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="style/ie-emulation-modes-warning.js"></script>
+
+
+<script type="text/javascript">
+    	function submitForm(met) {
+    		document.myForm.action=met;
+    		//document.getElementById("myFrom").submit();
+        }
+    </script>
+    
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" id="myForm" name="myForm" action="" method="post">
+        <h2 class="form-signin-heading">Login</h2>
+        <label for="inputId" class="sr-only">User</label>
+        <input name="id" id="inputId" class="form-control" placeholder="Id" required="" autofocus="" type="">
+        <label for="inputName" class="sr-only">User</label>
+        <input name="name" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" type="">
+        <label for="inputLastName" class="sr-only">User</label>
+        <input name="lastName" id="inputLastName" class="form-control" placeholder="Last Name" required="" autofocus="" type="">
+        <button class="btn btn-lg " onclick="javascript: submitForm('persona/consulta')">Search</button>
+        <button class="btn btn-lg " onclick="javascript: submitForm('persona/alta')">New</button>
+        <button class="btn btn-lg " onclick="javascript: submitForm('persona/modificacion')">Edit</button>
+        <button class="btn btn-lg " onclick="javascript: submitForm('persona/baja')">Delete</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="style/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>
+

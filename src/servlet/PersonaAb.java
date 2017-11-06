@@ -10,8 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlers.CtrlABMPersona;
 
+import controlers.CtrlABMPersona;
 import entity.Persona;
 
 
@@ -19,9 +19,10 @@ import entity.Persona;
 public class PersonaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    /**
-     * Default constructor. 
-     */
+	
+	public PersonaAb() {
+		 super();
+		  }
    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,17 +45,24 @@ public class PersonaAb extends HttpServlet {
 	            switch (action) {
 	            
 	            case "/insert":
-	                insert(request, response);
+	                this.insert(request, response);
 	                break;
 	            case "/delete":
-	                delete(request, response);
+	                this.delete(request, response);
 	                break;
 	 	        case "/update":
-	                update(request, response);
+	                this.update(request, response);
 	                break;
-	            default:
-	                list(request, response);
+	 	       case "/consulta":
+	 	        	this.consulta(request,response);
+	 	        	break;
+	 	       default:
+	                this.list(request, response);
 	                break;
+	 	        //
+	            //default:
+	            	//this.error(request,response);
+	                //break;
 	            }
 	        } catch (SQLException ex){ 	        
 	            throw new ServletException(ex);
@@ -64,8 +72,7 @@ public class PersonaAb extends HttpServlet {
 			}
 		 }
 
-		 private void list(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
+		 private void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			    CtrlABMPersona	cpers = new CtrlABMPersona();
 		        List<Persona> listPersona = cpers.getAll();
 		        request.setAttribute("list", listPersona);
@@ -74,10 +81,33 @@ public class PersonaAb extends HttpServlet {
 		       
 		    }
 		 
-		
+		 private void error(HttpServletRequest request, HttpServletResponse response) {
+			 response.setStatus(404);
+			 //redirigir a página de error
+			 }
 		 
-		 private void insert(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
+		 private void consulta(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			 response.getWriter().append("Consulta, requested action: ").append(request.getPathInfo()).append(" through post");
+			 //crear el controlador y ejecutar el getOne o getById
+			 
+			 CtrlABMPersona ctrl=new CtrlABMPersona();
+			
+			
+			 try {
+		 			Persona p = ctrl.getByDni(request.getParameter("dni"));
+		 			
+		 			if (p!= null){
+		 				;}
+		 			
+		 			else {}
+		 			
+		 			} catch (Exception e) {throw e;}
+			 
+			 }
+		 
+		 
+
+		private void insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			 	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	String nombre = request.getParameter("nombre");
 		        String apellido = request.getParameter("apellido");

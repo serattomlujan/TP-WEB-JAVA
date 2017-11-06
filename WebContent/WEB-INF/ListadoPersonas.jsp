@@ -8,8 +8,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-</head><title></title><font face="arial"> <b> Lista de Personas
+<title>Listar Personas</title>
+</head><title></title><font face="arial"> <b> <h2>LISTADO de PERSONAS </h2>
 <body>
 
 	
@@ -33,9 +33,10 @@
 			<%	
 				};
 			%>
-	</table>		
+	</table><br>		
 	</div>
 	
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Editar</button>
 	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
 	</form></body>
 </html>

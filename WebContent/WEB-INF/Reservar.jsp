@@ -1,18 +1,35 @@
+<%@ page import="controlers.CtrlABMTipoElemento" %>
+<%@page import="entity.Tipo_Elemento"%>
+<%@page import="java.util.*"%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Reservar Elemento</title>
 </head>
 <body>
-<form class="form-signin" name="signin" action="ReservaAb" method="POST">
+<form class="form-signin" name="signin" action="ReservaAb" method="POST" ><h2 class="form-signin-heading">
+	<font face="arial"> <b>RESERVAS </font></h2>
+	<font face="arial">ID Reserva <input name="id_reserva" disabled="true"><br><br>
+	<font face="arial"> <i><b></b></i></font>
+	<font face="arial">Tipo Elemento 
+	<%CtrlABMTipoElemento ctrl= new CtrlABMTipoElemento();
+		ArrayList<Tipo_Elemento> tipos=new ArrayList<Tipo_Elemento>();
+		tipos=ctrl.getAll(); %>
+		<select name="tipo" style="width: 154px; height: 29px">
+		<option>Seleccione un tipo </option>
+		<%for(Tipo_Elemento t : tipos){%>
+		<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%} %>
 	
-		<font face="arial"> <b>Reserva</font>
-	<br><br><br><font face="arial">ID Reserva<input><br><font face="arial"> <i><b></b></i></font>
-	<font face="arial">Tipo Elemento<select style="width: 154px; height: 29px"></select><br></font>Fecha(aaaammdd)<input><button type="submit" style="color: black;  background-color: white; width: 115px">Buscar</button><br>Hora(hhmm)<input><br>Elemento<select style="width: 147px; height: 27px; "></select><br>Detalle<input style="width: 414px; height: 26px; "><br><br>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregrar</button><i><b></b></i><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
+	</select><br><br></font>
+	Fecha(aaaammdd) <input name="fecha"><button type="submit" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br>
+	<br>Hora(hhmm) <input name="hora"><br><br>Elemento <select name="elemento" style="width: 147px; height: 27px; "></select><br>
+	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
+	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
 </form>
 
 </body>

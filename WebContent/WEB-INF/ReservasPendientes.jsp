@@ -9,7 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><title></title><font face="arial"> <b> Reservas Pendientes
+</head><title>Reservas Pendientes</title><font face="arial"> <b> Reservas Pendientes
 <body>
 
 	

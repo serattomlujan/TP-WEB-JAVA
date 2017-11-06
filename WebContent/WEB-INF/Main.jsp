@@ -3,7 +3,7 @@
 <%@page import="servlet.ElementoAb"%>
 <%@page import="servlet.ListadoElementos"%>
 <%@page import="servlet.ListadoTipoElementos"%>
-<%@page import="servlet.ReservaAb"%>
+<%@page import="servlet.ReservaElemento"%>
 <%@page import="servlet.ReservasPendientes"%>
 <%@page import="servlet.TipoElementoAb"%>
 <%@page import="servlet.ListadodePersona"%>
@@ -16,6 +16,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>Menú Principal</title>
 <style>.drop_menu {
 	background:#FF66CC;
 	padding:0;
@@ -71,14 +72,14 @@
  <ul class="drop_menu">
 
 		  
-			   <li><a href='ReservaAb'>RESERVAR ELEMENTO</a></li>
+			   <li><a href='ReservaElemento'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
 			   <li><a href="ElementoAb">ELEMENTOS</a></li>
-			   <li><a href="TipoElementoAb">TIPO ELEMENTOS</a>
-			   <li><a href="ListadoElementos">LISTADO ELEMENTOS</a></li>
-			   <li><a href="ListadoTipoElementos">LISTADO TIPOS ELEMENTOS</a></li>
-			   <li><a href="ListadodePersona">LISTADO  PERSONAS</a></li> 
+			   <li><a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <li><a href="ListadoElementos">LISTADO de ELEMENTOS</a></li>
+			   <li><a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a></li>
+			   <li><a href="ListadodePersona">LISTADO de PERSONAS</a></li> 
 	
  
 		  <li><a href="">CERRAR SESION</a></li>
