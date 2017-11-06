@@ -14,7 +14,7 @@
 
 	
 	<div>
-	<table>
+	<table border="1">
 		<tr>
 		  <td><strong> Id Reserva </strong></td>
 		  <td><strong> Estado </strong></td>

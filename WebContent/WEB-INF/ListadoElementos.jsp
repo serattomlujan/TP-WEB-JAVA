@@ -8,13 +8,13 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listar Elementos</title>
-</head><title></title><font face="arial"> <b> <h2> LISTADO de ELEMENTOS</h2>
+
+</head><title>Listar Elementos</title><font face="arial"> <b> <h2> LISTADO de ELEMENTOS</h2>
 <body>
 
 	
 	<div>
-	<table border-collapse: separate; border: black 5px solid; >
+	<table border="1" >
 		<tr margin: 15px;
   			padding: 15px>
 		  <td><strong> NOMBRE </strong></td>

@@ -8,20 +8,20 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listar Tipos de Elementos</title>
-</head><title></title><font face="arial"> <b><h2> LISTADO DE TIPOS DE ELEMENTOS </h2>
+
+</head><title>Listar Tipos de Elementos</title><font face="arial"> <b><h2> LISTADO DE TIPOS DE ELEMENTOS </h2>
 <body>
 
 	
 	<div>
-	<table>
+	<table border="1">
 		<tr>
-		  <td><strong> Id Elemento </strong></td>
-		  <td><strong> Nombre </strong></td>
-		  <td><strong> Cantidad Maxima</strong></td>
-		  <td><strong> Limite de Tiempo</strong></td>
-		  <td><strong> Dias de anticipacion</strong></td>
-		  <td><strong> Encargado</strong></td>
+		  <td><strong> ID </strong></td>
+		  <td><strong> NOMBRE </strong></td>
+		  <td><strong> CANTIDAD MAXIMA</strong></td>
+		  <td><strong> LIMITE TIEMPO</strong></td>
+		  <td><strong> DIAS ANTICIPACION</strong></td>
+		  <td><strong> ENCARGADO</strong></td>
 		</tr>
 		<% 
 		List <Tipo_Elemento> listTipoEle = (List <Tipo_Elemento>)request.getAttribute("list");

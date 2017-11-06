@@ -8,13 +8,13 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listar Personas</title>
-</head><title></title><font face="arial"> <b> <h2>LISTADO de PERSONAS </h2>
+
+</head><title>Listar Personas</title><font face="arial"> <b> <h2>LISTADO de PERSONAS </h2>
 <body>
 
 	
 	<div>
-	<table>
+	<table border="1">
 		<tr>
 		  <td><strong> APELLIDO </strong></td>
 		  <td><strong> NOMBRE </strong></td>

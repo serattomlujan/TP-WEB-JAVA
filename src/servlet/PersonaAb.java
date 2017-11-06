@@ -96,10 +96,11 @@ public class PersonaAb extends HttpServlet {
 			 try {
 		 			Persona p = ctrl.getByDni(request.getParameter("dni"));
 		 			
-		 			if (p!= null){
-		 				;}
+		 			//if (p!= null){
+		 				request.setAttribute("consulta", p);
+		 				//;}
 		 			
-		 			else {}
+		 			//else {}
 		 			
 		 			} catch (Exception e) {throw e;}
 			 
