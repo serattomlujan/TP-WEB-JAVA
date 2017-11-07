@@ -17,8 +17,8 @@
 	<table border="1" >
 		<tr margin: 15px;
   			padding: 15px>
+		   <td><strong> ID  </strong></td>
 		  <td><strong> NOMBRE </strong></td>
-		  <td><strong> ID  </strong></td>
 		  <td><strong> TIPO </strong></td>
 		</tr>
 		<% 
@@ -26,9 +26,9 @@
 		for (Elemento e: listElemento)
 			{ %>
 		<tr>
-		  <td><strong><%=e.getNombre() %></strong></td>
-		  <td><strong><%=e.getIdelemento() %></strong></td>
-		  <td><strong><%=e.getTipo_Elem() %></strong></td>
+		  <td><%=e.getIdelemento() %></td>
+		  <td><%=e.getNombre() %></td>
+		  <td><%=e.getTipo_Elem() %></td>
 		</tr>
 			
 			<%	
@@ -36,7 +36,6 @@
 			%>
 	</table><br>		
 	</div>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Editar</button>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Volver</button>
 	</form></body>
 </html>

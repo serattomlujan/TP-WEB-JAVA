@@ -1,5 +1,6 @@
 <%@page import="controlers.CtrlABMPersona"%>
 <%@page import="entity.Categoria"%>
+<%@page import="entity.Persona"%>
 <%@page import="java.util.*"%>
 
 
@@ -16,11 +17,14 @@
 
 	<title>
 	</title><font face="arial"> <b>PERSONAS<br></font></h2>
+	
 	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly" disabled="true">
 	<font face="arial"><br><br>DNI <input name="dni" id="dni"><i><b></b></i>
 	
-	<button class="btn btn-lg "onclick="javascript: submitForm('PersonaAb/consulta')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
-	<font face="arial"><br><br>Nombre <input name="nombre_per" id="nombre_per">
+	<button class="btn btn-lg" name="buscar" onclick="javascript: submitForm('PersonaAb/consulta')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
+	
+	
+	<font face="arial"><br><br>Nombre <input name="nombre_per" id="nombre_per" >
 	<br><br></font>Apellido <input name="apellido"id="apellido"><br><br>
 	Usuario <input name="usuario" id="usuario"><br><br>Contraseña <input name="contrasenia" id="contrasenia"><br><br>
 	Categoría 
@@ -31,12 +35,12 @@
 		<select name="categoria" style="width: 147px; height: 27px; " >
 		<option>Seleccione una categoría </option>
 		<%for(Categoria c : cats){%>
-		<option value="<%=c.getId_categoria()%>"><%=c.getDescripcion()%></option><%} %>
+		<option value="<%=c.getId_categoria()%>"><%=c.getDescripcion()%></option><%}%>
 	</select><br><br>
 	<input name="habilitado" id="habilitado" type="checkbox">Habilitado<br><br>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px"; type="submit">Agregar</button><i><b></b></i>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px; type="submit">Modificar</button><i><b></b></i>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px; type="submit">Borrar</button>
+	<i><b></b></i><button class="btn btn-lg"  onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: aqua; width: 115px"; type="submit">Agregar</button><i><b></b></i>
+	<button class="btn btn-lg" onclick="javascript: submitForm('PersonaAb/update')" style="color: black;  background-color: aqua; width: 115px; type="submit">Modificar</button><i><b></b></i>
+	<button class="btn btn-lg"  onclick="javascript: submitForm('PersonaaB/delete')" style="color: black;  background-color: aqua; width: 115px; type="submit">Borrar</button>
 	</form></body>
 </body>
 

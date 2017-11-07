@@ -9,15 +9,20 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><title>Reservas Pendientes</title><font face="arial"> <b> Reservas Pendientes
+</head><title>Reservas Pendientes</title><font face="arial"> <h2><b> RESERVAS PENDIENTES</h2>
 <body>
 
 	
 	<div>
 	<table border="1">
 		<tr>
-		  <td><strong> Id Reserva </strong></td>
-		  <td><strong> Estado </strong></td>
+		  <td><strong> ID </strong></td>
+		  <td><strong> APELLIDO </strong></td>
+		  <td><strong> NOMBRE </strong></td>
+		  <td><strong> ELEMENTO </strong></td>
+		  <td><strong> TIPO </strong></td>
+		  <td><strong> FECHA </strong></td>
+		  <td><strong> HORA </strong></td>
 		 
 		</tr>
 		<% 
@@ -25,8 +30,13 @@
 		for (Reserva r: listResPen)
 			{ %>
 		<tr>
-		  <td><strong><%=r.getId_reserva() %></strong></td>
-		  <td><strong><%=r.getEstado() %></strong></td>
+		  <td><%=r.getId_reserva() %></td>
+		  <td><%=r.getPersona().getApellido() %></td>
+		  <td><%=r.getPersona().getNombre() %></td>
+		  <td><%=r.getElemento().getNombre() %></td>
+		  <td><%=r.getElemento().getTipo_Elem().getNombre_tipo()%></td>
+		  <td><%=r.getFecha()%></td>
+		  <td><%=r.getHora() %></td>
 		 
 		</tr>
 			
@@ -35,7 +45,7 @@
 			%>
 	</table>		
 	</div>
-	
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar Reserva</button>
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Volver</button>
 	</form></body>
 </html>

@@ -19,15 +19,17 @@
 		  <td><strong> APELLIDO </strong></td>
 		  <td><strong> NOMBRE </strong></td>
 		  <td><strong> DNI</strong></td>
+		  <td><strong> CATEGORIA</strong></td>
 		</tr>
 		<% 
 		List <Persona> listPersona = (List <Persona>)request.getAttribute("list");
 		for (Persona p: listPersona)
 			{ %>
 		<tr>
-		  <td><strong><%=p.getApellido() %></strong></td>
-		  <td><strong><%=p.getNombre() %></strong></td>
-		  <td><strong><%=p.getDni() %></strong></td>
+		  <td><%=p.getApellido() %></td>
+		  <td><%=p.getNombre() %></td>
+		  <td><%=p.getDni() %></td>
+		  <td><%=p.getCategoria().getDescripcion() %></td>
 		</tr>
 			
 			<%	
@@ -36,7 +38,6 @@
 	</table><br>		
 	</div>
 	
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Editar</button>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Volver</button>
 	</form></body>
 </html>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.AppDataException;
 import controlers.CtrlABMPersona;
 import entity.Persona;
 
@@ -90,19 +91,27 @@ public class PersonaAb extends HttpServlet {
 			 response.getWriter().append("Consulta, requested action: ").append(request.getPathInfo()).append(" through post");
 			 //crear el controlador y ejecutar el getOne o getById
 			 
-			 CtrlABMPersona ctrl=new CtrlABMPersona();
-			
-			
+					
 			 try {
-		 			Persona p = ctrl.getByDni(request.getParameter("dni"));
 		 			
-		 			//if (p!= null){
-		 				request.setAttribute("consulta", p);
-		 				//;}
+				 	String dni=request.getParameter("dni");
+				 	Persona varP = new Persona();
+				 	varP.setDni(dni);
+				 	CtrlABMPersona ctrl=new CtrlABMPersona();
+				 	try {
+						request.setAttribute("consulta", ctrl.getByDni(varP));
+					} catch (AppDataException ade) {
+						request.setAttribute("Error", ade.getMessage());
+					} catch (Exception e) {
+						response.setStatus(502);
+					}
+				 	
+				 	request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
+					
+			 		} catch (Exception e) {
+					e.printStackTrace();
+				}
 		 			
-		 			//else {}
-		 			
-		 			} catch (Exception e) {throw e;}
 			 
 			 }
 		 

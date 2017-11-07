@@ -18,6 +18,7 @@ import entity.Elemento;
 import entity.Persona;
 import entity.Reserva;
 import entity.Tipo_Elemento;
+import controlers.CtrlABMPersona;
 import controlers.CtrlReserva;
 import util.Fechas;
 
@@ -73,7 +74,9 @@ public class ReservaElemento extends HttpServlet {
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-			  
+			 CtrlReserva res = new CtrlReserva();
+		        List<Reserva> listReservas = res.getAllPendientes();
+		        request.setAttribute("list", listReservas);
 		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Reservar.jsp");
 		        dispatcher.forward(request, response);
 		       

@@ -21,19 +21,19 @@
 		  <td><strong> CANTIDAD MAXIMA</strong></td>
 		  <td><strong> LIMITE TIEMPO</strong></td>
 		  <td><strong> DIAS ANTICIPACION</strong></td>
-		  <td><strong> ENCARGADO</strong></td>
+		 
 		</tr>
 		<% 
 		List <Tipo_Elemento> listTipoEle = (List <Tipo_Elemento>)request.getAttribute("list");
 		for (Tipo_Elemento te: listTipoEle)
 			{ %>
 		<tr>
-		  <td><strong><%=te.getIdtipo_elemento() %></strong></td>
-		  <td><strong><%=te.getNombre_tipo() %></strong></td>
-		  <td><strong><%=te.getCant_max() %></strong></td>
-		  <td><strong><%=te.getLim_tiempo() %></strong></td>
-		  <td><strong><%=te.getDias_anticip() %></strong></td>
-		  <td><strong><%=te.getEncargado() %></strong></td>
+		  <td><%=te.getIdtipo_elemento() %></td>
+		  <td><%=te.getNombre_tipo() %></td>
+		  <td><%=te.getCant_max() %></td>
+		  <td><%=te.getLim_tiempo() %></td>
+		  <td><%=te.getDias_anticip() %></td>
+		  
 		</tr>
 			
 			<%	
@@ -42,7 +42,6 @@
 	</table><br>		
 	</div>
 	
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Editar</button>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Salir</button>
+	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Volver</button>
 	</form></body>
 </html>
