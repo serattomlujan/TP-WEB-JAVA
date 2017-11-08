@@ -40,10 +40,10 @@ public class PersonaAb extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 String action = request.getServletPath();
+	 //String action = request.getServletPath();
 		 
 	        try {
-	            switch (action) {
+	        	switch (request.getServletPath()) {
 	            
 	            case "/insert":
 	                this.insert(request, response);
@@ -118,7 +118,7 @@ public class PersonaAb extends HttpServlet {
 		 
 
 		private void insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			 	CtrlABMPersona	cpers = new CtrlABMPersona();
+			 	/*CtrlABMPersona cpers = new CtrlABMPersona();
 		    	String nombre = request.getParameter("nombre");
 		        String apellido = request.getParameter("apellido");
 		        String dni = request.getParameter("dni");
@@ -135,7 +135,20 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
 		        cpers.add(per);
-		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");
+		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");*/
+			try{
+				Persona per=new Persona();
+				per.setDni(request.getParameter("dni"));
+				per.setNombre(request.getParameter("nombre_per"));
+				per.setApellido(request.getParameter("apellido"));
+				per.setUsuario(request.getParameter("usuario"));
+				per.setContrasenia(request.getParameter("contrasenia"));
+				//per.setCategoria(request.getParameter("categoria"));
+				CtrlABMPersona ctrl=new CtrlABMPersona();
+				ctrl.add(per);
+				response.getWriter().append("insert, requested action: ").append(request.getPathInfo()).append(" trough post");
+			}catch (Exception e) {
+				e.printStackTrace();}
 		        
 		        
 		    }
