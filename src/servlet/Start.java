@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Level;
 /**
  * Servlet implementation class Start
  */
-@WebServlet({ "/Start", "/start" })
+@WebServlet({ "/Start/*", "/start" })
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Logger logger;

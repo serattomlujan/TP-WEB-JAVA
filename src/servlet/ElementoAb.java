@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controlers.CtrlABMElemento;
+import controlers.CtrlABMPersona;
 import entity.Tipo_Elemento;
 
 import entity.Elemento;
+import entity.Persona;
 
 
-@WebServlet("/ElementoAb")
+@WebServlet("/ElementoAb/*")
 public class ElementoAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -53,6 +55,7 @@ public class ElementoAb extends HttpServlet {
 	 	        case "/update":
 	                update(request, response);
 	                break;
+	 	        
 	            default:
 	                list(request, response);
 	                break;
@@ -129,5 +132,13 @@ public class ElementoAb extends HttpServlet {
 		        
 		        response.sendRedirect("WEB-INF/ABMCElemento.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
-}
+		    
+		    
+		    }
+		    
+		    
+		    
+		    
+		    
+
 		 

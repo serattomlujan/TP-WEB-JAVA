@@ -15,7 +15,7 @@ import entity.Tipo_Elemento;
 
 
 
-@WebServlet("/ListadoTipoElementos")
+@WebServlet("/ListadoTipoElementos/*")
 public class ListadoTipoElementos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
