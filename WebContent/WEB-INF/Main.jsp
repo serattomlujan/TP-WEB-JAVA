@@ -63,7 +63,7 @@
 
 <body bgcolor="Pink" style="height: 291px; ">
 	
-	<h1> Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h1>
+	<h1> SISTEMA DE GESTION DE RESERVAS</h1><h2>Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h2>
 	
 	 <table>
 <div class="drop">

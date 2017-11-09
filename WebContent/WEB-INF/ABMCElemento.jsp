@@ -25,7 +25,7 @@
 		<%CtrlABMElemento ctrl= new CtrlABMElemento();
 		ArrayList<Tipo_Elemento> tipos=new ArrayList<Tipo_Elemento>();
 		tipos=ctrl.getTipos(); %>
-		<select name="tipo" style="width: 154px; height: 29px">
+		<select name="tipo" id="tipo"style="width: 154px; height: 29px">
 		<option>Seleccione un tipo </option>
 		<%for(Tipo_Elemento t : tipos){%>
 		<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%} %>

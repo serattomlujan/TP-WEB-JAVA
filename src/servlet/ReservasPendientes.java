@@ -15,7 +15,7 @@ import entity.Reserva;
 
 
 
-@WebServlet("/ReservasPendientes")
+@WebServlet("/ReservasPendientes/*")
 public class ReservasPendientes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

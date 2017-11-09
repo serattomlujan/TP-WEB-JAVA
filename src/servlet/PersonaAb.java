@@ -16,7 +16,7 @@ import controlers.CtrlABMPersona;
 import entity.Persona;
 
 
-@WebServlet("/PersonaAb")
+@WebServlet("/PersonaAb/*")
 public class PersonaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -40,31 +40,31 @@ public class PersonaAb extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 //String action = request.getServletPath();
-		 
-	        try {
-	        	switch (request.getServletPath()) {
-	            
-	            case "/insert":
-	                this.insert(request, response);
-	                break;
-	            case "/delete":
-	                this.delete(request, response);
-	                break;
-	 	        case "/update":
-	                this.update(request, response);
-	                break;
-	 	       case "/consulta":
-	 	        	this.consulta(request,response);
-	 	        	break;
-	 	       default:
-	                this.list(request, response);
-	                break;
-	 	        //
-	            //default:
-	            	//this.error(request,response);
-	                //break;
-	            }
+try{
+	        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
+	        		request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
+	        	}else{
+	        		String action = request.getPathInfo();
+		            switch (action) {
+		            
+		            case "/insert":
+		                this.insert(request, response);
+		                break;
+		            case "/delete":
+		                this.delete(request, response);
+		                break;
+		 	        case "/update":
+		                this.update(request, response);
+		                break;
+		 	        case "/buscar":
+		 	    	   this.buscar(request, response);
+		 	    	   break;
+		 	       default:
+		                //request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
+		                break;
+		 	        
+	        	}
+	        	}
 	        } catch (SQLException ex){ 	        
 	            throw new ServletException(ex);
 	        } catch (Exception e) {
@@ -73,61 +73,26 @@ public class PersonaAb extends HttpServlet {
 			}
 		 }
 
-		 private void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			    CtrlABMPersona	cpers = new CtrlABMPersona();
-		        List<Persona> listPersona = cpers.getAll();
-		        request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp");
-		        dispatcher.forward(request, response);
-		       
-		    }
+		
 		 
 		 private void error(HttpServletRequest request, HttpServletResponse response) {
 			 response.setStatus(404);
 			 //redirigir a página de error
 			 }
 		 
-		 private void consulta(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			 response.getWriter().append("Consulta, requested action: ").append(request.getPathInfo()).append(" through post");
-			 //crear el controlador y ejecutar el getOne o getById
-			 
-					
-			 try {
-		 			
-				 	String dni=request.getParameter("dni");
-				 	Persona varP = new Persona();
-				 	varP.setDni(dni);
-				 	CtrlABMPersona ctrl=new CtrlABMPersona();
-				 	try {
-						request.setAttribute("consulta", ctrl.getByDni(varP));
-					} catch (AppDataException ade) {
-						request.setAttribute("Error", ade.getMessage());
-					} catch (Exception e) {
-						response.setStatus(502);
-					}
-				 	
-				 	request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
-					
-			 		} catch (Exception e) {
-					e.printStackTrace();
-				}
-		 			
-			 
-			 }
 		 
-		 
-
-		private void insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			 	/*CtrlABMPersona cpers = new CtrlABMPersona();
+		 private void insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			 	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	String nombre = request.getParameter("nombre");
 		        String apellido = request.getParameter("apellido");
 		        String dni = request.getParameter("dni");
 		        boolean habilitado = request.getParameter("habilitado") != null;
 		        String usuario = request.getParameter("usuario");
 		        String contrasenia = request.getParameter("contrasenia");
+		        //validaer que los getpara sean distintos d enull
 		 
 		        Persona per = new Persona();
-		        per.setDni(dni);
+		       
 		   	    per.setNombre(nombre);
 		   	    per.setApellido(apellido);
 		   	    per.setHabilitado(habilitado);
@@ -135,24 +100,12 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
 		        cpers.add(per);
-		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");*/
-			try{
-				Persona per=new Persona();
-				per.setDni(request.getParameter("dni"));
-				per.setNombre(request.getParameter("nombre_per"));
-				per.setApellido(request.getParameter("apellido"));
-				per.setUsuario(request.getParameter("usuario"));
-				per.setContrasenia(request.getParameter("contrasenia"));
-				//per.setCategoria(request.getParameter("categoria"));
-				CtrlABMPersona ctrl=new CtrlABMPersona();
-				ctrl.add(per);
-				response.getWriter().append("insert, requested action: ").append(request.getPathInfo()).append(" trough post");
-			}catch (Exception e) {
-				e.printStackTrace();}
-		        
+		        response.sendRedirect("/WEB-INF/ABMCPersona.jsp");
+		        //dispacher y fw
 		        
 		    }
 		 
+				 
 		    private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMPersona	cpers = new CtrlABMPersona();
@@ -162,6 +115,7 @@ public class PersonaAb extends HttpServlet {
 		        boolean habilitado = request.getParameter("habilitado") != null;
 		        String usuario = request.getParameter("usuario");
 		        String contrasenia = request.getParameter("contrasenia");
+		        ///validar dis d null
 		 
 		        Persona per = new Persona();
 		        per.setDni(dni);
@@ -178,7 +132,7 @@ public class PersonaAb extends HttpServlet {
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMPersona	cpers = new CtrlABMPersona();
-		    	String dni = request.getParameter("dni");
+		    	String dni = request.getParameter("dni"); //alidar distinto d null
 		 
 		        Persona per = new Persona();
 		        per.setDni(dni);
@@ -186,5 +140,18 @@ public class PersonaAb extends HttpServlet {
 		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
+		    
+		    
+		    
+		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		    	CtrlABMPersona	cpers = new CtrlABMPersona();
+		    	String dni = request.getParameter("dni");
+		    	Persona per = new Persona();
+		    	per.setDni(dni);
+			    per=cpers.getByDni(per);
+			       
+			    request.setAttribute("encontrada", per);
+			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
+		    }
 }
 
