@@ -40,7 +40,7 @@ public class PersonaAb extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-try{
+			try{
 	        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
 	        		request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
 	        	}else{

@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlers.CtrlABMTipoElemento;
 
+import controlers.CtrlABMPersona;
+import controlers.CtrlABMTipoElemento;
+import entity.Persona;
 import entity.Tipo_Elemento;
 
 
@@ -20,9 +22,10 @@ import entity.Tipo_Elemento;
 public class TipoElementoAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    /**
-     * Default constructor. 
-     */
+	public TipoElementoAb() {
+		 super();
+		  }
+  
    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,31 +42,38 @@ public class TipoElementoAb extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 String action = request.getServletPath();
-		 
-	        try {
+		try{
+        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
+        		request.getRequestDispatcher("WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
+        	}else{
+        		String action = request.getPathInfo();
 	            switch (action) {
 	            
 	            case "/insert":
-	                insert(request, response);
+	                this.insert(request, response);
 	                break;
 	            case "/delete":
-	                delete(request, response);
+	                this.delete(request, response);
 	                break;
 	 	        case "/update":
-	                update(request, response);
+	                this.update(request, response);
 	                break;
-	            default:
-	                list(request, response);
+	 	        case "/buscar":
+	 	    	   this.buscar(request, response);
+	 	    	   break;
+	 	       default:
+	                //request.getRequestDispatcher("WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 	                break;
-	            }
-	        } catch (SQLException ex){ 	        
-	            throw new ServletException(ex);
-	        } catch (Exception e) {
-				// TODO Bloque catch generado automáticamente
-				e.printStackTrace();
-			}
-		 }
+	 	        
+        	}
+        	}
+        } catch (SQLException ex){ 	        
+            throw new ServletException(ex);
+        } catch (Exception e) {
+			// TODO Bloque catch generado automáticamente
+			e.printStackTrace();
+		}
+	 }
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
@@ -132,6 +142,18 @@ public class TipoElementoAb extends HttpServlet {
 		        ctipoele.delete(tipoele);
 		        response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
+		    
+		    
+		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		    	CtrlABMTipoElemento	ctiel = new CtrlABMTipoElemento();
+		    	String nombre = request.getParameter("nombre_tipo");
+		    	Tipo_Elemento tiel = new Tipo_Elemento();
+		    	tiel.setNombre_tipo(nombre);
+			    tiel=ctiel.getByNomTipo(tiel);
+			       
+			    request.setAttribute("encontrado", tiel);
+			    request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
+		    }
 		    
 }
 

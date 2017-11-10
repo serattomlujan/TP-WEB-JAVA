@@ -10,10 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import controlers.CtrlABMElemento;
 import controlers.CtrlABMPersona;
 import entity.Tipo_Elemento;
-
 import entity.Elemento;
 import entity.Persona;
 
@@ -22,9 +22,9 @@ import entity.Persona;
 public class ElementoAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    /**
-     * Default constructor. 
-     */
+	public ElementoAb() {
+		 super();
+		  }
    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,32 +41,39 @@ public class ElementoAb extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 String action = request.getServletPath();
-		 
-	        try {
+		try{
+        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
+        		request.getRequestDispatcher("WEB-INF/ABMCElemento.jsp").forward(request, response);
+        	}else{
+        		String action = request.getPathInfo();
 	            switch (action) {
 	            
 	            case "/insert":
-	                insert(request, response);
+	                this.insert(request, response);
 	                break;
 	            case "/delete":
-	                delete(request, response);
+	                this.delete(request, response);
 	                break;
 	 	        case "/update":
-	                update(request, response);
+	                this.update(request, response);
+	                break;
+	 	        case "/buscar":
+	 	    	   this.buscar(request, response);
+	 	    	   break;
+	 	       default:
+	                //request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
 	                break;
 	 	        
-	            default:
-	                list(request, response);
-	                break;
-	            }
-	        } catch (SQLException ex){ 	        
-	            throw new ServletException(ex);
-	        } catch (Exception e) {
-				// TODO Bloque catch generado automáticamente
-				e.printStackTrace();
-			}
-		 }
+        	}
+        	}
+        } catch (SQLException ex){ 	        
+            throw new ServletException(ex);
+        } catch (Exception e) {
+			// TODO Bloque catch generado automáticamente
+			e.printStackTrace();
+		}
+	 }
+
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
@@ -134,8 +141,19 @@ public class ElementoAb extends HttpServlet {
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 		    
-		    }
-		    
+
+	
+			private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+				CtrlABMElemento	cele = new CtrlABMElemento();
+				String nombre = request.getParameter("nombre");
+				Elemento ele = new Elemento();
+				ele.setNombre(nombre);
+				ele=cele.getByNombre(ele);
+       
+				request.setAttribute("encontrada", ele);
+				request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+				}
+			}	    
 		    
 		    
 		    
