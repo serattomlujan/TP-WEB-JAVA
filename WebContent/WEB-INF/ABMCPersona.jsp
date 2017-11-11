@@ -54,7 +54,9 @@
 	
 	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly" disabled="true" value="<%=id%>"></font>
 	<font face="arial"><br><br>DNI <input name="dni" id="dni" value="<%=dni%>"><i><b></b></i></font> 
+	
 	<button class="btn btn-lg" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
+	
 	<font face="arial"><br><br>Nombre <input name="nombre_per" id="nombre_per" value="<%=nombre_per%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input name="apellido" id="apellido" value="<%=apellido%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>

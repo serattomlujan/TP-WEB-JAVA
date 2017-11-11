@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import util.AppDataException;
 import controlers.CtrlABMPersona;
+import entity.Categoria;
 import entity.Persona;
 
 
@@ -46,7 +48,6 @@ public class PersonaAb extends HttpServlet {
 	        	}else{
 	        		String action = request.getPathInfo();
 		            switch (action) {
-		            
 		            case "/insert":
 		                this.insert(request, response);
 		                break;
@@ -82,28 +83,41 @@ public class PersonaAb extends HttpServlet {
 		 
 		 
 		 private void insert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+				try{
+			 
 			 	CtrlABMPersona	cpers = new CtrlABMPersona();
-		    	String nombre = request.getParameter("nombre");
+		    	
+			 	String dni = request.getParameter("dni");
+			 	String nombre = request.getParameter("nombre_per");
 		        String apellido = request.getParameter("apellido");
-		        String dni = request.getParameter("dni");
-		        boolean habilitado = request.getParameter("habilitado") != null;
 		        String usuario = request.getParameter("usuario");
 		        String contrasenia = request.getParameter("contrasenia");
+		        int id_cat=Integer.parseInt(request.getParameter("categoria"));
+		        boolean habilitado = request.getParameter("habilitado") != null;
+			       
 		        //validaer que los getpara sean distintos d enull
 		 
 		        Persona per = new Persona();
-		       
+		        ArrayList<Categoria> cats=cpers.getCategorias();
+		        for(Categoria c:cats){
+		        	if(c.getId_categoria()==id_cat) per.setCategoria(c);
+		        }
 		   	    per.setNombre(nombre);
 		   	    per.setApellido(apellido);
 		   	    per.setHabilitado(habilitado);
 		   	    per.setDni(dni);
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
-		        cpers.add(per);
-		        response.sendRedirect("/WEB-INF/ABMCPersona.jsp");
-		        //dispacher y fw
+		   	    cpers.add(per);
+		   	    String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
+		        response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
+				
 		        
-		    }
+					}
+				catch (Exception e){
+					e.printStackTrace();
+					}
+		 		}
 		 
 				 
 		    private void update(HttpServletRequest request, HttpServletResponse response)
