@@ -44,7 +44,7 @@
 		
 		<font face="arial"><h2><b>ELEMENTOS</h2> <br></font>
 		<font face="arial">ID <input name="idelemento" id="idelemento"type="text"disabled="true" value="<%=id %>"><br><br>
-		<font face="arial">Nombre <input name="nombre" id="nombre" value="<%=nombre%>"><i><b></b></i>
+		<font face="arial">Nombre <input name="nombre" required id="nombre" value="<%=nombre%>"><i><b></b></i>
 		<button type="submit"  onclick="javascript: submitForm('ElementoAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
 	
 		<font face="arial"><br><br>Tipo Elemento
@@ -66,6 +66,11 @@
 	<button type="submit" onclick="javascript: submitForm('ElementoAb/insert')" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('ElementoAb/update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('ElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+	<a href="#" title="salir" onclick="window.close()">Salir</a>
+	
+
+
 </form>
 	</body>
 

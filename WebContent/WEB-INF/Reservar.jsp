@@ -30,6 +30,11 @@
 	<br>Hora(hhmm) <input name="hora"><br><br>Elemento <select name="elemento" style="width: 147px; height: 27px; "></select><br>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
 	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
+
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver </a>
+	<a href="#" title="salir" onclick="window.close()">Salir</a>
+	
+
 </form>
 
 </body>

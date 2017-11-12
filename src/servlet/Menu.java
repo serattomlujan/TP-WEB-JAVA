@@ -71,6 +71,7 @@ public class Menu extends HttpServlet {
  	        case "/Listado Personas":
                 	   request.getRequestDispatcher("WEB-INF/ListadoPersonas.jsp").forward(request, response);
                        break;
+ 	        
             }
         }
          catch (Exception e) {

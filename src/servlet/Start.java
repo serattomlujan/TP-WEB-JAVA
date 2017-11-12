@@ -65,14 +65,15 @@ public class Start extends HttpServlet {
 			} catch (Exception e) {
 				response.setStatus(502);
 			}
-			
+			if(pers==null) response.getWriter().append("Ususario y/o contraseña incorrectos");
+			else {
 			request.getSession().setAttribute("user", pers);
 			
 			logger.log(Level.INFO,"log in "+pers.getDni());
 			
 			
 			request.getRequestDispatcher("WEB-INF/Main.jsp").forward(request, response);
-			response.getWriter().append(user).append(" ").append(pass);
+			response.getWriter().append(user).append(" ").append(pass);}
 			
 			
 		} catch (Exception e) {

@@ -56,7 +56,12 @@
 		
 	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/insert')" style="color: black;  background-color: aqua; width: 120px">Agregar</button>
 	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button>
-	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button></font>
+	
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+	<a href="#" title="salir" onclick="window.close()">Salir</a>
+	
+	
 	</form>
 
 </body>

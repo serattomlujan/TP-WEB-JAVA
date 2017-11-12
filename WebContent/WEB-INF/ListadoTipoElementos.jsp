@@ -42,6 +42,8 @@
 	</table><br>		
 	</div>
 	
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Volver</button>
-	</form></body>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()">Volver</a>
+	<a href="#" title="salir" onclick="window.close()">Salir</a>
+	
+</form></body>
 </html>

@@ -60,7 +60,7 @@ public class PersonaAb extends HttpServlet {
 		 	        case "/buscar":
 		 	    	   this.buscar(request, response);
 		 	    	   break;
-		 	       default:
+		 	        default:
 		               //this.error(request, response);
 		                break;
 		 	        
@@ -125,7 +125,7 @@ public class PersonaAb extends HttpServlet {
 		    	try{
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
-			    	
+			    	int id=Integer.parseInt(request.getParameter("idpersona"));
 				 	String dni = request.getParameter("dni");
 				 	String nombre = request.getParameter("nombre_per");
 			        String apellido = request.getParameter("apellido");
@@ -141,14 +141,19 @@ public class PersonaAb extends HttpServlet {
 			        for(Categoria c:cats){
 			        	if(c.getId_categoria()==id_cat) per.setCategoria(c);
 			        }
+			        per.setIdpersona(id);
 			   	    per.setNombre(nombre);
 			   	    per.setApellido(apellido);
 			   	    per.setHabilitado(habilitado);
 			   	    per.setDni(dni);
 			   	    per.setUsuario(usuario);
 			   	    per.setContrasenia(contrasenia);
-			   	    cpers.update(per);
-			   	    response.getWriter().append("Los datos de la persona fueron modificados ");
+			   	    ArrayList<Persona> todas= new ArrayList<Persona>();
+			   	    todas=cpers.getAll();
+			   	    for(Persona p: todas)
+			   	    	if(p.getIdpersona()==per.getIdpersona()) cpers.update(per);
+			   	    		
+			   	    response.getWriter().append("Los datos de la persona fueron modificados");
 					
 			        }
 					catch (Exception e){
@@ -156,19 +161,18 @@ public class PersonaAb extends HttpServlet {
 						}
 			 		}
 			 
+		    
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	try{
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
 			    	
-				 	String dni = request.getParameter("dni");
+				 	String dni= request.getParameter("dni");
 				 	
-			        Persona per = new Persona();
-			        
-			        per.setDni(dni);
-			        per=cpers.getByDni(per);
-					   
+			        Persona per=new Persona();
+			        per=cpers.getByDni(dni);
+			       
 			   	    cpers.delete(per);
 			   	    response.getWriter().append("La persona fue elimidada");
 					
@@ -187,7 +191,6 @@ public class PersonaAb extends HttpServlet {
 		    	Persona per = new Persona();
 		    	per.setDni(dni);
 			    per=cpers.getByDni(per);
-			       
 			    request.setAttribute("encontrada", per);
 			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 		    }
