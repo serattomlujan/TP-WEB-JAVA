@@ -53,7 +53,10 @@
 		Anticipación (dias) <input name="dias" id="dias" value="<%=dias%>"><br><br>
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>
 		<font face="arial">Encargado<br><br></font>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 120px">Agregar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+		
+	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/insert')" style="color: black;  background-color: aqua; width: 120px">Agregar</button>
+	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button>
+	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
 	</form>
 
 </body>

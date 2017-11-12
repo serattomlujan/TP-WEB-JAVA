@@ -61,7 +61,7 @@ public class PersonaAb extends HttpServlet {
 		 	    	   this.buscar(request, response);
 		 	    	   break;
 		 	       default:
-		                //request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
+		               //this.error(request, response);
 		                break;
 		 	        
 	        	}
@@ -122,38 +122,62 @@ public class PersonaAb extends HttpServlet {
 				 
 		    private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-		    	CtrlABMPersona	cpers = new CtrlABMPersona();
-		    	String nombre = request.getParameter("nombre");
-		        String apellido = request.getParameter("apellido");
-		        String dni = request.getParameter("dni");
-		        boolean habilitado = request.getParameter("habilitado") != null;
-		        String usuario = request.getParameter("usuario");
-		        String contrasenia = request.getParameter("contrasenia");
-		        ///validar dis d null
-		 
-		        Persona per = new Persona();
-		        per.setDni(dni);
-			   	per.setNombre(nombre);
-			   	per.setApellido(apellido);
-			   	per.setHabilitado(habilitado);
-			   	per.setDni(dni);
-			   	per.setUsuario(usuario);
-			   	per.setContrasenia(contrasenia);
-		        cpers.update(per);
-		        response.sendRedirect("WEB-INF/ABMCPersona.jsp"); 
-		    }
-		 
+		    	try{
+					 
+				 	CtrlABMPersona	cpers = new CtrlABMPersona();
+			    	
+				 	String dni = request.getParameter("dni");
+				 	String nombre = request.getParameter("nombre_per");
+			        String apellido = request.getParameter("apellido");
+			        String usuario = request.getParameter("usuario");
+			        String contrasenia = request.getParameter("contrasenia");
+			        int id_cat=Integer.parseInt(request.getParameter("categoria"));
+			        boolean habilitado = request.getParameter("habilitado") != null;
+				       
+			        //validaer que los getpara sean distintos d enull
+			 
+			        Persona per = new Persona();
+			        ArrayList<Categoria> cats=cpers.getCategorias();
+			        for(Categoria c:cats){
+			        	if(c.getId_categoria()==id_cat) per.setCategoria(c);
+			        }
+			   	    per.setNombre(nombre);
+			   	    per.setApellido(apellido);
+			   	    per.setHabilitado(habilitado);
+			   	    per.setDni(dni);
+			   	    per.setUsuario(usuario);
+			   	    per.setContrasenia(contrasenia);
+			   	    cpers.update(per);
+			   	    response.getWriter().append("Los datos de la persona fueron modificados ");
+					
+			        }
+					catch (Exception e){
+						e.printStackTrace();
+						}
+			 		}
+			 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-		    	CtrlABMPersona	cpers = new CtrlABMPersona();
-		    	String dni = request.getParameter("dni"); //alidar distinto d null
-		 
-		        Persona per = new Persona();
-		        per.setDni(dni);
-		        cpers.delete(per);
-		        response.sendRedirect("WEB-INF/ABMCPersona.jsp");} // es necesaria esta lista?
-		 //solo listado redirecciona al .jsp y el resto?
-		    
+		    	try{
+					 
+				 	CtrlABMPersona	cpers = new CtrlABMPersona();
+			    	
+				 	String dni = request.getParameter("dni");
+				 	
+			        Persona per = new Persona();
+			        
+			        per.setDni(dni);
+			        per=cpers.getByDni(per);
+					   
+			   	    cpers.delete(per);
+			   	    response.getWriter().append("La persona fue elimidada");
+					
+			        }
+					catch (Exception e){
+						e.printStackTrace();
+						}
+			 		}
+			
 		    
 		    
 		    

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controlers.CtrlABMElemento;
 import controlers.CtrlABMPersona;
+import entity.Categoria;
 import entity.Tipo_Elemento;
 import entity.Elemento;
 import entity.Persona;
@@ -61,7 +63,7 @@ public class ElementoAb extends HttpServlet {
 	 	    	   this.buscar(request, response);
 	 	    	   break;
 	 	       default:
-	                //request.getRequestDispatcher("WEB-INF/ABMCPersona.jsp").forward(request, response);
+	 	    	   this.error(request, response);
 	                break;
 	 	        
         	}
@@ -74,6 +76,11 @@ public class ElementoAb extends HttpServlet {
 		}
 	 }
 
+	 
+		private void error(HttpServletRequest request, HttpServletResponse response) {
+		 response.setStatus(404);
+		 //redirigir a página de error
+		 }
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
@@ -89,24 +96,38 @@ public class ElementoAb extends HttpServlet {
 		 
 		 private void insert(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
-			 	CtrlABMElemento	cele = new CtrlABMElemento();
-		    	String nombre = request.getParameter("nombre");
-		        int idelemento = Integer.parseInt(request.getParameter("idelemento"));
-		        Tipo_Elemento tp = new Tipo_Elemento();
-		        int tipo_elemento = Integer.parseInt(request.getParameter("idelemento"));
-		        tp.setIdtipo_elemento(tipo_elemento);
-		        
-		        Elemento ele = new Elemento();
-		        ele.setNombre(nombre);
-		        ele.setIdelemento(idelemento);
-		   	    ele.setTipo_Elem(tp);
-		   	    
-		        cele.add(ele);
-		        response.sendRedirect("WEB-INF/ABMCElemento.jsp");
-		        
-		        
-		    }
-
+			 	
+				try{
+					 
+					CtrlABMElemento	cele = new CtrlABMElemento();
+			    	
+				 	String nombre = request.getParameter("nombre");
+			        int id_tipo=Integer.parseInt(request.getParameter("tipo"));
+			            
+			        //validaer que los getpara sean distintos d enull
+			 
+			        Elemento ele = new Elemento();
+			        ele.setNombre(nombre);
+			        ArrayList<Tipo_Elemento> tipos=cele.getTipos();
+			        for(Tipo_Elemento ti:tipos){
+			        	if(ti.getIdtipo_elemento()==id_tipo) ele.setTipo_Elem(ti);
+			        }
+			   	    
+			        cele.add(ele);
+			   	    String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
+			        response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
+					
+			        
+						}
+					catch (Exception e){
+						e.printStackTrace();
+						}
+			 		}
+			 
+			
+			 
+			 	
+		   
 		 
 		   private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
@@ -117,14 +138,10 @@ public class ElementoAb extends HttpServlet {
 		        int tipo_elemento = Integer.parseInt(request.getParameter("idelemento"));
 		        tp.setIdtipo_elemento(tipo_elemento);
 		        
-		        Elemento ele = new Elemento();
+		        
 		       
-		        ele.setNombre(nombre);
-		        ele.setIdelemento(idelemento);
-		   	    ele.setTipo_Elem(tp);
-		 
-		        cele.update(ele);
-		        response.sendRedirect("WEB-INF/ABMCElemento.jsp"); 
+		        
+		        
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)

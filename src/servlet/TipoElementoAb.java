@@ -62,8 +62,8 @@ public class TipoElementoAb extends HttpServlet {
 	 	    	   this.buscar(request, response);
 	 	    	   break;
 	 	       default:
-	                //request.getRequestDispatcher("WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
-	                break;
+	 	    	  this.error(request, response);
+	 	    	  break;
 	 	        
         	}
         	}
@@ -75,6 +75,14 @@ public class TipoElementoAb extends HttpServlet {
 		}
 	 }
 
+	
+	
+		private void error(HttpServletRequest request, HttpServletResponse response) {
+		 response.setStatus(404);
+		 //redirigir a página de error
+		 }
+		
+		
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 			    CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
@@ -89,27 +97,36 @@ public class TipoElementoAb extends HttpServlet {
 		 
 		 private void insert(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
+			 	
+			 try{
+			 
 			 	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
-			 	int id_tipoelemento = Integer.parseInt(request.getParameter("id_tipoelemento"));
 			 	String nombre_tipo = request.getParameter("nombre_tipo");
 			 	int cant_max = Integer.parseInt(request.getParameter("cant_max"));
 			 	int lim_tiempo = Integer.parseInt(request.getParameter("lim_tiempo"));
 			 	int dias_anticip = Integer.parseInt(request.getParameter("dias"));
 		        boolean encargado = request.getParameter("encargado") != null;
 		        
-		 
+			 	
 		        Tipo_Elemento tipoele = new Tipo_Elemento();
-		        tipoele.setIdtipo_elemento(id_tipoelemento);
 		        tipoele.setNombre_tipo(nombre_tipo);
 		        tipoele.setCant_max(cant_max);
+		        tipoele.setLim_tiempo(lim_tiempo);
 		        tipoele.setDias_anticip(dias_anticip);
 		        tipoele.setEncargado(encargado);
-		       
+			 	
+			 
 		        ctipoele.add(tipoele);
-		        response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp");
+		        String id= String.valueOf(ctipoele.getByNomTipo(nombre_tipo).getIdtipo_elemento());
+		        response.getWriter().append("Tipo de Elemento ingresado con éxito con el nro: ").append(id);
+		 		}
+			catch (Exception e){
+				e.printStackTrace();
+				}
+	 		}
+				
 		        
-		        
-		    }
+		    
 		 
 		    private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {

@@ -34,7 +34,7 @@
 		ti= encontrada.getTipo_Elem();
 		}
 		
-		else %> <alert("El elemento ingresado no está registrado")><%;
+		else %> <%;
 	
 %>
 
@@ -63,9 +63,9 @@
 		
 		</select><br><br><br>
 	<i><b></b></i>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i>
-	<button type="submit" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
+	<button type="submit" onclick="javascript: submitForm('ElementoAb/insert')" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('ElementoAb/update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('ElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button>
 </form>
 	</body>
 
