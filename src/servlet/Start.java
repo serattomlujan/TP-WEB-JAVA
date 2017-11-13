@@ -65,7 +65,8 @@ public class Start extends HttpServlet {
 			} catch (Exception e) {
 				response.setStatus(502);
 			}
-			if(pers==null) response.getWriter().append("Ususario y/o contraseña incorrectos");
+			if(pers==null) response.getWriter().append("Usuario y/o contraseña incorrectos");
+			else if(!pers.getHabilitado()){response.getWriter().append("Usuario no habilitado. Comuníquese con un Administrador");}
 			else {
 			request.getSession().setAttribute("user", pers);
 			

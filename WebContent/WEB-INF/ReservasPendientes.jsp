@@ -9,7 +9,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><title>Reservas Pendientes</title><font face="arial"> <h2><b> RESERVAS PENDIENTES</h2>
+</head><title>Reservas Pendientes</title><font face="arial"> 
+<h2><b> RESERVAS PENDIENTES</h2>
 <body>
 
 	
@@ -30,7 +31,7 @@
 		for (Reserva r: listResPen)
 			{ %>
 		<tr>
-		  <td><%=r.getId_reserva() %></td>
+		  <td><a href="ReservaElemento"><%=r.getId_reserva() %></a></td>
 		  <td><%=r.getPersona().getApellido() %></td>
 		  <td><%=r.getPersona().getNombre() %></td>
 		  <td><%=r.getElemento().getNombre() %></td>

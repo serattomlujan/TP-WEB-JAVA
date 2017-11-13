@@ -26,8 +26,8 @@
 		<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%} %>
 	
 	</select><br><br></font>
-	Fecha(aaaammdd) <input name="fecha"><button type="submit" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br>
-	<br>Hora(hhmm) <input name="hora"><br><br>Elemento <select name="elemento" style="width: 147px; height: 27px; "></select><br>
+	Fecha(aaaammdd) <input name="fecha" required><button type="submit" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br>
+	<br>Hora(hhmm) <input name="hora" required><br><br>Elemento <select name="elemento" style="width: 147px; height: 27px; "></select><br>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
 	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
 
