@@ -37,4 +37,10 @@ public class CtrlABMTipoElemento {
 	public ArrayList<Tipo_Elemento>getAll() throws Exception{
 		return dataTiEl.getAll();}
 	
+	
+	public Tipo_Elemento getById(int id) throws Exception{
+		Tipo_Elemento t=new Tipo_Elemento();
+		t.setIdtipo_elemento(id);
+		return getByNomTipo(t);
+		}
 }

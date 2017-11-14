@@ -2,7 +2,10 @@ package controlers;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 
 //import UI.MainWindow;
 import data.DataElemento;
@@ -95,6 +98,21 @@ public class CtrlReserva {
 		 	return ok;
 		}
 		
+	public java.sql.Date convertirFecha(String f) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+         java.util.Date parsed = format.parse(f);
+         java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+		return fecha;
+	}
+
+	
+	public java.sql.Time convertirHora(String h) throws ParseException {
+		SimpleDateFormat f = new SimpleDateFormat("HHmm");
+        java.util.Date pars = f.parse(h);
+        java.sql.Time hora = new java.sql.Time(pars.getTime());
+		return hora;
+	}
+	
 	
 	}
 	

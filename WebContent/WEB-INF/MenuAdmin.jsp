@@ -13,11 +13,12 @@
 <%@page import="entity.Persona"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Menú Principal</title>
-<style>.drop_menu {
+<style>.drop_menu{
 	background:#FF66CC;
 	padding:0;
 	margin:0;
@@ -74,7 +75,7 @@
  <ul class="drop_menu">
 
 		  
-			   <li><a href='ReservaElemento' <%if(usuarioLog.getCategoria().getDescripcion()=="usuario"){%> disabled <%} %>>RESERVAR ELEMENTO</a></li>
+			   <li><a href='ReservaElemento'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
 			   <li><a href="ElementoAb">ELEMENTOS</a></li>

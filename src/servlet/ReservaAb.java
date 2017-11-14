@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
@@ -19,12 +20,13 @@ import entity.Persona;
 import entity.Reserva;
 import entity.Tipo_Elemento;
 import controlers.CtrlABMPersona;
+import controlers.CtrlABMTipoElemento;
 import controlers.CtrlReserva;
 import util.Fechas;
 
 
-@WebServlet("/ReservaElemento/*")
-public class ReservaElemento extends HttpServlet {
+@WebServlet("/ReservaAb/*")
+public class ReservaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
@@ -46,25 +48,31 @@ public class ReservaElemento extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	 String action = request.getServletPath();
-		 
-	        try {
+		try{
+        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
+        		request.getRequestDispatcher("WEB-INF/Reservar.jsp").forward(request, response);
+        	}
+        	else{
+        		String action = request.getPathInfo();
+        	
 	            switch (action) {
 	            
 	            case "/insert":
 	                insert(request, response);
 	                break;
-	            case "/delete":
-	                delete(request, response);
+	            case "/cancelar":
+	                cancelar(request, response);
 	                break;
-	 	        case "/update":
-	                update(request, response);
-	                break;
+	            case "/buscar":
+	            	buscar(request, response);
+	            	break;
+	 	     
 	            default:
-	                list(request, response);
+	                //list(request, response);
 	                break;
-	            }
-	        } catch (SQLException ex){ 	        
+	            }}
+        	}
+	        catch (SQLException ex){ 	        
 	            throw new ServletException(ex);
 	        } catch (Exception e) {
 				// TODO Bloque catch generado automáticamente
@@ -72,15 +80,7 @@ public class ReservaElemento extends HttpServlet {
 			}
 		 }
 
-		 private void list(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
-			 CtrlReserva res = new CtrlReserva();
-		        List<Reserva> listReservas = res.getAllPendientes();
-		        request.setAttribute("list", listReservas);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/Reservar.jsp");
-		        dispatcher.forward(request, response);
-		       
-		    }
+		
 		 
 		
 		 
@@ -114,9 +114,9 @@ public class ReservaElemento extends HttpServlet {
 		        r.setElemento(ele);
 		        r.setPersona(per);
 		        
-		        cres.add(r);
-		        response.sendRedirect("WEB-INF/Reservar.jsp");
-		        
+		        cres.add(r); 
+		        response.getWriter().append("Reserva registrada con éxito");
+				
 		        
 		    }
 		 
@@ -154,7 +154,7 @@ public class ReservaElemento extends HttpServlet {
 		        response.sendRedirect("WEB-INF/Reservar.jsp"); 
 		    }
 		 
-		    private void delete(HttpServletRequest request, HttpServletResponse response)
+		    private void cancelar(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
 			 	int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
@@ -164,6 +164,25 @@ public class ReservaElemento extends HttpServlet {
 		        cres.delete(r);
 		        response.sendRedirect("WEB-INF/Reservar.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
+		    
+		   
+		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		    	CtrlReserva	cres = new CtrlReserva();
+		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
+		    	Reserva r=new Reserva();
+		    	int id_tipo = Integer.parseInt(request.getParameter("tipo"));
+		      	Tipo_Elemento ti=new Tipo_Elemento();
+		     	ti=cti.getById(id_tipo);
+		    	java.sql.Date f=cres.convertirFecha(request.getParameter("fecha"));
+		    	java.sql.Time h=cres.convertirHora(request.getParameter("hora"));
+		    	r.setFecha(f);
+		    	r.setHora(h);
+		    	ArrayList<Elemento> elems=new ArrayList<Elemento>();
+		    	elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
+		    	request.setAttribute("disponibles", elems);
+			    request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+		    
+		    }
 		    
 }
 

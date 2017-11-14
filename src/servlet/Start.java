@@ -72,9 +72,24 @@ public class Start extends HttpServlet {
 			
 			logger.log(Level.INFO,"log in "+pers.getDni());
 			
+			int categ=pers.getCategoria().getId_categoria();
+			switch (categ) {
+			case 1:
+				request.getRequestDispatcher("WEB-INF/MenuEncargado.jsp").forward(request, response);
+				response.getWriter().append(user).append(" ").append(pass);
+				break;
+				
+			case 2:
+				request.getRequestDispatcher("WEB-INF/MenuAdmin.jsp").forward(request, response);
+				response.getWriter().append(user).append(" ").append(pass);
+				break;
+			case 3:
+				request.getRequestDispatcher("WEB-INF/MenuUsuario.jsp").forward(request, response);
+				response.getWriter().append(user).append(" ").append(pass);
+				break;
+			default:
+				break;}}
 			
-			request.getRequestDispatcher("WEB-INF/Main.jsp").forward(request, response);
-			response.getWriter().append(user).append(" ").append(pass);}
 			
 			
 		} catch (Exception e) {
