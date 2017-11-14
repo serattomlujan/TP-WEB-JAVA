@@ -75,7 +75,7 @@
  <ul class="drop_menu">
 
 		  
-			   <li><a href='ReservaElemento'>RESERVAR ELEMENTO</a></li>
+			   <li><a href='ReservaAb'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
 			   <li><a href="ElementoAb">ELEMENTOS</a></li>

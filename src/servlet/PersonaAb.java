@@ -172,6 +172,7 @@ public class PersonaAb extends HttpServlet {
 				 	request.setAttribute("dni", per);
 				 	        
 				 	 request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
+				 	 
 					   
 			   	    cpers.delete(per);
 			   	    response.getWriter().append("La persona fue elimidada");
