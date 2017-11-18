@@ -22,7 +22,7 @@
 		
 	if(request.getAttribute("disponibles")!=null){
 		elemDisp = (ArrayList<Elemento>)request.getAttribute("disponibles");}
-	
+		for(int i=0; i<elemDisp.size();i++) el.getIdelemento();
 		
 %>
 

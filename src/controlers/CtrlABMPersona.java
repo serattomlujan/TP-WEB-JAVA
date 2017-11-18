@@ -49,6 +49,18 @@ public class CtrlABMPersona {
 	}
 	
 	
+	public Persona getById(int id) throws Exception{
+		Persona p=new Persona();
+		p.setIdpersona(id);
+		return getById(p);
+		}
+	
+	private Persona getById(Persona p) throws Exception {
+		// TODO Auto-generated method stub
+		return this.dataPer.getById(p);
+	}
+
+
 	public Persona getByNombreApellido(Persona p){
 		for(int i=0; i<this.pers.size(); i++){
 		if(pers.get(i).getNombre().equalsIgnoreCase(p.getNombre())

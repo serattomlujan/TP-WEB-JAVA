@@ -45,11 +45,11 @@
 		habilitado= encontrada.getHabilitado();
 		}
 		
-		//else{
-		//nuevo=(Persona)request.getAttribute("nuevo");
-		//dni=nuevo.getDni();
-	
-%>
+		else{
+			//dni=request.getParameter("dni");
+			}%>
+		
+
 <form class="form-signin" name="signin" action="" method="POST"> <h2 class="form-signin-heading">
 
 	<font face="arial"> <b>PERSONAS</b><br></font></h2>
@@ -58,6 +58,7 @@
 	<font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>"><i><b></b></i></font> 
 	
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
+	
 	
 	<font face="arial"><br><br>Nombre <input type="text"  name="nombre_per" id="nombre_per" value="<%=nombre_per%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" value="<%=apellido%>"><i><b></b></i></font>

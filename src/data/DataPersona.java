@@ -214,6 +214,48 @@ public class DataPersona {
 	 			e.printStackTrace();
 	 		}
 	 	}
+		
+		public Persona getById(Persona per) throws Exception{
+	 		Persona p=null;
+	 		PreparedStatement stmt=null;
+	 		ResultSet rs=null;
+	 		try {
+	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+	 					"select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, "
+	 					+ "c.descripcion, usuario, contrasenia from personas p "
+	 					+ "inner join categorias c on p.id_categoria=c.id_categoria where id=?");
+	 			stmt.setString(1, per.getDni());
+	 			rs=stmt.executeQuery();
+	 			if(rs!=null && rs.next()){
+	 					p=new Persona();
+	 					p.setCategoria(new Categoria());
+	 					p.setIdpersona(rs.getInt("idpersona"));
+	 					p.setNombre(rs.getString("nombre"));
+	 					p.setApellido(rs.getString("apellido"));
+	 					p.setDni(rs.getString("dni"));
+	 					p.setHabilitado(rs.getBoolean("habilitado"));
+	 					p.setUsuario(rs.getString("usuario"));
+			 			p.setContrasenia(rs.getString("contrasenia"));
+	 					p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
+	 					p.getCategoria().setDescripcion(rs.getString("descripcion"));
+	 			}
+	 			
+	} catch (Exception e) {
+	throw e;
+	}
+	finally{
+	try {
+	if(rs!=null)rs.close();
+	if(stmt!=null)stmt.close();
+	FactoryConexion.getInstancia().releaseConn();
+	} catch (SQLException e) {
+	throw e;
+		}
+	 }
+			
+	 return p;
+	}
+	
 }		 		 
 		 
 		

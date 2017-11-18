@@ -168,13 +168,17 @@ public class PersonaAb extends HttpServlet {
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
 			    	
-				 	Persona per=new Persona();
-				 	request.setAttribute("dni", per);
-				 	        
-				 	 request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
+				 	Persona per,pers=new Persona();
+				 	String dni = request.getParameter("dni");
+				 	pers.setDni(dni);
+				 	
+				 	//int id = Integer.valueOf(request.getParameter("idpersona"));
+				 	//per=cpers.getById(id);
+				 	pers=cpers.getByDni(dni);
+				 	
+				 	//request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 				 	 
-					   
-			   	    cpers.delete(per);
+				 	cpers.delete(pers);
 			   	    response.getWriter().append("La persona fue elimidada");
 			   	    
 					
