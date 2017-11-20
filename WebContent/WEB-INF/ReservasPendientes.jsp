@@ -31,7 +31,7 @@
 		for (Reserva r: listResPen)
 			{ %>
 		<tr>
-		  <td><a href="ReservaElemento"><%=r.getId_reserva() %></a></td>
+		  <td><a href="ReservaAb"><%=r.getId_reserva() %></a></td>
 		  <td><%=r.getPersona().getApellido() %></td>
 		  <td><%=r.getPersona().getNombre() %></td>
 		  <td><%=r.getElemento().getNombre() %></td>

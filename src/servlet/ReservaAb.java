@@ -180,6 +180,7 @@ public class ReservaAb extends HttpServlet {
 		    	ArrayList<Elemento> elems=new ArrayList<Elemento>();
 		    	elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
 		    	request.setAttribute("disponibles", elems);
+		    	request.setAttribute("reserva", r);
 			    request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 		    
 		    }
