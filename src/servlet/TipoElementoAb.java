@@ -131,8 +131,9 @@ public class TipoElementoAb extends HttpServlet {
 		    private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
-			 	int id_tipoelemento = Integer.parseInt(request.getParameter("id_tipoelemento"));
-			 	String nombre_tipo = request.getParameter("nombre_tipo");
+		    	String id_tipo = request.getParameter("idtipo_elemento");
+		    	int id_tipoelemento=Integer.parseInt(id_tipo.trim());
+		    	String nombre_tipo = request.getParameter("nombre_tipo");
 			 	int cant_max = Integer.parseInt(request.getParameter("cant_max"));
 			 	int lim_tiempo = Integer.parseInt(request.getParameter("lim_tiempo"));
 			 	int dias_anticip = Integer.parseInt(request.getParameter("dias"));
@@ -146,18 +147,22 @@ public class TipoElementoAb extends HttpServlet {
 		        tipoele.setEncargado(encargado);
 		        
 		       ctipoele.update(tipoele);
-		        response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp"); 
+		       response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
+		       // response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp"); 
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
-			 	int id_tipoelemento = Integer.parseInt(request.getParameter("id_tipoelemento"));
+		    	String nombre_tipo = request.getParameter("nombre_tipo");
+		    	//int id_tipoelemento=Integer.parseInt(id_tipo.trim());
 			 	
 			 	Tipo_Elemento tipoele = new Tipo_Elemento();
-			 	tipoele.setIdtipo_elemento(id_tipoelemento);
+			 	tipoele.setNombre_tipo(nombre_tipo);
 		        ctipoele.delete(tipoele);
-		        response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp");} // es necesaria esta lista?
+		        response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
+		    }
+		        // response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 		    

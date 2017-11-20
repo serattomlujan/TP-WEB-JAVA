@@ -34,7 +34,7 @@ public class FactoryConexion {
 		try {
 			if(conn==null || conn.isClosed()){	
 				conn = DriverManager.getConnection(
-						 "jdbc:mysql://localhost:3306/reservas?useSSL=false","root","123");
+						 "jdbc:mysql://localhost:3306/reservas?useSSL=false","root","root");
 			}
 		} catch (SQLException e) {
 			throw new AppDataException(e, "Error al conectar a la base de datos");

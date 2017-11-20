@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -110,8 +111,9 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setContrasenia(contrasenia);
 		   	    cpers.add(per);
 		   	    String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
-		        response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
-				
+		   	 response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
+		   	    //response.sendRedirect("WEB-INF/ABMCPersona.jsp");
+		        
 		        
 					}
 				catch (Exception e){
@@ -125,13 +127,18 @@ public class PersonaAb extends HttpServlet {
 		    	try{
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
-			    	int id=Integer.parseInt(request.getParameter("idpersona"));
+				 	
+			    	//int id=Integer.parseInt(request.getParameter("idpersona"));
+				 	String ida=request.getParameter("idpersona");
+				 	int id=Integer.parseInt(ida.trim());
 				 	String dni = request.getParameter("dni");
+				 	System.out.print(request.getParameter("dni"));
 				 	String nombre = request.getParameter("nombre_per");
 			        String apellido = request.getParameter("apellido");
 			        String usuario = request.getParameter("usuario");
 			        String contrasenia = request.getParameter("contrasenia");
-			        int id_cat=Integer.parseInt(request.getParameter("categoria"));
+			        String id_cat=request.getParameter("categoria");
+			        System.out.print(request.getParameter("categoria"));
 			        boolean habilitado = request.getParameter("habilitado") != null;
 				       
 			        //validaer que los getpara sean distintos d enull
@@ -139,8 +146,9 @@ public class PersonaAb extends HttpServlet {
 			        Persona per = new Persona();
 			        ArrayList<Categoria> cats=cpers.getCategorias();
 			        for(Categoria c:cats){
-			        	if(c.getId_categoria()==id_cat) per.setCategoria(c);
+			        	if(c.getId_categoria()==Integer.parseInt(id_cat)) per.setCategoria(c);
 			        }
+			        //System.out.print(Integer.parseInt(id));
 			        per.setIdpersona(id);
 			   	    per.setNombre(nombre);
 			   	    per.setApellido(apellido);
@@ -152,8 +160,9 @@ public class PersonaAb extends HttpServlet {
 			   	    todas=cpers.getAll();
 			   	    for(Persona p: todas)
 			   	    	if(p.getIdpersona()==per.getIdpersona()) cpers.update(per);
-			   	    		
-			   	    response.getWriter().append("Los datos de la persona fueron modificados");
+			   	 response.getWriter().append("Los datos de la persona fueron modificados");
+			   	   // response.sendRedirect("WEB-INF/ABMCPersona.jsp");		
+			   	   
 					
 			        }
 					catch (Exception e){
@@ -163,14 +172,22 @@ public class PersonaAb extends HttpServlet {
 			 
 		    
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
+		   
+		    		throws Exception {
+		    	 
 		    	try{
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
 			    	
 				 	Persona per,pers=new Persona();
 				 	String dni = request.getParameter("dni");
-				 	pers.setDni(dni);
+				 	if (dni=="")
+				 		{
+				 		response.getWriter().append("dni vacio");
+				 		}
+				 	else
+				 	{	
+					pers.setDni(dni);
 				 	
 				 	//int id = Integer.valueOf(request.getParameter("idpersona"));
 				 	//per=cpers.getById(id);
@@ -179,11 +196,13 @@ public class PersonaAb extends HttpServlet {
 				 	//request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 				 	 
 				 	cpers.delete(pers);
-			   	    response.getWriter().append("La persona fue elimidada");
+				 	response.getWriter().append("Los datos de la persona fueron eliminados");
+			   	    //response.sendRedirect("WEB-INF/ABMCPersona.jsp");		
 			   	    
-					
+				 	}
 			        }
 					catch (Exception e){
+						System.out.println("error");
 						e.printStackTrace();
 						}
 			 		}

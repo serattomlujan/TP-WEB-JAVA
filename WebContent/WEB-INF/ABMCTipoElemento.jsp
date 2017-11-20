@@ -41,9 +41,9 @@
 	
 %>
 
-<form class="form-signin" name="signin" action="TipoElementoAb" method="POST">
+<form class="form-signin" name="signin" action="" method="POST">
 		<font face="arial"><h2> <b>TIPOS  DE ELEMENTOS</h2></font>
-		<font face="arial">ID <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" disabled="true">
+		<font face="arial">ID <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
 		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" value="<%=nombre%>"><i><b></b></i>
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: aqua; width: 115px">Buscar</button>
@@ -55,8 +55,8 @@
 		<font face="arial">Encargado<br><br></font>
 		
 	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/insert')" style="color: black;  background-color: aqua; width: 120px">Agregar</button>
-	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button>
-	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button></font>
+	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: aqua; width: 115px">Modificar</button>
+	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color: aqua; width: 115px">Borrar</button></font>
 	
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
