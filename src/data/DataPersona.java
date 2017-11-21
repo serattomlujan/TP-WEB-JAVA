@@ -123,7 +123,7 @@ public class DataPersona {
 		
 		public void remove(Persona p) throws Exception{
 	 		PreparedStatement stmt=null;
-	 		
+	 		System.out.println(p.getDni());
 	 		try {
 	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 	 					"delete from personas where dni=?"

@@ -50,8 +50,8 @@ public class CtrlReserva {
 	public ArrayList<Elemento> getElementos() throws Exception{
 		return dataEle.getAll();
 			}
-	public ArrayList<Reserva> getReservasPendientes() throws Exception{
-		return dataRes.getReservasPendientes();
+	public ArrayList<Reserva> getReservasPendientes(Persona p) throws Exception{
+		return dataRes.getReservasPendientes(p);
 			}
 	
 	public ArrayList<Reserva> getAllPendientes() throws Exception{

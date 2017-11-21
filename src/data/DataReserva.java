@@ -12,7 +12,7 @@ import entity.*;
 
 
 public class DataReserva {
-	public ArrayList<Reserva> getReservasPendientes() throws Exception{
+	public ArrayList<Reserva> getReservasPendientes(Persona p) throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
 		ArrayList<Reserva> res= new ArrayList<Reserva>();
@@ -22,7 +22,7 @@ public class DataReserva {
 		 			+ "inner join  personas p on p.idpersona=r.id_persona "
 		 			+ "inner join elementos e on e.idelemento=r.id_elemento "
 		 			+ "inner join tipo_elemento te on te.idtipo_elemento=e.idtipo_elemento "
-		 			+ "where p.idpersona='" //+ UI.MainWindow.usuarioAct.getIdpersona()
+		 			+ "where p.idpersona='" + p.getIdpersona()
 		 			+ "'and estado='pendiente' and (fecha>current_timestamp or "
 		 			+ "(fecha=current_timestamp and hora>current_timestamp)) order by fecha");
 		 	if(rs!=null){

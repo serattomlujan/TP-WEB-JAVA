@@ -131,30 +131,44 @@ public class ElementoAb extends HttpServlet {
 		 
 		   private void update(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
+			   try{
 			    CtrlABMElemento	cele = new CtrlABMElemento();
 			    String nombre = request.getParameter("nombre");
-		        int idelemento = Integer.parseInt(request.getParameter("idelemento"));
+			    String idele = request.getParameter("idelemento");
+			    int idelemento= Integer.parseInt(idele.trim());
 		        Tipo_Elemento tp = new Tipo_Elemento();
-		        int tipo_elemento = Integer.parseInt(request.getParameter("idelemento"));
+		        String tipele=request.getParameter("tipo");
+		        int tipo_elemento= Integer.parseInt(tipele.trim());
 		        tp.setIdtipo_elemento(tipo_elemento);
-		        
-		        
-		       
-		        
-		        
-		    }
+		        System.out.println(tipo_elemento);
+		        Elemento ele = new Elemento();
+		        ele.setIdelemento(idelemento);
+		        ele.setNombre(nombre);
+		        ele.setTipo_Elem(tp);
+		        cele.update(ele);
+		   	    		
+		   	    response.getWriter().append("Los datos del elemento fueron modificados");
+				
+		        }
+				catch (Exception e){
+					e.printStackTrace();
+					}
+		 		}
+		 
+
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMElemento	cele = new CtrlABMElemento();
-		    	int idelemento = Integer.parseInt(request.getParameter("idelemento"));
+		    	  String idele = request.getParameter("nombre");
+				 //int idelemento= Integer.parseInt(idele.trim());
 		    	Elemento ele = new Elemento();
 		      
-		        ele.setIdelemento(idelemento);		       
+		        ele.setNombre(idele);		       
 		        cele.delete(ele);
 		        
-		        
-		        response.sendRedirect("WEB-INF/ABMCElemento.jsp");} // es necesaria esta lista?
+		    
+		        response.getWriter().append("Los datos del elemento fueron eliminados");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 		    

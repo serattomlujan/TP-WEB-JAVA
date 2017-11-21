@@ -29,9 +29,9 @@ import util.Fechas;
 public class ReservaAb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    /**
-     * Default constructor. 
-     */
+	public ReservaAb(){
+		super();
+	}
    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,13 +58,13 @@ public class ReservaAb extends HttpServlet {
 	            switch (action) {
 	            
 	            case "/insert":
-	                insert(request, response);
+	                this.insert(request, response);
 	                break;
 	            case "/cancelar":
-	                cancelar(request, response);
+	                this.cancelar(request, response);
 	                break;
 	            case "/buscar":
-	            	buscar(request, response);
+	            	this.buscar(request, response);
 	            	break;
 	 	     
 	            default:
@@ -161,25 +161,33 @@ public class ReservaAb extends HttpServlet {
 		 
 		    	Reserva r= new Reserva();
 		        r.setId_reserva(id_reserva);
-		        cres.delete(r);
-		        response.sendRedirect("WEB-INF/Reservar.jsp");} // es necesaria esta lista?
-		 //solo listado redirecciona al .jsp y el resto?
+		        cres.update(r);
+		        response.sendRedirect("WEB-INF/Reservar.jsp");} 
 		    
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		    	CtrlReserva	cres = new CtrlReserva();
 		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
 		    	Reserva r=new Reserva();
-		    	int id_tipo = Integer.parseInt(request.getParameter("tipo"));
+		    	String id=request.getParameter("tipo");
+		    	int id_tipo = Integer.parseInt(id.trim());
+		    	System.out.println(id);
 		      	Tipo_Elemento ti=new Tipo_Elemento();
 		     	ti=cti.getById(id_tipo);
+		     	System.out.println(ti);
+		      	
 		    	java.sql.Date f=cres.convertirFecha(request.getParameter("fecha"));
+		    	System.out.println(f);
+		    	
 		    	java.sql.Time h=cres.convertirHora(request.getParameter("hora"));
+		    	System.out.println(f);
+		    	
 		    	r.setFecha(f);
 		    	r.setHora(h);
 		    	ArrayList<Elemento> elems=new ArrayList<Elemento>();
 		    	elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
 		    	request.setAttribute("disponibles", elems);
+		    	System.out.println(elems);
 		    	request.setAttribute("reserva", r);
 			    request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 		    

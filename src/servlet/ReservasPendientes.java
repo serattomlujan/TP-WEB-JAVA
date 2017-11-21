@@ -10,7 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import controlers.CtrlABMPersona;
 import controlers.CtrlReserva;
+import entity.Persona;
 import entity.Reserva;
 
 
@@ -50,10 +53,19 @@ public class ReservasPendientes extends HttpServlet {
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
-		        List<Reserva> listResPen = cres.getAllPendientes();
-		        request.setAttribute("list", listResPen);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ReservasPendientes.jsp");
-		        dispatcher.forward(request, response);
+			 	
+			 	Persona user=(Persona) request.getSession().getAttribute("user");
+			 	
+			 	if(user.getCategoria().getId_categoria()==2){
+		        List<Reserva> listResTodas = cres.getAllPendientes();
+		        request.setAttribute("list", listResTodas);}
+			 	else{
+			 		 List<Reserva> misReservas = cres.getReservasPendientes(user);
+				        request.setAttribute("list", misReservas);
+					}
+			 	 RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ReservasPendientes.jsp");
+			     dispatcher.forward(request, response);
+			       	
 		       
 		    }
 		 

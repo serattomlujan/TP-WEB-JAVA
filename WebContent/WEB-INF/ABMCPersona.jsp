@@ -44,21 +44,22 @@
 		categ= encontrada.getCategoria();
 		habilitado= encontrada.getHabilitado();
 		}
-		
 		else{
 			//dni=request.getParameter("dni");
-			}%>
+		}%>
 		
 
-<form class="form-signin" name="signin" action="" method="POST"> <h2 class="form-signin-heading">
+
+
+<form class="form-signin" name="signin" action="" method="POST"> <h2 class="form-signin-heading" >
 
 	<font face="arial"> <b>PERSONAS</b><br></font></h2>
 	
-	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly" disabled="true" value="<%=id%>"></font>
-	<font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>"><i><b></b></i></font> 
+	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly"  value="<%=id%>"></font>
+	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>"><i><b></b></i></font> 
 	
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
-	
+	 
 	
 	<font face="arial"><br><br>Nombre <input type="text"  name="nombre_per" id="nombre_per" value="<%=nombre_per%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" value="<%=apellido%>"><i><b></b></i></font>
@@ -73,7 +74,7 @@
 			<option value="<%=ca.getId_categoria()%>"> <%=ca.getDescripcion()%></option><%;}%>
 			<%if(categ.getDescripcion()== ""){ %>
 			 <option selected placeholder="Seleccione una categoria" ></option><%;}
-			else {%><option disabled selected value="<%=categ.getId_categoria()%>"><%=categ.getDescripcion()%> 
+			else {%><option  selected value="<%=categ.getId_categoria()%>"><%=categ.getDescripcion()%> 
 			</option><%;}%>
 			  </select>
 		<br><br>
@@ -83,8 +84,8 @@
 	
 	
 	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: aqua; width: 115px" type="submit">Agregar</button>
-	<button name="update" id="update" onclick="javascript: submitForm('PersonaAb/update')" style="color: black;  background-color: aqua; width: 115px" type="submit">Modificar</button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('PersonaAb/delete')" style="color: black;  background-color: aqua; width: 115px" type="submit">Borrar</button>
+	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: aqua; width: 115px" type="submit">Modificar</button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: aqua; width: 115px" type="submit">Borrar</button>
 	
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
