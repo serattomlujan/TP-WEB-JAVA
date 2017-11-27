@@ -12,6 +12,7 @@ import entity.*;
 
 
 public class DataReserva {
+	
 	public ArrayList<Reserva> getReservasPendientes(Persona p) throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -61,6 +62,7 @@ public class DataReserva {
  		return res;
  		}
 		 	
+	
 	public ArrayList<Reserva> getAllPendientes() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -109,16 +111,19 @@ public class DataReserva {
  		return res;
  		}
 		 
+	
 	public void add(Reserva r) throws Exception{
  		PreparedStatement stmt=null;
  		ResultSet keyResultSet=null;
+ 		System.out.println(r.getFecha());
  	 		try {
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
  					"insert into reservas(fecha, hora, id_persona, id_elemento, estado, detalle) "
  					+ "values (?,?,?,?,?,?)",
  					PreparedStatement.RETURN_GENERATED_KEYS
  					);
- 		   java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+ 			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+ 			System.out.println(sqlDate);
  			stmt.setDate(1,sqlDate);
  			stmt.setTime(2, r.getHora());
  			stmt.setInt(3, r.getPersona().getIdpersona());
@@ -279,5 +284,35 @@ public ArrayList<Reserva> getPendientes() throws Exception{
 	return resXUs;
 }
 	
+public int cambiarEstado(Reserva r) throws Exception
+{
+	PreparedStatement stmt=null;
+	int ok=0;
+
+		try {
+		stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+				"update  reservas set estado=? where id_reserva=?",
+				PreparedStatement.RETURN_GENERATED_KEYS
+				);
+		stmt.setString(1,"Cancelado");
+		stmt.setInt(2, r.getId_reserva());
+		stmt.executeUpdate();
+		ok=1;
+		} catch (SQLException | AppDataException e) 
+		{
+			ok=0;
+ 			throw e;
+ 			
+ 		}
+ 		try {
+ 			if(stmt!=null)stmt.close();
+ 			FactoryConexion.getInstancia().releaseConn();
+ 			
+ 		} catch (SQLException e) {
+ 			e.printStackTrace();
+ 		}
+ 		
+ 		return ok;
+}
 	
 }

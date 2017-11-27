@@ -78,7 +78,7 @@
 			   <li><a href='ReservaAb'>RESERVAR ELEMENTO</a></li>
 			   <li><a href="ReservasPendientes"> MIS RESERVAS</a></li>
 			   <li><a href="Login.html">CERRAR SESION</a></li>
-			   <li><a href="" onclick="window.close()">SALIR</a></li>
+			   <!-- <li><a href="" onclick="window.close()">SALIR</a></li> -->
 
 	
 </ul>

@@ -50,9 +50,10 @@ public class DataTipoElemento {
  		PreparedStatement stmt=null;
  		ResultSet rs=null;
  		try {
+ 			
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
- 					"select * from tipo_elemento where nombre_tipo=?");
- 			stmt.setString(1, te.getNombre_tipo());
+ 					"select * from tipo_elemento where idtipo_elemento=?");
+ 			stmt.setInt(1, te.getIdtipo_elemento());
  			rs=stmt.executeQuery();
  			if(rs!=null && rs.next()){
  					t=new Tipo_Elemento();

@@ -4,6 +4,7 @@
 <%@page import="entity.Elemento"%>
 <%@page import="entity.Reserva"%>
 <%@page import="java.util.*"%>
+<%@page import="entity.Persona"%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,6 +14,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Reservar Elemento</title>
+
+<script type="text/javascript">
+   	function submitForm(met) {
+   		document.signin.action=met;
+   		//document.getElementById("myFrom").submit();
+      }
+</script>
 </head>
 <body>
 <%
@@ -33,9 +41,11 @@
 %>
 
 
-<form class="form-signin" name="signin" action="ReservaAb" method="POST" ><h2 class="form-signin-heading">
+<form class="form-signin" name="signin" action="" method="POST" > <h2 class="form-signin-heading">
+	<input id="dni" name="dni" value="<%=((Persona)session.getAttribute("user")).getDni()%>" style="visibility:hidden;"/>
+	</br>
 	<font face="arial"> <b>RESERVAS </font></h2>
-	<font face="arial">ID Reserva <input name="id_reserva" disabled="true" style="width: 89px; "><br><br>
+	<!-- <font face="arial">ID Reserva <input name="id_reserva" disabled="true" style="width: 89px; "><br><br>-->
 	<font face="arial"> <i><b></b></i></font>
 	<font face="arial">Tipo Elemento 
 	
@@ -51,7 +61,7 @@
 	
 	Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" required size="8" maxlength="8" value="<%=fecha%>"><br>
 	<br>Hora(hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"required> 
-	  <button name="buscar" id="buscar" type="submit" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br><br>
+	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br><br>
 	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%//if (elemDisp.isEmpty()) %> 
 		<%
@@ -59,17 +69,24 @@
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}%>
 			</select><br>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
-	<i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Agregar</button><i><b></b></i><i><b></b></i><button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
+	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: aqua; width: 115px">Agregar</button>
 
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver </a>
-	<a href="#" title="salir" onclick="window.close()">Salir</a>
+	<!--  <a href="#" title="salir" onclick="window.close()">Salir</a>-->
 	
 
 </form>
-<script>
-
-
-</script>
-
+ <%	
+ 	System.out.println(request.getAttribute("valido"));
+	if(request.getAttribute("valido")==null)
+	{ %>
+<div style="visibility:hidden;">
+<% }
+else
+{ %>
+<div style="visibility:visible;">
+<%} %>
+<b>NO HAY ELEMENTOS DISPONIBLES</b>
+</div>
 </body>
 </html>

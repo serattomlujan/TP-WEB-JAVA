@@ -87,26 +87,34 @@ public class ReservaAb extends HttpServlet {
 		 private void insert(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
-			 	int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
+			 	//int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
+			 	
 			 	Fechas f = new Fechas();
-			 	Date fecha=f.ParseFecha(request.getParameter("fecha"));
+			 	/*Date fecha=f.ParseFecha(request.getParameter("fecha"));
 		    	
 			 	Fechas h= new Fechas();
+		    	Time hora = h.ParseHora(request.getParameter("hora"));*/
+		    	java.sql.Date fecha=f.ParseFecha2(request.getParameter("fecha"));
+		    	//System.out.println(request.getParameter("fecha"));
+		    	//java.sql.Time hora=cres.convertirHora(request.getParameter("hora"));
+		    	Fechas h= new Fechas();
 		    	Time hora = h.ParseHora(request.getParameter("hora"));
-		        String estado = request.getParameter("estado");
+		    	//String estado = request.getParameter("estado");
+		    	String estado ="pendiente";
 		        String detalle = request.getParameter("detalle");
 		        
 		        Elemento ele = new Elemento();
-		        int idelemento = Integer.parseInt(request.getParameter("idelemento"));
+		        int idelemento = Integer.parseInt(request.getParameter("elemento"));
 		        ele.setIdelemento(idelemento);
 		    
+		        CtrlABMPersona ctrlP=new CtrlABMPersona();
 		        Persona per = new Persona();
 		        String dni = request.getParameter("dni");
-		        per.setDni(dni);
+		        per=ctrlP.getByDni(dni);
 		        
 		        Reserva r= new Reserva();
 		        
-		        r.setId_reserva(id_reserva);
+		        r.setId_reserva(0);
 		        r.setFecha(fecha);
 		        r.setHora(hora);
 		        r.setEstado(estado);
@@ -115,8 +123,9 @@ public class ReservaAb extends HttpServlet {
 		        r.setPersona(per);
 		        
 		        cres.add(r); 
-		        response.getWriter().append("Reserva registrada con éxito");
-				
+		       
+		       response.getWriter().append("Reserva registrada");
+		        //request.getRequestDispatcher("/WEB-INF/Main.jsp");
 		        
 		    }
 		 
@@ -162,35 +171,43 @@ public class ReservaAb extends HttpServlet {
 		    	Reserva r= new Reserva();
 		        r.setId_reserva(id_reserva);
 		        cres.update(r);
-		        response.sendRedirect("WEB-INF/Reservar.jsp");} 
+		        request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);} 
 		    
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		    	
 		    	CtrlReserva	cres = new CtrlReserva();
 		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
 		    	Reserva r=new Reserva();
 		    	String id=request.getParameter("tipo");
 		    	int id_tipo = Integer.parseInt(id.trim());
-		    	System.out.println(id);
+		    	
 		      	Tipo_Elemento ti=new Tipo_Elemento();
 		     	ti=cti.getById(id_tipo);
-		     	System.out.println(ti);
+		     	
 		      	
 		    	java.sql.Date f=cres.convertirFecha(request.getParameter("fecha"));
-		    	System.out.println(f);
 		    	
 		    	java.sql.Time h=cres.convertirHora(request.getParameter("hora"));
-		    	System.out.println(f);
+		  
 		    	
 		    	r.setFecha(f);
 		    	r.setHora(h);
 		    	ArrayList<Elemento> elems=new ArrayList<Elemento>();
 		    	elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
+		    	if (elems.size()>0)
+		    	{		
 		    	request.setAttribute("disponibles", elems);
-		    	System.out.println(elems);
+		    	
 		    	request.setAttribute("reserva", r);
 			    request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
-		    
+		    	}
+		    	else
+		    	{
+			    	request.setAttribute("valido","ok");
+				   request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+		    	}
+		    	
 		    }
 		    
 }

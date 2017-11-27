@@ -40,15 +40,31 @@ public class ReservasPendientes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
-	 try {
-		list(request, response);
-	} catch (Exception e) {
-		// TODO Bloque catch generado automáticamente
-		e.printStackTrace();
-	} 
-	       
+		System.out.println(request.getPathInfo());
+		try{
+        	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
+        		this.list(request, response);
+        	}
+        	else{
+        		String action = request.getPathInfo();
+        	
+	            switch (action) {
+	            
+	            case "/cancelarReserva":
+	                this.cancelarReserva(request, response);
+	                break;
+	 	     
+	            default:
+	                //list(request, response);
+	                break;
+	            }}
+        	}
+	        catch (Exception e) {
+				// TODO Bloque catch generado automáticamente
+				e.printStackTrace();
+			}
 		 }
+
 
 		 private void list(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
@@ -68,6 +84,25 @@ public class ReservasPendientes extends HttpServlet {
 			       	
 		       
 		    }
+		 
+		 
+		 private void cancelarReserva(HttpServletRequest request, HttpServletResponse response) throws Exception
+		 {
+			 
+			 String id=request.getParameter("cancelar"); 
+			 int id_reserva=Integer.parseInt(id);
+			 CtrlReserva ctrlR=new CtrlReserva();
+			 Reserva r=new Reserva();
+			 r.setId_reserva(id_reserva);
+			 int ok=ctrlR.cambiarEstado(r);
+			 if (ok==1)
+			 {
+				 System.out.println(ok); 
+			        response.sendRedirect("../ReservasPendientes");
+			        
+			 }
+			 
+		 }
 		 
 		 
 		
