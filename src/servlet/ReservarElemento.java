@@ -26,10 +26,10 @@ import util.Fechas;
 
 
 @WebServlet("/ReservaAb/*")
-public class ReservaAb extends HttpServlet {
+public class ReservarElemento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public ReservaAb(){
+	public ReservarElemento(){
 		super();
 	}
    
