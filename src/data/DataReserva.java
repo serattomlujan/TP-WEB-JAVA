@@ -1,17 +1,17 @@
 package data;
 import java.util.ArrayList;
-
-
 import java.util.Calendar;
 import java.sql.*;
 import java.util.Date;
 
 import util.AppDataException;
+import util.Fechas;
 import entity.*;
  
 
 
 public class DataReserva {
+	
 	public ArrayList<Reserva> getReservasPendientes(Persona p) throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -61,6 +61,7 @@ public class DataReserva {
  		return res;
  		}
 		 	
+	
 	public ArrayList<Reserva> getAllPendientes() throws Exception{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -109,16 +110,19 @@ public class DataReserva {
  		return res;
  		}
 		 
+	
 	public void add(Reserva r) throws Exception{
  		PreparedStatement stmt=null;
  		ResultSet keyResultSet=null;
+ 		System.out.println(r.getFecha());
  	 		try {
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
  					"insert into reservas(fecha, hora, id_persona, id_elemento, estado, detalle) "
  					+ "values (?,?,?,?,?,?)",
  					PreparedStatement.RETURN_GENERATED_KEYS
  					);
- 		   java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+ 			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
+ 			System.out.println(sqlDate);
  			stmt.setDate(1,sqlDate);
  			stmt.setTime(2, r.getHora());
  			stmt.setInt(3, r.getPersona().getIdpersona());
@@ -245,39 +249,66 @@ public class DataReserva {
 		// TODO Auto-generated method stub
 				
 				int d= r.getElemento().getTipo_Elem().getDias_anticip();
+				java.util.Date hoy= new Date();
 				
-				//Fechas f = new Fechas(); 
-				//int D=f.diferenciaEnDias2(hoy, r.getFecha());
+				Fechas f = new Fechas(); 
+				int D=f.diferenciaEnDias2(hoy, r.getFecha());
 			
-				java.util.Date hoy=new Date();
 				Calendar cal=Calendar.getInstance();
 				cal.setTime(hoy);
 				cal.add(Calendar.DAY_OF_YEAR, d);
-				if (r.getFecha().after(cal.getTime()))
+				/*if (r.getFecha().after(cal.getTime()))
 					return true;
 				else
 				
-				return false;
-				
-				
-				/*if (D >= dias){
-					 return true;
+				return false;*/
+								
+				if (D >= d){return true;
 					 }
-				else {
-					return false;
-					 }*/
+				else return false;
+	}
 
-}
 
-public ArrayList<Reserva> getPendientes() throws Exception{
+
+public ArrayList<Reserva> getPendientes(Persona p,Tipo_Elemento ti) throws Exception{
 	DataReserva dr=new DataReserva();
 	ArrayList<Reserva> resXUs=new ArrayList<Reserva>();
 	for(Reserva r: dr.getAllPendientes()){
-		//if(r.getPersona().getIdpersona() == MainWindow.usuarioAct.getIdpersona())
-		//{resXUs.add(r);}
+		if(r.getPersona().getIdpersona() == p.getIdpersona()&& r.getElemento().getTipo_Elem().getIdtipo_elemento()==ti.getIdtipo_elemento())
+		{resXUs.add(r);}
 	}
 	return resXUs;
 }
 	
+public int cambiarEstado(Reserva r) throws Exception
+{
+	PreparedStatement stmt=null;
+	int ok=0;
+
+		try {
+		stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+				"update reservas set estado=? where id_reserva=?",
+				PreparedStatement.RETURN_GENERATED_KEYS
+				);
+		stmt.setString(1,"cancelada");
+		stmt.setInt(2, r.getId_reserva());
+		stmt.executeUpdate();
+		ok=1;
+		} catch (SQLException | AppDataException e) 
+		{
+			ok=0;
+ 			throw e;
+ 			
+ 		}
+ 		try {
+ 			if(stmt!=null)stmt.close();
+ 			FactoryConexion.getInstancia().releaseConn();
+ 			
+ 		} catch (SQLException e) {
+ 			e.printStackTrace();
+ 		}
+ 		
+ 		return ok;
+}
 	
 }

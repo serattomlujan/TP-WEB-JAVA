@@ -6,6 +6,10 @@ import java.io.Serializable;
 
 
 public class Tipo_Elemento  implements Serializable {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 private int idtipo_elemento;
 private String nombre_tipo;
 private int cant_max;
@@ -33,13 +37,13 @@ public void setCant_max(int cant_max) {
 	this.cant_max = cant_max;
 }
 public int getLim_tiempo() {
-	return (int)lim_tiempo;
+	return lim_tiempo;
 }
 public void setLim_tiempo(int lim_tiempo) {
 	this.lim_tiempo = lim_tiempo;
 }
 public int getDias_anticip() {
-	return (int)dias;
+	return dias;
 }
 public void setDias_anticip(int dias_anticip) {
 	this.dias = dias_anticip;

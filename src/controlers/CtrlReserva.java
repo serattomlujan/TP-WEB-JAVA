@@ -58,8 +58,8 @@ public class CtrlReserva {
 		return dataRes.getAllPendientes();
 			}
 	
-	public ArrayList<Reserva> getPendientes() throws Exception{
-		return dataRes.getPendientes();
+	public ArrayList<Reserva> getPendientes(Persona p, Tipo_Elemento t) throws Exception{
+		return dataRes.getPendientes(p,t);
 			}
 	
 	public ArrayList<Tipo_Elemento>getTipos() throws Exception{ 
@@ -101,7 +101,9 @@ public class CtrlReserva {
 	public java.sql.Date convertirFecha(String f) throws ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
          java.util.Date parsed = format.parse(f);
+         //System.out.println(parsed);
          java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+        // System.out.println(parsed);
 		return fecha;
 	}
 
@@ -111,6 +113,11 @@ public class CtrlReserva {
         java.util.Date pars = f.parse(h);
         java.sql.Time hora = new java.sql.Time(pars.getTime());
 		return hora;
+	}
+	
+	public int cambiarEstado(Reserva r) throws Exception
+	{
+		return dataRes.cambiarEstado(r);
 	}
 	
 	

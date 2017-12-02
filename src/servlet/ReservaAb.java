@@ -19,6 +19,7 @@ import entity.Elemento;
 import entity.Persona;
 import entity.Reserva;
 import entity.Tipo_Elemento;
+import controlers.CtrlABMElemento;
 import controlers.CtrlABMPersona;
 import controlers.CtrlABMTipoElemento;
 import controlers.CtrlReserva;
@@ -83,36 +84,48 @@ public class ReservaAb extends HttpServlet {
 		 
 		
 		 
-		 private void insert(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
+		 private void insert(HttpServletRequest request, HttpServletResponse response)throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
-			 	int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
 			 	Fechas f = new Fechas();
-			 	Date fecha=f.ParseFecha(request.getParameter("fecha"));
-		    	
-			 	Fechas h= new Fechas();
+			 	java.sql.Date fecha=f.ParseFecha2(request.getParameter("fecha"));
+		    	Fechas h= new Fechas();
 		    	Time hora = h.ParseHora(request.getParameter("hora"));
+		    	String estado ="pendiente";
 		        String detalle = request.getParameter("detalle");
-		        
+		        CtrlABMElemento cele=new CtrlABMElemento();
 		        Elemento ele = new Elemento();
-		        int idelemento = Integer.parseInt(request.getParameter("idelemento"));
-		        ele.setIdelemento(idelemento);
-		    
-		        Persona per=(Persona) request.getSession().getAttribute("user");
-			 				 	       
+		        int idelemento = Integer.parseInt(request.getParameter("elemento"));
+		        
+		        ele=cele.getById(idelemento);
+		        
+		        //Date hoy= new Date();
+		       
+		        CtrlABMPersona ctrlP=new CtrlABMPersona();
+		        Persona per = new Persona();
+		        String dni = request.getParameter("dni");
+		        per=ctrlP.getByDni(dni);
 		        Reserva r= new Reserva();
-		        
-		        r.setId_reserva(id_reserva);
-		        r.setFecha(fecha);
-		        r.setHora(hora);
-		        r.setDetalle(detalle);
-		        r.setEstado("pendiente");
 		        r.setElemento(ele);
-		        r.setPersona(per);
-		        
-		        cres.add(r); 
-		        response.getWriter().append("Reserva registrada con éxito");
+		       // r.setId_reserva(0);
+				r.setFecha(fecha);
+				r.setHora(hora);
+				r.setDetalle(detalle);
+				r.setPersona(per);
 				
+				//if(fecha.after(hoy)){
+        	    	
+					if(cres.validar(r)){
+		        	
+						if(cres.getPendientes(per, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max()){
+	 					
+							r.setEstado(estado);
+							cres.add(r); 
+							String id=String.valueOf(r.getId_reserva());
+		       
+							response.getWriter().append("Reserva registrada con el nro: ").append(id);}
+						else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");}
+					else response.getWriter().append("No cumple con la cantidad de días de anticipación");//}
+				//else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");
 		        
 		    }
 		 
@@ -129,31 +142,51 @@ public class ReservaAb extends HttpServlet {
 				
 		    }
 		 
-		   
+		    private void cancelar(HttpServletRequest request, HttpServletResponse response)
+		            throws Exception {
+			 	CtrlReserva	cres = new CtrlReserva();
+			 	int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
+		 
+		    	Reserva r= new Reserva();
+		        r.setId_reserva(id_reserva);
+		        cres.update(r);
+		        request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);} 
+		    
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		    	
 		    	CtrlReserva	cres = new CtrlReserva();
 		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
 		    	Reserva r=new Reserva();
 		    	
-		    	int id_tipo = Integer.parseInt(request.getParameter("tipo"));
 		    	Tipo_Elemento ti= new Tipo_Elemento();
-		    	ti=	cti.getById(id_tipo);
-		     	System.out.println(ti);
-		      	String fecha=(String)request.getParameter("fecha");
-		    	java.sql.Date f=cres.convertirFecha(fecha);
-		    	System.out.println(f);
+		    	
+		    	String id=request.getParameter("tipo");
+		    	int id_tipo = Integer.parseInt(id.trim());
+		    	
+		      	ti=cti.getById(id_tipo);
+		      		      	
+		    	java.sql.Date f=cres.convertirFecha(request.getParameter("fecha"));
+		    	
 		    	java.sql.Time h=cres.convertirHora(request.getParameter("hora"));
-		    	System.out.println(h);
-		    	r.setFecha(f);
-		    	r.setHora(h);
-		    	ArrayList<Elemento> elems=new ArrayList<Elemento>();
-		    	elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
-		    	request.setAttribute("disponibles", elems);
-		    	System.out.println(elems);
-		    	request.setAttribute("reserva", r);
-			    request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
-		    
+		    	 Date hoy= new Date();
+			       
+		    	if(f.after(hoy)){
+		    		r.setFecha(f);
+		    		r.setHora(h);
+		    		ArrayList<Elemento> elems=new ArrayList<Elemento>();
+		    		elems=cres.getElemDisponibles(f, h, cres.getElementos(ti));
+		    		if (elems.size()>0)
+		    		{		
+		    			request.setAttribute("disponibles", elems);
+		    			request.setAttribute("reserva", r);
+		    			request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
+		    		else
+		    		{
+		    			request.setAttribute("valido","ok");
+		    			request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}}
+		    	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");
+		    	
 		    }
 		    
 }

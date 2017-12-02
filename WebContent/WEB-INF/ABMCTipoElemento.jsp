@@ -14,6 +14,10 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
+    function validarSiNumero(numero){
+    	if (!/^([0-9])*$/.test(numero))
+      	alert("El campo debe contener sólo números");
+  	}
 </script>
 </head>
 <body>
@@ -48,9 +52,9 @@
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: aqua; width: 115px">Buscar</button>
 		
-		<font face="arial"><br><br></font>Cantidad Máxima <input name="cant_max" id="cant_max" value="<%=cantidad%>"><br><br>
-		Tiempo límite <input name="lim_tiempo" id="lim_tiempo" value="<%=tiempo %>" ><br><br>
-		Anticipación (dias) <input name="dias" id="dias" value="<%=dias%>"><br><br>
+		<font face="arial"><br><br></font>Cantidad Máxima <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);"><br><br>
+		Tiempo límite <input name="lim_tiempo" id="lim_tiempo" value="<%=tiempo %>" onChange="validarSiNumero(this.value);"><br><br>
+		Anticipación (dias) <input name="dias" id="dias" value="<%=dias%>" onChange="validarSiNumero(this.value);"><br><br>
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>
 		<font face="arial">Encargado<br><br></font>
 		

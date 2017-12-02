@@ -76,6 +76,48 @@ throw e;
 		
  return el;
 }
+	
+	public Elemento getById(Elemento elem) throws Exception{
+ 		Elemento el=null;
+ 		PreparedStatement stmt=null;
+ 		ResultSet rs=null;
+ 		try {
+ 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+ 					"select idelemento, nombre, e.idtipo_elemento, nombre_tipo, cant_max,lim_tiempo,dias_anticip,encargado"
+ 					+ " from elementos e "
+ 					+ "inner join tipo_elemento t on e.idtipo_elemento=t.idtipo_elemento where idelemento=?");
+ 			stmt.setInt(1, elem.getIdelemento());
+ 			rs=stmt.executeQuery();
+ 			if(rs!=null && rs.next()){
+ 					el=new Elemento();
+ 					el.setTipo_Elem(new Tipo_Elemento());
+ 					el.setIdelemento(rs.getInt("idelemento"));
+ 					el.setNombre(rs.getString("nombre"));
+ 					el.getTipo_Elem().setIdtipo_elemento(rs.getInt("idtipo_elemento"));
+ 					el.getTipo_Elem().setNombre_tipo(rs.getString("nombre_tipo"));
+ 					el.getTipo_Elem().setCant_max(rs.getInt("cant_max"));
+ 					el.getTipo_Elem().setLim_tiempo(rs.getInt("lim_tiempo"));
+ 					el.getTipo_Elem().setDias_anticip(rs.getInt("dias_anticip"));
+ 					el.getTipo_Elem().setEncargado(rs.getBoolean("encargado"));
+ 										
+ 			}
+ 			
+} catch (Exception e) {
+throw e;
+}
+finally{
+try {
+if(rs!=null)rs.close();
+if(stmt!=null)stmt.close();
+FactoryConexion.getInstancia().releaseConn();
+} catch (SQLException e) {
+throw e;
+	}
+ }
+		
+ return el;
+}
+
 	public void add(Elemento el) throws Exception{
  		PreparedStatement stmt=null;
  		ResultSet keyResultSet=null;

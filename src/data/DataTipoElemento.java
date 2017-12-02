@@ -1,7 +1,5 @@
 package data;
 import java.util.ArrayList;
-
-
 import java.sql.*;
 
 import util.AppDataException;
@@ -50,6 +48,7 @@ public class DataTipoElemento {
  		PreparedStatement stmt=null;
  		ResultSet rs=null;
  		try {
+ 			
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
  					"select * from tipo_elemento where nombre_tipo=?");
  			stmt.setString(1, te.getNombre_tipo());
@@ -195,4 +194,39 @@ throw e;
 			
 			return tipos;
 		}
+
+
+	public Tipo_Elemento getById(Tipo_Elemento te) throws Exception{
+ 		Tipo_Elemento t=null;
+ 		PreparedStatement stmt=null;
+ 		ResultSet rs=null;
+ 		try {
+ 			
+ 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
+ 					"select * from tipo_elemento where idtipo_elemento=?");
+ 			stmt.setInt(1, te.getIdtipo_elemento());
+ 			rs=stmt.executeQuery();
+ 			if(rs!=null && rs.next()){
+ 					t=new Tipo_Elemento();
+ 					t.setIdtipo_elemento(rs.getInt("idtipo_elemento"));
+ 					t.setNombre_tipo(rs.getString("nombre_tipo"));
+  					t.setCant_max(rs.getInt("cant_max"));
+ 					t.setLim_tiempo(rs.getInt("lim_tiempo"));
+ 					t.setDias_anticip(rs.getInt("dias_anticip"));
+ 					t.setEncargado(rs.getBoolean("encargado"));
+ 			}
+ 			
+} catch (Exception e) {
+throw e;
 }
+finally{
+try {
+if(rs!=null)rs.close();
+if(stmt!=null)stmt.close();
+FactoryConexion.getInstancia().releaseConn();
+} catch (SQLException e) {
+throw e;
+	}
+}
+ 		return t;
+	}}

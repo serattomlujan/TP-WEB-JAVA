@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 
+
 import data.DataElemento;
 import data.DataTipoElemento;
 import entity.Elemento;
@@ -43,7 +44,15 @@ public class CtrlABMElemento {
 	return getByNombre(e);
 	}
 	
+	public Elemento getById(int id) throws Exception{
+		Elemento e=new Elemento();
+		e.setIdelemento(id);
+		return getById(e);}
 	
+	public Elemento getById(Elemento e) throws Exception{
+		return this.dataEle.getById(e);
+		}	
+		
 		
 	public ArrayList<Elemento>getAll() throws Exception{
 		return dataEle.getAll();}

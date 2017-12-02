@@ -16,7 +16,18 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
+      
+  function validarSiNumero(numero){
+    if (!/^([0-9])*$/.test(numero))
+      alert("El DNI debe contener sólo números");
+  }
+  
+   function validarNoNumero(letra){
+    if (!/^([a-zA-ZáéíóúÁÉÍÓÚ ])*$/.test(letra))
+       alert("El campo no puede contener caracteres inválidos");
+  }
 </script>
+
 </head>
 <body>
 <%
@@ -56,13 +67,16 @@
 	<font face="arial"> <b>PERSONAS</b><br></font></h2>
 	
 	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly"  value="<%=id%>"></font>
-	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>"><i><b></b></i></font> 
+	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>" size="8" maxlength="8" onChange="validarSiNumero(this.value);">
+	 <i><b></b></i></font> 
 	
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
 	 
 	
-	<font face="arial"><br><br>Nombre <input type="text"  name="nombre_per" id="nombre_per" value="<%=nombre_per%>"><i><b></b></i></font>
-	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" value="<%=apellido%>"><i><b></b></i></font>
+	<font face="arial"><br><br>Nombre <input type="text"  required name="nombre_per" id="nombre_per" size="15" minlength="2" value="<%=nombre_per%>" onChange="validarNoNumero(this.value);">
+	<i><b></b></i></font>
+	<font face="arial"><br><br>Apellido <input type="text" required name="apellido" id="apellido" size="15" value="<%=apellido%>" onChange="validarNoNumero(this.value);">
+	<i><b></b></i></font>
 	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Contraseña <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Categoría 

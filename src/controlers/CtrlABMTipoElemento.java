@@ -34,13 +34,23 @@ public class CtrlABMTipoElemento {
 	t.setNombre_tipo(nom);
 	return getByNomTipo(t);
 	}
+	
 	public ArrayList<Tipo_Elemento>getAll() throws Exception{
 		return dataTiEl.getAll();}
-	
+
+	public ArrayList<Tipo_Elemento>getAllEncargado() throws Exception{
+	return dataTiEl.getAllEncargado();}
+
 	
 	public Tipo_Elemento getById(int id) throws Exception{
 		Tipo_Elemento t=new Tipo_Elemento();
 		t.setIdtipo_elemento(id);
-		return getByNomTipo(t);
+		return getById(t);
 		}
+
+
+	private Tipo_Elemento getById(Tipo_Elemento t) throws Exception {
+		// TODO Auto-generated method stub
+		return this.dataTiEl.getById(t);
+	}
 }

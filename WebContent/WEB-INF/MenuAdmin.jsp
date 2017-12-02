@@ -86,7 +86,7 @@
 	
  
 		  <li><a href="Login.html">CERRAR SESION</a></li>
-			   <li><a href="" onclick="window.close()">SALIR</a></li>
+			<!--    <li><a href="" onclick="window.close()">SALIR</a></li>-->
 
 	
 </ul>

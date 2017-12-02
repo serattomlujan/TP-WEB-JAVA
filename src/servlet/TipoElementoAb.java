@@ -175,7 +175,7 @@ public class TipoElementoAb extends HttpServlet {
 			       
 			    request.setAttribute("encontrado", tiel);
 			    request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
-		    }
+			    }
 		    
 }
 
