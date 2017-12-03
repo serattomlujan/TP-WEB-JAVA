@@ -252,7 +252,8 @@ public class DataReserva {
 				java.util.Date hoy= new Date();
 				
 				Fechas f = new Fechas(); 
-				int D=f.diferenciaEnDias2(hoy, r.getFecha());
+				int D=f.diferenciaEnDias2( r.getFecha(),hoy);
+				System.out.print(D);
 			
 				Calendar cal=Calendar.getInstance();
 				cal.setTime(hoy);

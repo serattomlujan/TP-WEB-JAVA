@@ -26,6 +26,10 @@
     if (!/^([a-zA-ZáéíóúÁÉÍÓÚ ])*$/.test(letra))
        alert("El campo no puede contener caracteres inválidos");
   }
+  
+  function validarSiVacio(valor){
+  if(valor==null)
+  	alert("El DNI ingresado no está registrado");}
 </script>
 
 </head>
@@ -73,7 +77,8 @@
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
 	 
 	
-	<font face="arial"><br><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" minlength="2" value="<%=nombre_per%>" >
+	<font face="arial"><br><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" 
+	>
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
 	<i><b></b></i></font>

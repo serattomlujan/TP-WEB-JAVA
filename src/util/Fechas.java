@@ -7,11 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-
-
-
-
-
 public class Fechas {
 	
 	public  int diferenciaEnDias2(Date fechaMayor, Date fechaMenor) {

@@ -113,8 +113,10 @@ public class ReservaAb extends HttpServlet {
 				r.setPersona(per);
 				
 				//if(fecha.after(hoy)){
+				boolean valida=cres.validar(r);
         	    	
-					if(cres.validar(r)){
+					if(valida){
+						System.out.print(valida);
 		        	
 						if(cres.getPendientes(per, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max()){
 	 					
