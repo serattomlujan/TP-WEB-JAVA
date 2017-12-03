@@ -19,14 +19,15 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
-      function validarFechaMenorActual(date){
+      /*function validarFechaMenorActual(date){
       var x=new Date();
+      Date f=controlers.CtrlReserva.convertirFecha(date);
       var fecha = date;
       x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
       var today = new Date();
- 	  if (x >= today)
-        alert ("La fecha ingresada debe ser superior a la actual"); /*no funciona*/
-}
+ 	  if (f >= today)
+        alert ("La fecha ingresada debe ser superior a la actual"); no funciona
+}*/
 </script>
 </head>
 <body>
@@ -71,9 +72,8 @@
 		
 	</select><br><br></font>
 	
-Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" required size="8" maxlength="8" value="<%=fecha%>" 
-onChange="validarFechaMenorActual(this.value)"><br>
-	<br>Hora(hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"required> 
+Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8" value="<%=fecha%>" ><br>
+	<br>Hora(hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"> 
 	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br><br>
 	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){

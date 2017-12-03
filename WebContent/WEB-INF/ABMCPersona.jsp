@@ -73,9 +73,9 @@
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
 	 
 	
-	<font face="arial"><br><br>Nombre <input type="text"  required name="nombre_per" id="nombre_per" size="15" minlength="2" value="<%=nombre_per%>" onChange="validarNoNumero(this.value);">
+	<font face="arial"><br><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" minlength="2" value="<%=nombre_per%>" >
 	<i><b></b></i></font>
-	<font face="arial"><br><br>Apellido <input type="text" required name="apellido" id="apellido" size="15" value="<%=apellido%>" onChange="validarNoNumero(this.value);">
+	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Contraseña <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
