@@ -74,14 +74,14 @@
 	
 Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8" value="<%=fecha%>" ><br>
 	<br>Hora(hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"> 
-	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br><br>
+	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><br><br>
 	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
 		for(Elemento e: el){ %>
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}}%>
 			</select><br>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
-	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: aqua; width: 115px">Agregar</button>
+	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: Pink; width: 115px">Agregar</button>
 
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver </a>
 	<!--  <a href="#" title="salir" onclick="window.close()">Salir</a>-->
