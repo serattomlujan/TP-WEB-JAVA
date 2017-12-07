@@ -46,10 +46,11 @@
 		  <td><%=r.getElemento().getNombre() %></td>
 		  <td><%=r.getElemento().getTipo_Elem().getNombre_tipo()%></td>
 		  <td><%=r.getFecha()%></td>
+
 		  <td><%=r.getHora_ini() %></td>
 		  <td><%=r.getHora_fin() %></td>
-		  <td><button type="submit"  onclick="javascript: submitForm('ReservasPendientes/cancelarReserva')" value="<%=r.getId_reserva() %>" id="cancelar" name="cancelar"  style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
-		</tr>
+		  <td><button type="submit"  onclick="javascript: submitForm('ReservasPendientes/cancelarReserva')" value="<%=r.getId_reserva() %>" id="cancelar" name="cancelar"  style="color: black;  background-color: Pink; width: 115px">Cancelar</button>
+	</tr>
 			
 			<%	
 				};

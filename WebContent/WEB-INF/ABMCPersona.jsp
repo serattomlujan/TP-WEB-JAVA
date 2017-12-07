@@ -74,7 +74,7 @@
 	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>" size="8" maxlength="8" onChange="validarSiNumero(this.value);">
 	 <i><b></b></i></font> 
 	
-	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button>
+	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button>
 	 
 	
 	<font face="arial"><br><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" 
@@ -102,9 +102,9 @@
 	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br><br></font>
 	
 	
-	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: aqua; width: 115px" type="submit">Agregar</button>
-	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: aqua; width: 115px" type="submit">Modificar</button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: aqua; width: 115px" type="submit">Borrar</button>
+	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
+	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
 	
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
