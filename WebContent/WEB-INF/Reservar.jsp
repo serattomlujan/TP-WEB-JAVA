@@ -36,13 +36,15 @@
 	Reserva reserva=null;
 	String fecha="";
 	String hora="";
+	String hora_fin="";
 	Tipo_Elemento tipo= new Tipo_Elemento();
 	
 	
 	if(request.getAttribute("reserva")!=null){
 		reserva=(Reserva)request.getAttribute("reserva");
 		fecha=String.valueOf(reserva.getFecha());
-		hora=String.valueOf(reserva.getHora());}
+		hora=String.valueOf(reserva.getHora_ini());
+		hora_fin=String.valueOf(reserva.getHora_fin());}
 		
 	if(request.getAttribute("disponibles")!=null){
 		el = (ArrayList<Elemento>)request.getAttribute("disponibles");}
@@ -73,7 +75,8 @@
 	</select><br><br></font>
 	
 Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8" value="<%=fecha%>" ><br>
-	<br>Hora(hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"> 
+	<br>Hora Inicio (hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>"> 
+	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin" size="4"  maxlength="4" value="<%=hora_fin%>">
 	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: aqua; width: 115px">Buscar</button><br><br>
 	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){

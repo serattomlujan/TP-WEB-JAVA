@@ -20,12 +20,12 @@ public class Fechas {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         try {
-        	System.out.println(fecha);
+        	//System.out.println(fecha);
             fechaDate = formato.parse(fecha);
         } 
         catch (ParseException ex) 
         {
-            System.out.println(ex);
+            //System.out.println(ex);
         }
         return fechaDate;
     }
@@ -42,9 +42,9 @@ public class Fechas {
 	public java.sql.Date ParseFecha2(String f) throws ParseException, java.text.ParseException {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          java.util.Date parsed = format.parse(f);
-         System.out.println(parsed);
+         //System.out.println(parsed);
          java.sql.Date fecha = new java.sql.Date(parsed.getTime());
-         System.out.println(parsed);
+         //System.out.println(parsed);
 		return fecha;
 	}
 	

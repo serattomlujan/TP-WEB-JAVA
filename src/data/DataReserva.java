@@ -24,7 +24,7 @@ public class DataReserva {
 		 			+ "inner join tipo_elemento te on te.idtipo_elemento=e.idtipo_elemento "
 		 			+ "where p.idpersona='" + p.getIdpersona()
 		 			+ "'and estado='pendiente' and (fecha>current_timestamp or "
-		 			+ "(fecha=current_timestamp and hora>current_timestamp)) order by fecha");
+		 			+ "(fecha=current_timestamp and hora_ini>current_timestamp)) order by fecha");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Reserva r=new Reserva();
@@ -34,7 +34,8 @@ public class DataReserva {
 		 			r.setDetalle(rs.getString("detalle"));
 		 			r.setEstado(rs.getString("estado"));
 		 			r.setFecha(rs.getDate("fecha"));
-		 			r.setHora(rs.getTime("hora"));
+		 			r.setHora_ini(rs.getTime("hora_ini"));
+		 			r.setHora_fin(rs.getTime("hora_fin"));
 		 			r.getElemento().setIdelemento(rs.getInt("r.id_elemento"));
 		 			r.getElemento().setNombre(rs.getString("e.nombre"));
 		 			r.getElemento().setTipo_Elem(new Tipo_Elemento());
@@ -73,7 +74,7 @@ public class DataReserva {
 		 			+ "inner join elementos e on e.idelemento=r.id_elemento "
 		 			+ "inner join tipo_elemento te on te.idtipo_elemento=e.idtipo_elemento "
 		 			+ "where estado='pendiente' and (fecha>current_timestamp or "
-		 			+ "(fecha=current_timestamp and hora>current_timestamp)) order by p.apellido, fecha");
+		 			+ "(fecha=current_timestamp and hora_ini>current_timestamp)) order by p.apellido, fecha");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Reserva r=new Reserva();
@@ -83,7 +84,8 @@ public class DataReserva {
 		 			r.setDetalle(rs.getString("detalle"));
 		 			r.setEstado(rs.getString("estado"));
 		 			r.setFecha(rs.getDate("fecha"));
-		 			r.setHora(rs.getTime("hora"));
+		 			r.setHora_ini(rs.getTime("hora_ini"));
+		 			r.setHora_fin(rs.getTime("hora_fin"));
 		 			r.getElemento().setIdelemento(rs.getInt("r.id_elemento"));
 		 			r.getElemento().setNombre(rs.getString("e.nombre"));
 		 			r.getElemento().setTipo_Elem(new Tipo_Elemento());
@@ -117,18 +119,19 @@ public class DataReserva {
  		System.out.println(r.getFecha());
  	 		try {
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
- 					"insert into reservas(fecha, hora, id_persona, id_elemento, estado, detalle) "
- 					+ "values (?,?,?,?,?,?)",
+ 					"insert into reservas(fecha, hora_ini,hora_fin, id_persona, id_elemento, estado, detalle) "
+ 					+ "values (?,?,?,?,?,?,?)",
  					PreparedStatement.RETURN_GENERATED_KEYS
  					);
  			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
  			System.out.println(sqlDate);
  			stmt.setDate(1,sqlDate);
- 			stmt.setTime(2, r.getHora());
- 			stmt.setInt(3, r.getPersona().getIdpersona());
- 			stmt.setInt(4, r.getElemento().getIdelemento());
- 			stmt.setString(5, r.getEstado());
- 			stmt.setString(6, r.getDetalle());
+ 			stmt.setTime(2, r.getHora_ini());
+ 			stmt.setTime(3, r.getHora_fin());
+ 			stmt.setInt(4, r.getPersona().getIdpersona());
+ 			stmt.setInt(5, r.getElemento().getIdelemento());
+ 			stmt.setString(6, r.getEstado());
+ 			stmt.setString(7, r.getDetalle());
   			stmt.executeUpdate();
  			keyResultSet=stmt.getGeneratedKeys();
  			if(keyResultSet!=null && keyResultSet.next()){
@@ -156,17 +159,18 @@ public class DataReserva {
  		try {
  			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
  					"update reservas "
- 					+ "set fecha=?, hora=?, id_persona=?, id_elemento=?, estado='cancelada', detalle=?"
+ 					+ "set fecha=?, hora_ini=?, hora_fin=?, id_persona=?, id_elemento=?, estado='cancelada', detalle=?"
  					+ " where id_reserva=?"
  					
  					);
  			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
   			stmt.setDate(1, sqlDate);
- 			stmt.setTime(2, r.getHora());
- 			stmt.setInt(3, r.getPersona().getIdpersona());
- 			stmt.setInt(4, r.getElemento().getIdelemento());
- 			stmt.setString(5, r.getDetalle());
- 			stmt.setInt(6, r.getId_reserva());
+ 			stmt.setTime(2, r.getHora_ini());
+ 			stmt.setTime(3, r.getHora_fin());
+ 			stmt.setInt(4, r.getPersona().getIdpersona());
+ 			stmt.setInt(5, r.getElemento().getIdelemento());
+ 			stmt.setString(6, r.getDetalle());
+ 			stmt.setInt(7, r.getId_reserva());
  			stmt.executeUpdate();
  			
  		} catch (SQLException | AppDataException e) {
@@ -202,7 +206,7 @@ public class DataReserva {
  	}
 
  	
-	public ArrayList<Elemento> getElemDisponibles(Date f,Time h,ArrayList<Elemento> elem) throws Exception
+	public ArrayList<Elemento> getElemDisponibles(Date f,Time h , Time h1, ArrayList<Elemento> elem) throws Exception
 	{
 		Statement stmt=null;
 		ResultSet rs=null;
@@ -216,7 +220,7 @@ public class DataReserva {
 		 			" and e.idelemento not in (select * reservas where fecha='" + f + "and hora='"+ h +")");*/
 		rs = stmt.executeQuery("select * from elementos e inner join tipo_elemento te "
 	 			+ "on e.idtipo_elemento=te.idtipo_elemento where idelemento not in "
-	 			+ "(select id_elemento from reservas where fecha='" + f + "'and hora='"+ h +"')");
+	 			+ "(select id_elemento from reservas where fecha='" + f + "'and (hora_ini<='"+ h1 +"'or hora_fin>='"+ h + "'))");
 	
 		 		if(rs!=null){
 			 		while(rs.next()){
@@ -253,7 +257,7 @@ public class DataReserva {
 				
 				Fechas f = new Fechas(); 
 				int D=f.diferenciaEnDias2( r.getFecha(),hoy);
-				System.out.print(D);
+				//System.out.print(D);
 			
 				Calendar cal=Calendar.getInstance();
 				cal.setTime(hoy);
@@ -264,9 +268,26 @@ public class DataReserva {
 				
 				return false;*/
 								
-				if (D >= d){return true;
+				if (D >= d){
+					return true;
 					 }
-				else return false;
+				else				
+					return false;
+	}
+	
+	public boolean validarHoras(Time h1,Time h2, Tipo_Elemento t){
+		double lim=t.getLim_tiempo();
+		//Time h1=r.getHora_ini();
+		//Time h2=r.getHora_fin();
+		double h3=(h2.getTime()-h1.getTime())/1000/3600;
+		System.out.print(h3);
+		System.out.print(lim);
+		
+		
+		if(lim>=h3 || lim==0)return true;
+		else return false;
+		
+		
 	}
 
 

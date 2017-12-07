@@ -76,14 +76,18 @@ public class CtrlReserva {
 	
 	}
 	
+	public boolean validarHoras(Time h_ini, Time h_fin, Tipo_Elemento t){
+		return dataRes.validarHoras(h_ini, h_fin,t);
+	}
+	
 	
 	public ArrayList<Elemento> getElementos(Tipo_Elemento t) throws Exception{
 		return dataEle.getByTipo(t);
 	}	
 	
 	
-	public ArrayList<Elemento> getElemDisponibles(Date f, Time h,ArrayList<Elemento>el) throws Exception
-		{ return dataRes.getElemDisponibles(f, h, el);
+	public ArrayList<Elemento> getElemDisponibles(Date f, Time h, Time h1,ArrayList<Elemento>el) throws Exception
+		{ return dataRes.getElemDisponibles(f, h, h1, el);
 		}
 
 	

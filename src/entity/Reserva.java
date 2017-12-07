@@ -9,7 +9,8 @@ import java.util.Date;
 public class Reserva  implements Serializable{
 	private int id_reserva;
 	private Date fecha;
-	private Time hora;
+	private Time hora_ini;
+	private Time hora_fin;
 	private String estado;
 	private String detalle;
 	private Elemento elemento;
@@ -29,11 +30,11 @@ public class Reserva  implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Time getHora() {
-		return hora;
+	public Time getHora_ini() {
+		return hora_ini;
 	}
-	public void setHora(Time hora) {
-		this.hora = hora;
+	public void setHora_ini(Time hora) {
+		this.hora_ini = hora;
 	}
 	public String getEstado() {
 		return estado;
@@ -64,7 +65,13 @@ public class Reserva  implements Serializable{
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	
+	public Time getHora_fin() {
+		return hora_fin;
+	}
+	public void setHora_fin(Time hora_fin) {
+		this.hora_fin = hora_fin;
+	}
+		
 	
 
 	@Override
@@ -76,6 +83,6 @@ public class Reserva  implements Serializable{
 	public int hashCode(){
 	return ((Integer)this.getId_reserva()).hashCode();
 	}
-		
+	
 
 }

@@ -31,7 +31,8 @@
 		  <td><strong> ELEMENTO </strong></td>
 		  <td><strong> TIPO </strong></td>
 		  <td><strong> FECHA </strong></td>
-		  <td><strong> HORA </strong></td>
+		  <td><strong> HORA INICIO</strong></td>
+		   <td><strong> HORA FIN</strong></td>
 		  <td><strong> ACCIONES </strong></td>				 
 		</tr>
 		<% 
@@ -45,7 +46,8 @@
 		  <td><%=r.getElemento().getNombre() %></td>
 		  <td><%=r.getElemento().getTipo_Elem().getNombre_tipo()%></td>
 		  <td><%=r.getFecha()%></td>
-		  <td><%=r.getHora() %></td>
+		  <td><%=r.getHora_ini() %></td>
+		  <td><%=r.getHora_fin() %></td>
 		  <td><button type="submit"  onclick="javascript: submitForm('ReservasPendientes/cancelarReserva')" value="<%=r.getId_reserva() %>" id="cancelar" name="cancelar"  style="color: black;  background-color: aqua; width: 115px">Cancelar</button>
 		</tr>
 			
