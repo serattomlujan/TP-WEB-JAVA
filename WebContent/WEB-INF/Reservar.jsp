@@ -83,6 +83,10 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8
 		for(Elemento e: el){ %>
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}}%>
 			</select><br>
+	<%	if(request.getAttribute("valido")==null)
+	{ %><div style="visibility:hidden;"><% }
+	else{ %><div style="visibility:visible;"><%} %>
+	<b>NO HAY ELEMENTOS DISPONIBLES</b></div>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
 	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: Pink; width: 115px">Agregar</button>
 
@@ -91,16 +95,6 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8
 	
 
 </form>
- <%	
- 	if(request.getAttribute("valido")==null)
-	{ %>
-<div style="visibility:hidden;">
-<% }
-else
-{ %>
-<div style="visibility:visible;">
-<%} %>
-<b>NO HAY ELEMENTOS DISPONIBLES</b>
-</div>
+ 
 </body>
 </html>

@@ -41,8 +41,6 @@
 		encargado= encontrado.getEncargado();
 		}
 		
-		else %> <alert("El tipo de elemento ingresado no está registrado")><%;
-	
 %>
 
 <form class="form-signin" name="signin" action="" method="POST">
@@ -51,8 +49,10 @@
 		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" value="<%=nombre%>"><i><b></b></i>
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px">Buscar</button>
-		
-		<font face="arial"><br><br></font>Cantidad Máxima <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);"><br><br>
+		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }
+			else{ %><div style="visibility:visible;"><%} %>
+			<b>EL NOMBRE DEL TIPO DE ELEMENTO NO EXISTE</b></div>
+		<font face="arial"> <br></font>Cantidad Máxima <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);"><br><br>
 		Tiempo límite <input name="lim_tiempo" id="lim_tiempo" value="<%=tiempo %>" onChange="validarSiNumero(this.value);"><br><br>
 		Anticipación (dias) <input name="dias" id="dias" value="<%=dias%>" onChange="validarSiNumero(this.value);"><br><br>
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>

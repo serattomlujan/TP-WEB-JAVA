@@ -214,8 +214,12 @@ public class PersonaAb extends HttpServlet {
 		    	Persona per = new Persona();
 		    	per.setDni(dni);
 			    per=cpers.getByDni(per);
-			    request.setAttribute("encontrada", per);
-			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
-		    }
-}
+			    if(per!=null) request.setAttribute("encontrada", per);
+			    else request.setAttribute("valido","ok");
+			  
+			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);}
+			    
+			    }
+		    
+
 

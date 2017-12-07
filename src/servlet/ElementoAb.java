@@ -180,11 +180,17 @@ public class ElementoAb extends HttpServlet {
 				Elemento ele = new Elemento();
 				ele.setNombre(nombre);
 				ele=cele.getByNombre(ele);
+				if(ele!=null){
        
 				request.setAttribute("encontrada", ele);
-				request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 				}
-			}	    
+				else {
+					request.setAttribute("valido","ok");
+					//request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+					}
+				request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+				
+			}	}    
 		    
 		    
 		    

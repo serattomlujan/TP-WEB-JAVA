@@ -46,6 +46,10 @@
 		<font face="arial">ID <input name="idelemento" id="idelemento"type="text" readonly="readonly" value="<%=id %>"><br><br>
 		<font face="arial">Nombre <input name="nombre" required id="nombre" value="<%=nombre%>"><i><b></b></i>
 		<button type="submit"  onclick="javascript: submitForm('ElementoAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button>
+	<%	if(request.getAttribute("valido")==null)
+	{ %><div style="visibility:hidden;"><% }
+	else{ %><div style="visibility:visible;"><%} %>
+	<b>EL NOMBRE DEL ELEMENTO NO EXISTE</b></div>
 	
 		<font face="arial"><br><br>Tipo Elemento
 		<%CtrlABMElemento ctrl= new CtrlABMElemento();

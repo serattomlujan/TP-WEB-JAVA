@@ -148,23 +148,20 @@ public class TipoElementoAb extends HttpServlet {
 		        
 		       ctipoele.update(tipoele);
 		       response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
-		       // response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp"); 
+		        
 		    }
 		 
 		    private void delete(HttpServletRequest request, HttpServletResponse response)
 		            throws Exception {
 		    	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
 		    	String nombre_tipo = request.getParameter("nombre_tipo");
-		    	//int id_tipoelemento=Integer.parseInt(id_tipo.trim());
-			 	
+		    	
 			 	Tipo_Elemento tipoele = new Tipo_Elemento();
 			 	tipoele.setNombre_tipo(nombre_tipo);
 		        ctipoele.delete(tipoele);
 		        response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
 		    }
-		        // response.sendRedirect("WEB-INF/ABMCTipoElemento.jsp");} // es necesaria esta lista?
-		 //solo listado redirecciona al .jsp y el resto?
-		    
+		       
 		    
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		    	CtrlABMTipoElemento	ctiel = new CtrlABMTipoElemento();
@@ -172,8 +169,8 @@ public class TipoElementoAb extends HttpServlet {
 		    	Tipo_Elemento tiel = new Tipo_Elemento();
 		    	tiel.setNombre_tipo(nombre);
 			    tiel=ctiel.getByNomTipo(tiel);
-			       
-			    request.setAttribute("encontrado", tiel);
+			    	if(tiel!=null) request.setAttribute("encontrado", tiel);
+			    	else request.setAttribute("valido","ok");
 			    request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 			    }
 		    
