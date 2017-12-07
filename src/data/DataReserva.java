@@ -212,18 +212,14 @@ public class DataReserva {
 		ResultSet rs=null;
 		ArrayList<Elemento>e=new ArrayList<Elemento>();
 		
-		//for (int i=0; i<elem.size();i++){
-			
+				
 		stmt = FactoryConexion.getInstancia().getConn().createStatement();
-		 	/*rs = stmt.executeQuery("select * from elementos e inner join tipo_elemento te "
-		 			+ "on e.idtipo_elemento=e.te.idtipo_elemento where e.idelemento='" + elem.get(i).getIdelemento() +
-		 			" and e.idelemento not in (select * reservas where fecha='" + f + "and hora='"+ h +")");*/
 		rs = stmt.executeQuery("select * from elementos e inner join tipo_elemento te "
 	 			+ "on e.idtipo_elemento=te.idtipo_elemento where idelemento not in "
 	 			+ "(select id_elemento from reservas where fecha='" + f + "'and (hora_ini<='"+ h1 +"'or hora_fin>='"+ h + "'))");
 	
-		 		if(rs!=null){
-			 		while(rs.next()){
+		 	if(rs!=null){
+			 	while(rs.next()){
 			 			Elemento el=new Elemento();
 			 			el.setTipo_Elem(new Tipo_Elemento());
 			 			el.setIdelemento(rs.getInt("idelemento"));
@@ -280,8 +276,8 @@ public class DataReserva {
 		//Time h1=r.getHora_ini();
 		//Time h2=r.getHora_fin();
 		double h3=(h2.getTime()-h1.getTime())/1000/3600;
-		System.out.print(h3);
-		System.out.print(lim);
+		//System.out.print(h3);
+		//System.out.print(lim);
 		
 		
 		if(lim>=h3 || lim==0)return true;
