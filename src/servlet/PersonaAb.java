@@ -95,6 +95,7 @@ public class PersonaAb extends HttpServlet {
 		        String contrasenia = request.getParameter("contrasenia");
 		        int id_cat=Integer.parseInt(request.getParameter("categoria"));
 		        boolean habilitado = request.getParameter("habilitado") != null;
+		        String email=request.getParameter("email");
 			       
 		        //validaer que los getpara sean distintos d enull
 		 
@@ -109,6 +110,7 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setDni(dni);
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
+		   	    per.setEmail(email);
 		   	    cpers.add(per);
 		   	    String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
 		   	 response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
@@ -140,6 +142,8 @@ public class PersonaAb extends HttpServlet {
 			        String id_cat=request.getParameter("categoria");
 			        //System.out.print(request.getParameter("categoria"));
 			        boolean habilitado = request.getParameter("habilitado") != null;
+			        String email = request.getParameter("email");
+			        
 				       
 			        //validaer que los getpara sean distintos d enull
 			 
@@ -156,6 +160,7 @@ public class PersonaAb extends HttpServlet {
 			   	    per.setDni(dni);
 			   	    per.setUsuario(usuario);
 			   	    per.setContrasenia(contrasenia);
+			   	    per.setEmail(email);
 			   	    ArrayList<Persona> todas= new ArrayList<Persona>();
 			   	    todas=cpers.getAll();
 			   	    for(Persona p: todas)

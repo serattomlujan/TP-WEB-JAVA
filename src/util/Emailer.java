@@ -2,42 +2,44 @@ package util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+
 import javax.mail.*;
 import javax.mail.internet.*;
+
+
 
 
 public class Emailer {
 	
 	public static Emailer instance;
+	private Logger logger = LogManager.getLogger(getClass());
 	
 	private Properties props;
 	
-	public static Emailer getInstance(){
+	public static Emailer getInstance() throws Exception{
 		if (instance==null){
 			instance=new Emailer();
 		}
 		return instance;
 	}
 	
-	private Emailer() {
+	private Emailer() throws Exception{
 		
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream("app.properties");
 		try {
 			props = new Properties();
 			props.load(inputStream);
 			
-			/*
-			 * props.put("mail.smtp.auth", "true");
-			 * props.put("mail.smtp.starttls.enable", "true");
-			 * props.put("mail.smtp.host", "smtp.gmail.com");
-			 * props.put("mail.smtp.port", "587");
-			 * props.put("mail.username", "somemail@gmail.com");
-			 * props.put("mail.password","someRandomwPassword");
-			 */
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.log(Level.ERROR, e.getMessage());
 			e.printStackTrace();
 		}
+		
 		
 	}
 	
@@ -46,7 +48,6 @@ public class Emailer {
 		Session session = Session.getInstance(props,
 		  new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				//return new PasswordAuthentication(username, password);
 				return new PasswordAuthentication(props.getProperty("mail.username"), props.getProperty("mail.password"));
 			}
 		  });
@@ -63,6 +64,7 @@ public class Emailer {
 			Transport.send(message);
 
 		} catch (MessagingException e) {
+			logger.log(Level.ERROR, e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}

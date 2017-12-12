@@ -80,9 +80,7 @@ public class ReservasPendientes extends HttpServlet {
 				        request.setAttribute("list", misReservas);
 					}
 			 	 RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ReservasPendientes.jsp");
-			     dispatcher.forward(request, response);
-			       	
-		       
+			     dispatcher.forward(request, response);	       
 		    }
 		 
 		 

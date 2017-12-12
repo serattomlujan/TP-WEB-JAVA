@@ -19,7 +19,9 @@
 		  <td><strong> APELLIDO </strong></td>
 		  <td><strong> NOMBRE </strong></td>
 		  <td><strong> DNI</strong></td>
+		  <td><strong> EMAIL</strong></td>
 		  <td><strong> CATEGORIA</strong></td>
+		  
 		</tr>
 		<% 
 		List <Persona> listPersona = (List <Persona>)request.getAttribute("list");
@@ -29,6 +31,7 @@
 		  <td><%=p.getApellido() %></td>
 		  <td><%=p.getNombre() %></td>
 		  <td><%=p.getDni() %></td>
+		  <td><%=p.getEmail()%></td>
 		  <td><%=p.getCategoria().getDescripcion() %></td>
 		</tr>
 			

@@ -43,6 +43,7 @@
 	String usuario="";
 	String contrasenia="";
 	boolean habilitado=false;
+	String email="";
 	Categoria categ= new Categoria();
 	String desCat="";
 	String idCat="";
@@ -58,6 +59,7 @@
 		contrasenia = encontrada.getContrasenia();
 		categ= encontrada.getCategoria();
 		habilitado= encontrada.getHabilitado();
+		email=encontrada.getEmail();
 		}
 		else{
 			//dni=request.getParameter("dni");
@@ -83,6 +85,7 @@
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
 	<i><b></b></i></font>
+	<font face="arial"><br><br>Email <input name="email" id="email" value="<%=email%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Contraseña <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Categoría 

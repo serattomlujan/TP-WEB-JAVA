@@ -29,6 +29,7 @@ public class DataPersona {
 		 			p.setContrasenia(rs.getString("contrasenia"));
 		 			p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
 		 			p.getCategoria().setDescripcion(rs.getString("descripcion"));
+		 			p.setEmail(rs.getString("email"));
 		 			pers.add(p);
 		 						}
 		 				}		
@@ -54,7 +55,7 @@ public class DataPersona {
 		 		try {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 		 					"select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, "
-		 					+ "c.descripcion, usuario, contrasenia from personas p "
+		 					+ "c.descripcion, usuario, contrasenia, email from personas p "
 		 					+ "inner join categorias c on p.id_categoria=c.id_categoria where dni=?");
 		 			stmt.setString(1, per.getDni());
 		 			rs=stmt.executeQuery();
@@ -70,6 +71,7 @@ public class DataPersona {
 				 			p.setContrasenia(rs.getString("contrasenia"));
 		 					p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
 		 					p.getCategoria().setDescripcion(rs.getString("descripcion"));
+		 					p.setEmail(rs.getString("email"));
 		 			}
 		 			
 		} catch (Exception e) {
@@ -93,8 +95,8 @@ public class DataPersona {
 		 		ResultSet keyResultSet=null;
 		 		try {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-		 					"insert into personas(dni, nombre, apellido, habilitado, id_categoria,usuario,contrasenia) "
-		 					+ "values (?,?,?,?,?,?,?)",
+		 					"insert into personas(dni, nombre, apellido, habilitado, id_categoria,usuario,contrasenia,email) "
+		 					+ "values (?,?,?,?,?,?,?.?)",
 		 					PreparedStatement.RETURN_GENERATED_KEYS
 		 					);
 		 			stmt.setString(1, p.getDni());
@@ -104,6 +106,7 @@ public class DataPersona {
 		 			stmt.setInt(5, p.getCategoria().getId_categoria());
 		 			stmt.setString(6, p.getUsuario());
 		 			stmt.setString(7, p.getContrasenia());
+		 			stmt.setString(8,p.getEmail());
 		 			stmt.executeUpdate();
 		 			keyResultSet=stmt.getGeneratedKeys();
 		 			if(keyResultSet!=null && keyResultSet.next()){
@@ -151,7 +154,7 @@ public class DataPersona {
 				//stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 					//	"select p.id, nombre, apellido, dni, habilitado, categoriaId, descripcion from persona p inner join categoria c on p.categoriaId=c.id where user=? and pass=?");
 				stmt=FactoryConexion.getInstancia().getConn().prepareStatement(""
-						+ "	select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, descripcion from personas p inner join categorias c on p.id_categoria=c.id_categoria where p.usuario =? and p.contrasenia= ?"); 
+						+ "	select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, descripcion, email from personas p inner join categorias c on p.id_categoria=c.id_categoria where p.usuario =? and p.contrasenia= ?"); 
 				stmt.setString(1, per.getUsuario());
 				stmt.setString(2, per.getContrasenia());
 				rs=stmt.executeQuery();
@@ -165,6 +168,7 @@ public class DataPersona {
 						p.setHabilitado(rs.getBoolean("habilitado"));
 						p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
 						p.getCategoria().setDescripcion(rs.getString("descripcion"));
+						p.setEmail(rs.getString("email"));
 				}
 				
 			} catch (Exception e) {
@@ -189,7 +193,7 @@ public class DataPersona {
 	 		try {
 	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 	 					"update personas set dni=?, nombre=?, apellido=?, habilitado=?, "
-	 					+ "id_categoria=?, usuario=?,contrasenia=? where idpersona=?"
+	 					+ "id_categoria=?, usuario=?,contrasenia=?, email=? where idpersona=?"
 	 					);
 	 			stmt.setString(1, p.getDni());
 	 			stmt.setString(2, p.getNombre());
@@ -198,7 +202,8 @@ public class DataPersona {
 	 			stmt.setInt(5, p.getCategoria().getId_categoria());
 	 			stmt.setString(6, p.getUsuario());
 	 			stmt.setString(7, p.getContrasenia());
-	 			stmt.setInt(8, p.getIdpersona());
+	 			stmt.setString(8, p.getEmail());
+	 			stmt.setInt(9, p.getIdpersona());
 	 			stmt.executeUpdate();
 	 				 			 			
 	 		}catch (SQLException | AppDataException e) {
@@ -222,7 +227,7 @@ public class DataPersona {
 	 		try {
 	 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
 	 					"select idpersona, nombre, apellido, dni, habilitado, p.id_categoria, "
-	 					+ "c.descripcion, usuario, contrasenia from personas p "
+	 					+ "c.descripcion, usuario, contrasenia, email from personas p "
 	 					+ "inner join categorias c on p.id_categoria=c.id_categoria where id=?");
 	 			stmt.setString(1, per.getDni());
 	 			rs=stmt.executeQuery();
@@ -238,6 +243,7 @@ public class DataPersona {
 			 			p.setContrasenia(rs.getString("contrasenia"));
 	 					p.getCategoria().setId_categoria(rs.getInt("id_categoria"));
 	 					p.getCategoria().setDescripcion(rs.getString("descripcion"));
+	 					p.setEmail(rs.getNString("email"));
 	 			}
 	 			
 	} catch (Exception e) {

@@ -11,6 +11,7 @@ public class Persona implements Serializable {
 	private String contrasenia;
 	private boolean habilitado;
 	private Categoria categoria;
+	private String email;
 	
 	
 	public Categoria getCategoria(){
@@ -71,6 +72,14 @@ public class Persona implements Serializable {
 	
 		 }
 	public Persona(){}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	 
 	// @Override
 	// public boolean equals(Object p){

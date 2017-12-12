@@ -23,8 +23,15 @@ import controlers.CtrlABMElemento;
 import controlers.CtrlABMPersona;
 import controlers.CtrlABMTipoElemento;
 import controlers.CtrlReserva;
+import util.Emailer;
 import util.Fechas;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+
+import javax.mail.*;
+import javax.mail.internet.*;
 
 @WebServlet("/ReservaAb/*")
 public class ReservaAb extends HttpServlet {
@@ -125,7 +132,9 @@ public class ReservaAb extends HttpServlet {
 							r.setEstado(estado);
 							cres.add(r); 
 							String id=String.valueOf(r.getId_reserva());       
-							response.getWriter().append("Reserva registrada con el nro: ").append(id);}
+							response.getWriter().append("Reserva registrada con el nro: ").append(id);
+						//Emailer.getInstance().send("marianabsanchez@hotmail,com","Reserva realizada",r.getEstado());
+							}
 						else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");}
 						
 					else response.getWriter().append("No cumple con la cantidad de días de anticipación");//}
