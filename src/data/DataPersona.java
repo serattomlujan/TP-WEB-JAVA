@@ -95,8 +95,8 @@ public class DataPersona {
 		 		ResultSet keyResultSet=null;
 		 		try {
 		 			stmt=FactoryConexion.getInstancia().getConn().prepareStatement(
-		 					"insert into personas(dni, nombre, apellido, habilitado, id_categoria,usuario,contrasenia,email) "
-		 					+ "values (?,?,?,?,?,?,?.?)",
+		 					"insert into personas(dni, nombre, apellido, habilitado, id_categoria, usuario, contrasenia, email) "
+		 					+ "values (?,?,?,?,?,?,?,?)",
 		 					PreparedStatement.RETURN_GENERATED_KEYS
 		 					);
 		 			stmt.setString(1, p.getDni());
@@ -106,7 +106,7 @@ public class DataPersona {
 		 			stmt.setInt(5, p.getCategoria().getId_categoria());
 		 			stmt.setString(6, p.getUsuario());
 		 			stmt.setString(7, p.getContrasenia());
-		 			stmt.setString(8,p.getEmail());
+		 			stmt.setString(8, p.getEmail());
 		 			stmt.executeUpdate();
 		 			keyResultSet=stmt.getGeneratedKeys();
 		 			if(keyResultSet!=null && keyResultSet.next()){

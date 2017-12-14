@@ -133,7 +133,7 @@ public class ReservaAb extends HttpServlet {
 							cres.add(r); 
 							String id=String.valueOf(r.getId_reserva());       
 							response.getWriter().append("Reserva registrada con el nro: ").append(id);
-						//Emailer.getInstance().send("marianabsanchez@hotmail,com","Reserva realizada",r.getEstado());
+							//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
 							}
 						else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");}
 						
