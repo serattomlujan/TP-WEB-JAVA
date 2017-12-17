@@ -30,7 +30,16 @@
   function validarSiVacio(valor){
   if(valor==null)
   	alert("El DNI ingresado no está registrado");}
-</script>
+  	
+ function validarEmail(email) {
+    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if(email=='')alert("El campo no puede estar vacío");
+    if ( !expr.test(email) )
+        alert("Ingrese una dirección de mail válida");
+}
+
+  	
+  	</script>
 
 </head>
 <body>
@@ -62,7 +71,8 @@
 		email=encontrada.getEmail();
 		}
 		else{
-			//dni=request.getParameter("dni");
+			
+			dni=request.getParameter("dni");
 		}%>
 		
 
@@ -72,8 +82,9 @@
 
 	<font face="arial"> <b>PERSONAS</b><br></font></h2>
 	
-	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly"  value="<%=id%>"></font>
-	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" value="<%=dni%>" size="8" maxlength="8" onChange="validarSiNumero(this.value);">
+	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly" value="<%=id%>"></font>
+	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" <%if (dni!=null){  %> value="<%=dni%>"<%} %> 
+	 size="8" maxlength="8" onChange="validarSiNumero(this.value);">
 	 <i><b></b></i></font> 
 	
 	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><%	
@@ -85,7 +96,7 @@
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
 	<i><b></b></i></font>
-	<font face="arial"><br><br>Email <input name="email" id="email" value="<%=email%>"><i><b></b></i></font>
+	<font face="arial"><br><br>Email <input name="email" id="email" value="<%=email%>" onChange="validarEmail(this.value)"><i><b></b></i></font>
 	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Contraseña <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
 	<font face="arial"><br><br>Categoría 
@@ -95,8 +106,8 @@
 		<select name="categoria" required="id=" id="categoria" style="width: 154px; height: 29px">
 			<%for(Categoria ca : cats){%>
 			<option value="<%=ca.getId_categoria()%>"> <%=ca.getDescripcion()%></option><%;}%>
-			<%if(categ.getDescripcion()== ""){ %>
-			 <option selected placeholder="Seleccione una categoria" ></option><%;}
+			<%if(categ.getDescripcion()==null){ %>
+			 <option selected>Seleccione una categoria</option><%;}
 			else {%><option  selected value="<%=categ.getId_categoria()%>"><%=categ.getDescripcion()%> 
 			</option><%;}%>
 			  </select>
@@ -106,7 +117,8 @@
 	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br><br></font>
 	
 	
-	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
+	<button class="btn btn-lg" id="insert"
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
 	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
 	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
 	

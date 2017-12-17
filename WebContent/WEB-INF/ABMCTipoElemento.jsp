@@ -40,13 +40,14 @@
 		dias = String.valueOf(encontrado.getDias_anticip());
 		encargado= encontrado.getEncargado();
 		}
+	else nombre=request.getParameter("nombre_tipo");
 		
 %>
 
 <form class="form-signin" name="signin" action="" method="POST">
 		<font face="arial"><h2> <b>TIPOS  DE ELEMENTOS</h2></font>
 		<font face="arial">ID <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
-		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" value="<%=nombre%>"><i><b></b></i>
+		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px">Buscar</button>
 		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }
@@ -58,7 +59,8 @@
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>
 		<font face="arial">Encargado<br><br></font>
 		
-	<button type="submit" onclick="javascript: submitForm('TipoElementoAb/insert')" style="color: black;  background-color: Pink; width: 120px">Agregar</button>
+	<button type="submit" 
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 120px">Agregar</button>
 	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px">Modificar</button>
 	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px">Borrar</button></font>
 	

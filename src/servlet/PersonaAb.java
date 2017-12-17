@@ -89,6 +89,7 @@ public class PersonaAb extends HttpServlet {
 			 	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	
 			 	String dni = request.getParameter("dni");
+			 	//System.out.print(dni);
 			 	String nombre = request.getParameter("nombre_per");
 		        String apellido = request.getParameter("apellido");
 		        String usuario = request.getParameter("usuario");
@@ -146,7 +147,7 @@ public class PersonaAb extends HttpServlet {
 			        String email = request.getParameter("email");
 			        
 				       
-			        //validaer que los getpara sean distintos d enull
+			        //validar que los getpara sean distintos d enull
 			 
 			        Persona per = new Persona();
 			        ArrayList<Categoria> cats=cpers.getCategorias();
@@ -222,8 +223,9 @@ public class PersonaAb extends HttpServlet {
 			    per=cpers.getByDni(per);
 			    if(per!=null) request.setAttribute("encontrada", per);
 			    else request.setAttribute("valido","ok");
-			  
-			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);}
+			    request.setAttribute("buscar", "si");
+			    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
+			    }
 			    
 			    }
 		    

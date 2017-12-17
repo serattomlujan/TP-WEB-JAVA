@@ -34,7 +34,7 @@
 		ti= encontrada.getTipo_Elem();
 		}
 		
-		else %> <%;
+		else nombre=request.getParameter("nombre");
 	
 %>
 
@@ -44,7 +44,7 @@
 		
 		<font face="arial"><h2><b>ELEMENTOS</h2> <br></font>
 		<font face="arial">ID <input name="idelemento" id="idelemento"type="text" readonly="readonly" value="<%=id %>"><br><br>
-		<font face="arial">Nombre <input name="nombre" required id="nombre" value="<%=nombre%>"><i><b></b></i>
+		<font face="arial">Nombre <input name="nombre" required id="nombre"  <%if (nombre!=null){  %>value="<%=nombre%>"<%} %>><i><b></b></i>
 		<button type="submit"  onclick="javascript: submitForm('ElementoAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button>
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
@@ -59,7 +59,7 @@
 		
 		<%for(Tipo_Elemento t : tipos){%>
 		<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%} %>
-		<%if(ti == null){ %>
+		<%if(ti.getNombre_tipo() == null){ %>
 			 <option selected value="defecto">Seleccione un tipo</option><%;}
 			else {%><option selected value="<%=ti.getIdtipo_elemento()%>"><%=ti.getNombre_tipo()%> 
 			</option><%;}%>
@@ -67,7 +67,8 @@
 		
 		</select><br><br><br>
 	<i><b></b></i>
-	<button type="submit" onclick="javascript: submitForm('ElementoAb/insert')" style="color: black;  background-color: Pink; width: 115px">Agregar</button><i><b></b></i>
+	<button type="submit" 
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px">Agregar</button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px">Modificar</button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color:Pink; width: 115px">Borrar</button>
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>

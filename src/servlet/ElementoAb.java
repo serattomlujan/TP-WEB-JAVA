@@ -188,7 +188,8 @@ public class ElementoAb extends HttpServlet {
 					request.setAttribute("valido","ok");
 					//request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 					}
-				request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+				request.setAttribute("buscar", "si");
+			    request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 				
 			}	}    
 		    
