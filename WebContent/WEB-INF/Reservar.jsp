@@ -34,28 +34,43 @@
       alert("Debe ingresar sólo números");
   }
 function checkTime(hora) 
-{ 
-validarSiNumero(hora);
-if (hora=='')alert("El campo no puede estar vacío"); 
-a=hora.charAt(0); //<=2 
-b=hora.charAt(1); //<4 
-c=hora.charAt(2); //<=5 
-if ((a==2 && b>3) || (a>2))
-alert("La hora debe tener un valor entre 00 y 23"); 
-if (c>5)
-alert("Los minutos deben tener un valor entre 00 y 59"); }
+	{ 
+	validarSiNumero(hora);
+	if (hora=='')alert("El campo no puede estar vacío"); 
+	a=hora.charAt(0); //<=2 
+	b=hora.charAt(1); //<4 
+	c=hora.charAt(2); //<=5 
+	if ((a==2 && b>3) || (a>2))
+		alert("La hora debe tener un valor entre 00 y 23"); 
+	if (c>5)
+		alert("Los minutos deben tener un valor entre 00 y 59"); 
+	}
+
+
+function isValidDate(day,month,year)
+{
+    var dteDate;
+    month=month-1;
+    dteDate=new Date(year,month,day);
+    return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
+}
 
 function validarFecha(inp){
    
-        var D;
-        inp[0]*=1;
-        inp[1]-=1;
-        inp[2]*=1;
+   patron = /^\d{4}\d{2}\d{2}$/
+   if (!patron.test(inp)) {
+       alert("Ingrese una fecha válida");}
+       
+   var patron=new RegExp("^(19|20)+([0-9]{2})([0-9]{1,2})([0-9]{1,2})$");
+ 
+    if(inp.search(patron)==0)
+    {
+        var a=inp.substr(0,4);
+        var m=inp.substr(4,2);
+        var d=inp.substr(6,2);
         
-        D=new Date(d[0],d[1],d[2]);
-        
-        if(!(D.getFullYear()== d[0] && D.getMonth()== d[1] && D.getDate()== d[2]))
-         alert("Ingrese una fecha válida");
+        if(!isValidDate(d,m,a))
+   			 alert("Ingrese una fecha válida");}
     }
     
 
