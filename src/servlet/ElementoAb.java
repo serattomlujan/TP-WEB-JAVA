@@ -107,8 +107,8 @@ public class ElementoAb extends HttpServlet {
 			   	    
 			        cele.add(ele);
 			   	    String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
-			       // response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
-			   		request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+			        response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
+			   	//	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 			        
 						}
 					catch (Exception e){
@@ -180,7 +180,8 @@ public class ElementoAb extends HttpServlet {
 					request.setAttribute("valido","ok");
 					//request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 					}
-				request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+				request.setAttribute("buscar", "si");
+			    request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 				
 			}	}    
 		    

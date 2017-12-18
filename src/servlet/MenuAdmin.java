@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Servlet implementation class Menu
+ * Servlet implementation class MenuAdmin
  */
-@WebServlet({"/Menu/*", "/menu"})
-public class Menu extends HttpServlet {
+@WebServlet({"/MenuAdmin/*", "/menu"})
+public class MenuAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Menu() {
+    public MenuAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
