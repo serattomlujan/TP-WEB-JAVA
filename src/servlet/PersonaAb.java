@@ -114,8 +114,11 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setEmail(email);
 		   	    cpers.add(per);
 		   	    String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
+		   	    
+		   	    request.setAttribute("nueva", "ok");
 		   	    response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
-		   	   
+		   	    //request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
+			    
 		   	    //response.sendRedirect("WEB-INF/ABMCPersona.jsp");
 		        
 		        

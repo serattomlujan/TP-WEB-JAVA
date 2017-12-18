@@ -47,7 +47,7 @@
 <form class="form-signin" name="signin" action="" method="POST">
 		<font face="arial"><h2> <b>TIPOS  DE ELEMENTOS</h2></font>
 		<font face="arial">ID <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
-		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
+		<font face="arial"><br><br>Nombre <input name="nombre_tipo" id="nombre_tipo" required <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px">Buscar</button>
 		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }

@@ -123,24 +123,27 @@ public class ReservaAb extends HttpServlet {
 				r.setPersona(per);
 				
 				//if(fecha.after(hoy)){
-				boolean valida=cres.validar(r);
-				
-        	    	
-					if(valida){
+			boolean valida=cres.validar(r);      	    	
+			if(valida){
 						  	
-						if(cres.getPendientes(per, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max()){
-							r.setEstado(estado);
-							cres.add(r); 
-							String id=String.valueOf(r.getId_reserva());       
-							response.getWriter().append("Reserva registrada con el nro: ").append(id);
-							//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
-							}
-						else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");}
+				if(cres.getPendientes(per, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max())
+				{
+					r.setEstado(estado);
+					cres.add(r); 
+					String id=String.valueOf(r.getId_reserva());       
+					//response.getWriter().append("Reserva registrada con el nro: ").append(id);
+					request.setAttribute("reservada", "ok");
+					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+		    	
+					//System.out.print(obj);
+					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
+						}
+				else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");
+				}
 						
-					else response.getWriter().append("No cumple con la cantidad de días de anticipación");//}
-				//else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");
-		        
-		    }
+			else response.getWriter().append("No cumple con la cantidad de días de anticipación");
+			}
+		 
 		 
 		    private void update(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
@@ -168,6 +171,7 @@ public class ReservaAb extends HttpServlet {
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		    	
+		    	request.setAttribute("reservada", null);
 		    	CtrlReserva	cres = new CtrlReserva();
 		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
 		    	Reserva r=new Reserva();
@@ -185,26 +189,27 @@ public class ReservaAb extends HttpServlet {
 		    	
 		    	java.sql.Time hFin=cres.convertirHora(request.getParameter("hora_fin"));
 		    	
-		    	 Date hoy= new Date();
-		    	 
-			       
-		    	if(f.after(hoy)){
+		    	 Date hoy= new Date();		
+     	    	    	 
+			   	if(f.after(hoy)){
 		    		r.setFecha(f);
 		    		r.setHora_ini(h);
 		    		r.setHora_fin(hFin);
 		    		boolean validaHs=cres.validarHoras(h,hFin,ti);
-		    		if(validaHs){
-		    		ArrayList<Elemento> elems=new ArrayList<Elemento>();
-		    		elems=cres.getElemDisponibles(f, h, hFin, cres.getElementos(ti));
-		    		if (elems.size()>0)
-		    		{		
-		    			request.setAttribute("disponibles", elems);
-		    			request.setAttribute("reserva", r);}
-		    			
-		    		else request.setAttribute("valido","ok");
-		    		
-		    		request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
-		    		else response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    		//boolean valida=cres.validar(r);
+		    		//if(valida){
+		    			if(validaHs){
+		    				ArrayList<Elemento> elems=new ArrayList<Elemento>();
+		    				elems=cres.getElemDisponibles(f, h, hFin, cres.getElementos(ti));
+		    				if (elems.size()>0)
+		    				{		
+		    					request.setAttribute("disponibles", elems);
+		    					request.setAttribute("reserva", r);}
+		    				
+		    				else request.setAttribute("valido","ok");
+		    				request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
+		    			else response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    		//else response.getWriter().append("No cumple con la cantidad de días de anticipación");}
 			   	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");
 		    	
 		    }

@@ -15,7 +15,7 @@ public class DataPersona {
 		try {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		 	rs = stmt.executeQuery("select * from reservas.personas p "
-		 			+ "inner join reservas.categorias c on p.id_categoria=c.id_categoria order by apellido");
+		 			+ "inner join reservas.categorias c on p.id_categoria=c.id_categoria order by idpersona");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Persona p=new Persona();

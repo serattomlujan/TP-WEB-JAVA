@@ -16,6 +16,7 @@
 	<div>
 	<table border="1">
 		<tr>
+		  <td><strong> ID </strong></td>
 		  <td><strong> APELLIDO </strong></td>
 		  <td><strong> NOMBRE </strong></td>
 		  <td><strong> DNI</strong></td>
@@ -28,6 +29,7 @@
 		for (Persona p: listPersona)
 			{ %>
 		<tr>
+		  <td><%=p.getIdpersona() %></td>
 		  <td><%=p.getApellido() %></td>
 		  <td><%=p.getNombre() %></td>
 		  <td><%=p.getDni() %></td>

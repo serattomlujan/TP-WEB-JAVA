@@ -116,9 +116,14 @@
 	<input type="checkbox" name="habilitado" id="habilitado" value="habilitado" 
 	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br><br></font>
 	
+	<%if(request.getAttribute("nueva")==null)
+	{ %><div style="visibility:hidden;"><% }
+	else{ %><div style="visibility:visible; color: red"><%} %>
+	<b>LA PERSONA FUE REGISTRADA</b></div>
+	
 	
 	<button class="btn btn-lg" id="insert"
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%;} else %> onclick="javascript: submitForm('insert')"style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
 	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
 	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
 	

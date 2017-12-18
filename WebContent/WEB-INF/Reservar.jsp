@@ -94,6 +94,10 @@ function validarFecha(inp){
 		
 	if(request.getAttribute("disponibles")!=null){
 		el = (ArrayList<Elemento>)request.getAttribute("disponibles");}
+	else {
+		fecha=request.getParameter("fecha");
+		hora=request.getParameter("hora");
+		hora_fin=request.getParameter("hora_fin");}
 		
 	Persona p=(Persona)session.getAttribute("user");
 	
@@ -102,7 +106,7 @@ function validarFecha(inp){
 
 
 <form class="form-signin" name="signin" action="" method="POST" > <h2 class="form-signin-heading">
-	<input id="dni" name="dni" value="<%=p.getDni()%>" style="visibility:hidden;"/>
+	<!--<input id="idreserva" name="idreserva" value="<%=p.getDni()%>" style="visibility:hidden;"/>-->
 	</br>
 	<font face="arial"> <b>RESERVAS </font></h2>
 	<font face="arial">
@@ -120,10 +124,13 @@ function validarFecha(inp){
 		
 	</select><br><br></font>
 	
-Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8" value="<%=fecha%>" onChange="validarFecha(this.value)"><br>
+Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" required size="8" maxlength="8" 
+<%if (fecha!=null){  %>value="<%=fecha%>" <%} %>onChange="validarFecha(this.value)"><br>
 
-	<br>Hora Inicio (hhmm)  <input name="hora" id="hora" size="4"  maxlength="4" value="<%=hora%>" onChange="checkTime(this.value)"> 
-	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin" size="4"  maxlength="4" value="<%=hora_fin%>"onChange="checkTime(this.value)">
+	<br>Hora Inicio (hhmm)  <input name="hora" id="hora"  required size="4"  maxlength="4" 
+	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
+	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin" required size="4"  maxlength="4" 
+	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
 	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
 		for(Elemento e: el){ %>
@@ -133,11 +140,23 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
 	<b>NO HAY ELEMENTOS DISPONIBLES</b></div>
-	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
-	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: Pink; width: 115px">Agregar</button>
+	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea>
+	<% if(request.getAttribute("reservada")==null)
+	{ %><div style="visibility:hidden;color:red;"><% }
+	else{ %><div style="visibility:visible; color:red;"><%} %>
+	<b>RESERVA REGISTRADA</b></div>
+	
+	<br><br>
+	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
+	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
+	 else %>disabled<%; %>>Agregar</button>
 
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver </a>
-	<!--  <a href="#" title="salir" onclick="window.close()">Salir</a>-->
+	<!--  <% if(p.getCategoria().getId_categoria()==1) %> <a href="/WEB-INF/MenuEncargado.jsp" ><br>Home </a><%;
+	 if(p.getCategoria().getId_categoria()==2)%> <a href="MenuAdmin" ><br>Home </a><%;
+	  if(p.getCategoria().getId_categoria()==3)%>><a href="/WEB-INF/MenuUsuario.jsp"><br>Home </a><%;%>
+	 
+	 <a href="#" title="volver" onclick="window.open('WEB-INF/MenuAdmin.jsp')">Menu</a>-->
+		<a href="#" title="salir" onclick="window.close()">Salir</a>
 	
 
 </form>

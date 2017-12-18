@@ -216,7 +216,7 @@ public class DataReserva {
 		stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		rs = stmt.executeQuery("select * from elementos e inner join tipo_elemento te "
 	 			+ "on e.idtipo_elemento=te.idtipo_elemento where idelemento not in "
-	 			+ "(select id_elemento from reservas where fecha='" + f + "'and (hora_ini<='"+ h1 +"'or hora_fin>='"+ h + "'))");
+	 			+ "(select id_elemento from reservas where estado='pendiente' and fecha='" + f + "'and (hora_ini<='"+ h1 +"'or hora_fin>='"+ h + "'))");
 	
 		 	if(rs!=null){
 			 	while(rs.next()){
@@ -270,6 +270,9 @@ public class DataReserva {
 				else				
 					return false;
 	}
+	
+	
+	
 	
 	public boolean validarHoras(Time h1,Time h2, Tipo_Elemento t){
 		double lim=t.getLim_tiempo();
