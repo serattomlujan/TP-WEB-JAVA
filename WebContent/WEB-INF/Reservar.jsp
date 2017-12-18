@@ -86,12 +86,13 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" size="8" maxlength="8
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b>NO HAY ELEMENTOS DISPONIBLES</b></div>
+	<b><font face="arial" color="blue"><br>NO HAY ELEMENTOS DISPONIBLES</font></b></div>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
 	<i><b></b></i>  <button name="insert" type="submit" id="insert" onclick="javascript: submitForm('insert')" style="color: black;  background-color: Pink; width: 115px">Agregar</button>
 
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver </a>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Atrás </a>
 	<!--  <a href="#" title="salir" onclick="window.close()">Salir</a>-->
+		<a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
 	
 
 </form>

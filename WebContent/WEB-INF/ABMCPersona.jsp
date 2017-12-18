@@ -30,6 +30,13 @@
   function validarSiVacio(valor){
   if(valor==null)
   	alert("El DNI ingresado no está registrado");}
+  	
+
+  
+  
+  
+   
+  	
 </script>
 
 </head>
@@ -80,7 +87,7 @@
  	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b>EL DNI INGRESADO NO ESTÁ REGISTRADO</b></div>
+	<b><font face="arial" color="blue"><br>EL DNI INGRESADO NO ESTÁ REGISTRADO</font></b></div>
 	<font face="arial"><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" >
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
@@ -106,13 +113,14 @@
 	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br><br></font>
 	
 	
-	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert')" style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
-	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
+	<button class="btn btn-lg" id="insert" onclick="javascript: submitForm('PersonaAb/insert');alert('Persona ingresada con éxito')" style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
+	<button name="update" id="update" onclick="javascript: submitForm('update');alert('Los datos de la persona fueron modificados')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete');alert('Los datos de la persona fueron eliminados')"  style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
 	
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Atrás</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
-	
+		<a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
+
  
 </form>
 

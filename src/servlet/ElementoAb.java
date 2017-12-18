@@ -82,15 +82,7 @@ public class ElementoAb extends HttpServlet {
 		 //redirigir a página de error
 		 }
 
-		 private void list(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
-			 	CtrlABMElemento	celem = new CtrlABMElemento();
-		        List<Elemento> listElemento = celem.getAll();
-		        //request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ABMCElemento.jsp");
-		        dispatcher.forward(request, response);
-		       
-		    }
+		
 		 
 		
 		 
@@ -115,8 +107,8 @@ public class ElementoAb extends HttpServlet {
 			   	    
 			        cele.add(ele);
 			   	    String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
-			        response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
-					
+			       // response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
+			   		request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 			        
 						}
 					catch (Exception e){
@@ -147,8 +139,8 @@ public class ElementoAb extends HttpServlet {
 		        ele.setTipo_Elem(tp);
 		        cele.update(ele);
 		   	    		
-		   	    response.getWriter().append("Los datos del elemento fueron modificados");
-				
+		   	    //response.getWriter().append("Los datos del elemento fueron modificados");
+		    	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 		        }
 				catch (Exception e){
 					e.printStackTrace();
@@ -167,8 +159,8 @@ public class ElementoAb extends HttpServlet {
 		        ele.setNombre(idele);		       
 		        cele.delete(ele);
 		        
-		    
-		        response.getWriter().append("Los datos del elemento fueron eliminados");} // es necesaria esta lista?
+		    	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);}
+		        //response.getWriter().append("Los datos del elemento fueron eliminados");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    
 		    

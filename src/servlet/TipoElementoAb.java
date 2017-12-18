@@ -83,15 +83,7 @@ public class TipoElementoAb extends HttpServlet {
 		 }
 		
 		
-		 private void list(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
-			    CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
-		        List<Tipo_Elemento> listTipoEle = ctipoele.getAll();
-		        //request.setAttribute("list", listPersona);
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/ABMCTipoElemento.jsp");
-		        dispatcher.forward(request, response);
-		       
-		    }
+		
 		 
 		
 		 
@@ -118,7 +110,8 @@ public class TipoElementoAb extends HttpServlet {
 			 
 		        ctipoele.add(tipoele);
 		        String id= String.valueOf(ctipoele.getByNomTipo(nombre_tipo).getIdtipo_elemento());
-		        response.getWriter().append("Tipo de Elemento ingresado con éxito con el nro: ").append(id);
+		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
+		        //response.getWriter().append("Tipo de Elemento ingresado con éxito con el nro: ").append(id);
 		 		}
 			catch (Exception e){
 				e.printStackTrace();
@@ -147,7 +140,8 @@ public class TipoElementoAb extends HttpServlet {
 		        tipoele.setEncargado(encargado);
 		        
 		       ctipoele.update(tipoele);
-		       response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
+		       request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
+		    //   response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
 		        
 		    }
 		 
@@ -159,7 +153,8 @@ public class TipoElementoAb extends HttpServlet {
 			 	Tipo_Elemento tipoele = new Tipo_Elemento();
 			 	tipoele.setNombre_tipo(nombre_tipo);
 		        ctipoele.delete(tipoele);
-		        response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
+		       // response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
+		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		    }
 		       
 		    
