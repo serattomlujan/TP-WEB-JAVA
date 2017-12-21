@@ -22,20 +22,7 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
-<<<<<<< HEAD
-      
-     
-=======
-      /*function validarFechaMenorActual(date){
-      var x=new Date();
-      Date f=controlers.CtrlReserva.convertirFecha(date);
-      var fecha = date;
-      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
-      var today = new Date();
- 	  if (f >= today)
-        alert ("La fecha ingresada debe ser superior a la actual"); no funciona
-}*/
->>>>>>> branch 'master' of https://github.com/serattomlujan/TP-WEB-JAVA
+
  function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
       alert("Debe ingresar sólo números");
@@ -59,7 +46,7 @@ function isValidDate(day,month,year)
     dteDate=new Date(year,month,day);
     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
 }
-<<<<<<< HEAD
+
 
 function mensajesAgregar(msj){
 switch(msj){
@@ -69,8 +56,6 @@ case "anticip": alert("No cumple con la cantidad de días de anticipación");break
 default: alert("La reserva no se pudo realizar"); break;}
 }
 
-=======
->>>>>>> branch 'master' of https://github.com/serattomlujan/TP-WEB-JAVA
 function validarFecha(inp){
    
    patron = /^\d{4}\d{2}\d{2}$/
