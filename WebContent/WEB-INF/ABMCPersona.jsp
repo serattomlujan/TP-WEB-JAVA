@@ -1,3 +1,5 @@
+
+
 <%@page import="controlers.CtrlABMPersona"%>
 <%@page import="entity.Categoria"%>
 <%@page import="entity.Persona"%>
@@ -37,7 +39,6 @@
     if ( !expr.test(email) )
         alert("Ingrese una dirección de mail válida");
 }
-
   	
   	</script>
 
@@ -91,7 +92,7 @@
  	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b>EL DNI INGRESADO NO ESTÁ REGISTRADO</b></div>
+	<b><font face="arial" color="blue"><br>EL DNI INGRESADO NO ESTÁ REGISTRADO</font></b></div>
 	<font face="arial"><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" >
 	<i><b></b></i></font>
 	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
@@ -119,15 +120,17 @@
 	<%if(request.getAttribute("nueva")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible; color: red"><%} %>
-	<b>LA PERSONA FUE REGISTRADA</b></div>
+	<b><font face="arial" color="blue"><br>LA PERSONA FUE REGISTRADA</font></b></div>
 	
 	
 	<button class="btn btn-lg" id="insert"
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%;} else %> onclick="javascript: submitForm('insert')"style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
-	<button name="update" id="update" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%;} else %> onclick="javascript: submitForm('insert');alert('Persona ingresada con éxito')"style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
+	<button name="update" id="update" onclick="javascript: submitForm('update');alert('Los datos de la persona fueron modificados')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete');alert('Los datos de la persona fueron eliminados')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
 	
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+		<br><a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
+	
+	<a href="#" title="Regresar a página anterior" onclick="history.back()">Atrás</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
 	
  

@@ -168,7 +168,8 @@ public class PersonaAb extends HttpServlet {
 			   	    todas=cpers.getAll();
 			   	    for(Persona p: todas)
 			   	    	if(p.getIdpersona()==per.getIdpersona()) cpers.update(per);
-			   	    response.getWriter().append("Los datos de la persona fueron modificados");
+			   //	    response.getWriter().append("Los datos de la persona fueron modificados");
+				    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 			   	    
 					
 			        }
@@ -202,9 +203,9 @@ public class PersonaAb extends HttpServlet {
 				 	
 				 	cpers.delete(pers);
 
-			   	   	response.getWriter().append("Los datos de la persona fueron eliminados");
+			   	 //  	response.getWriter().append("Los datos de la persona fueron eliminados");
 			   	   
-			   	    
+				    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 				 	}
 			        }
 					catch (Exception e){
@@ -230,5 +231,4 @@ public class PersonaAb extends HttpServlet {
 			    
 			    }
 		    
-
 

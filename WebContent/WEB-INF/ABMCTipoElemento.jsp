@@ -1,3 +1,4 @@
+
 <%@page import ="controlers.CtrlABMTipoElemento" %>
 <%@page import ="entity.Tipo_Elemento" %>
 
@@ -52,7 +53,7 @@
 		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px">Buscar</button>
 		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }
 			else{ %><div style="visibility:visible;"><%} %>
-			<b>EL NOMBRE DEL TIPO DE ELEMENTO NO EXISTE</b></div>
+			<b><font face="arial" color="blue"><br>EL NOMBRE DEL TIPO DE ELEMENTO NO EXISTE</font></b></div>
 		<font face="arial"> <br></font>Cantidad Máxima <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);"><br><br>
 		Tiempo límite <input name="lim_tiempo" id="lim_tiempo" value="<%=tiempo %>" onChange="validarSiNumero(this.value);"><br><br>
 		Anticipación (dias) <input name="dias" id="dias" value="<%=dias%>" onChange="validarSiNumero(this.value);"><br><br>
@@ -60,11 +61,12 @@
 		<font face="arial">Encargado<br><br></font>
 		
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 120px">Agregar</button>
-	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px">Modificar</button>
-	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color: Pink; width: 115px">Borrar</button></font>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert');alert('Tipo ingresado con éxito')"<%} %> style="color: black;  background-color: Pink; width: 120px">Agregar</button>
+	<button type="submit" onclick="javascript: submitForm('update');alert('Tipo modificado con éxito')" style="color: black;  background-color: Pink; width: 115px">Modificar</button>
+	<button type="submit" onclick="javascript: submitForm('delete');alert('Tipo eliminado con éxito')" style="color: black;  background-color: Pink; width: 115px">Borrar</button></font>
 	
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+	<br><a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()">Atrás</a>
 	<a href="#" title="salir" onclick="window.close()">Salir</a>
 	
 	

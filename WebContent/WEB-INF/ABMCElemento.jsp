@@ -1,3 +1,5 @@
+
+
 <%@ page import="controlers.CtrlABMElemento" %>
 <%@page import="entity.Tipo_Elemento"%>
 <%@page import="entity.Elemento"%>
@@ -49,7 +51,7 @@
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b>EL NOMBRE DEL ELEMENTO NO EXISTE</b></div>
+	<b><font face="arial" color="blue"><br>EL NOMBRE DEL ELEMENTO NO EXISTE</font></b></div>
 	
 		<font face="arial"><br><br>Tipo Elemento
 		<%CtrlABMElemento ctrl= new CtrlABMElemento();
@@ -68,10 +70,12 @@
 		</select><br><br><br>
 	<i><b></b></i>
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px">Agregar</button><i><b></b></i>
-	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px">Modificar</button><i><b></b></i>
-	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color:Pink; width: 115px">Borrar</button>
-	<a href="#" title="Regresar a página anterior" onclick="history.back()"><br>Volver</a>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert');alert('Elemento ingresado con éxito')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px">Agregar</button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('update');alert('Elemento modificado con éxito')" style="color: black;  background-color: Pink; width: 115px">Modificar</button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('delete');alert('Elemento eliminado con éxito')" style="color: black;  background-color:Pink; width: 115px">Borrar</button>
+	
+	<br><a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
+	<a href="#" title="Regresar a página anterior" onclick="history.back()">Atrás</a>
 	<a href="#" title="salir" onclick="window.close()">   Salir</a>
 	
 

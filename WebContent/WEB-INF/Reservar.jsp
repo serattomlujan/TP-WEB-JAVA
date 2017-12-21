@@ -1,3 +1,4 @@
+
 <%@ page import="controlers.CtrlABMTipoElemento" %>
 <%@ page import="controlers.CtrlABMElemento" %>
 <%@page import="entity.Tipo_Elemento"%>
@@ -21,8 +22,20 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
+<<<<<<< HEAD
       
      
+=======
+      /*function validarFechaMenorActual(date){
+      var x=new Date();
+      Date f=controlers.CtrlReserva.convertirFecha(date);
+      var fecha = date;
+      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+      var today = new Date();
+ 	  if (f >= today)
+        alert ("La fecha ingresada debe ser superior a la actual"); no funciona
+}*/
+>>>>>>> branch 'master' of https://github.com/serattomlujan/TP-WEB-JAVA
  function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
       alert("Debe ingresar sólo números");
@@ -39,8 +52,6 @@ function checkTime(hora)
 	if (c>5)
 		alert("Los minutos deben tener un valor entre 00 y 59"); 
 	}
-
-
 function isValidDate(day,month,year)
 {
     var dteDate;
@@ -48,6 +59,7 @@ function isValidDate(day,month,year)
     dteDate=new Date(year,month,day);
     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
 }
+<<<<<<< HEAD
 
 function mensajesAgregar(msj){
 switch(msj){
@@ -57,6 +69,8 @@ case "anticip": alert("No cumple con la cantidad de días de anticipación");break
 default: alert("La reserva no se pudo realizar"); break;}
 }
 
+=======
+>>>>>>> branch 'master' of https://github.com/serattomlujan/TP-WEB-JAVA
 function validarFecha(inp){
    
    patron = /^\d{4}\d{2}\d{2}$/
@@ -79,7 +93,6 @@ function validarFecha(inp){
    			 
     }
     
-
 </script>
 </head>
 <body>
@@ -133,11 +146,12 @@ function validarFecha(inp){
 Fecha(aaaammdd) <input type="text" name="fecha" id="fecha"  required size="8" maxlength="8" 
 <%if (fecha!=null){  %>value="<%=fecha%>" <%} %>onChange="validarFecha(this.value)"><br>
 
-	<br>Hora Inicio (hhmm)  <input name="hora" id="hora" required size="4"  maxlength="4" 
+
+	<br>Hora Inicio (hhmm)  <input name="hora" id="hora"  required size="4"  maxlength="4" 
 	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
-	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin"  required size="4"  maxlength="4" 
+	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin" required size="4"  maxlength="4" 
 	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
-	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
+	 <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
 		for(Elemento e: el){ %>
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}}%>
@@ -145,13 +159,14 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha"  required size="8" ma
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b>NO HAY ELEMENTOS DISPONIBLES</b></div>
+	<b><font face="arial" color="blue"><br>NO HAY ELEMENTOS DISPONIBLES</font></b></div>
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea>
 	<% if(request.getAttribute("reservada")==null)
 	{ %><div style="visibility:hidden;color:red;"><% }
-	else{%><div style="visibility:visible; color:red;"><%} %>
+
+	else{%><div style="visibility:visible; color:blue;"><%} %>
 	<b>RESERVA REGISTRADA</b></div>
-	
+
 	<br><br>
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
 	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
@@ -162,6 +177,7 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha"  required size="8" ma
 	  if(p.getCategoria().getId_categoria()==3)%>><a href="/WEB-INF/MenuUsuario.jsp"><br>Home </a><%;%>
 	 -->
 	 
+
 	 <a href="javascript:window.history.go(-3);"><br>Menu</a>
 	 <a href="javascript:window.history.back();">Volver</a>
 	 <a href="#" title="salir" onclick="window.close()">Salir</a>
