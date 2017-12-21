@@ -74,7 +74,7 @@ public class DataReserva {
 		 			+ "inner join elementos e on e.idelemento=r.id_elemento "
 		 			+ "inner join tipo_elemento te on te.idtipo_elemento=e.idtipo_elemento "
 		 			+ "where estado='pendiente' and (fecha>current_timestamp or "
-		 			+ "(fecha=current_timestamp and hora_ini>current_timestamp)) order by p.apellido, fecha");
+		 			+ "(fecha=current_timestamp and hora_ini>current_timestamp)) order by fecha");
 		 	if(rs!=null){
 		 		while(rs.next()){
 		 			Reserva r=new Reserva();
@@ -216,7 +216,8 @@ public class DataReserva {
 		stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		rs = stmt.executeQuery("select * from elementos e inner join tipo_elemento te "
 	 			+ "on e.idtipo_elemento=te.idtipo_elemento where idelemento not in "
-	 			+ "(select id_elemento from reservas where estado='pendiente' and fecha='" + f + "'and (hora_ini<='"+ h1 +"'or hora_fin>='"+ h + "'))");
+	 			+ "(select id_elemento from reservas where estado='pendiente' and fecha='" + f + 
+	 			"'and (('"+ h +"'between hora_ini and hora_fin) or('"+ h1 + "'between hora_ini and hora_fin)))");
 	
 		 	if(rs!=null){
 			 	while(rs.next()){
@@ -295,8 +296,11 @@ public ArrayList<Reserva> getPendientes(Persona p,Tipo_Elemento ti) throws Excep
 	DataReserva dr=new DataReserva();
 	ArrayList<Reserva> resXUs=new ArrayList<Reserva>();
 	for(Reserva r: dr.getAllPendientes()){
-		if(r.getPersona().getIdpersona() == p.getIdpersona()&& r.getElemento().getTipo_Elem().getIdtipo_elemento()==ti.getIdtipo_elemento())
-		{resXUs.add(r);}
+		
+		if(r.getPersona().getIdpersona()==(p.getIdpersona())&& 
+				r.getElemento().getTipo_Elem().getIdtipo_elemento()==ti.getIdtipo_elemento())
+					
+			{resXUs.add(r);}
 	}
 	return resXUs;
 }

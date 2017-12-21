@@ -76,16 +76,16 @@ public class Start extends HttpServlet {
 			switch (categ) {
 			case 1:
 				request.getRequestDispatcher("WEB-INF/MenuEncargado.jsp").forward(request, response);
-				response.getWriter().append(user).append(" ").append(pass);
+				//response.getWriter().append(user).append(" ").append(pass);
 				break;
 				
 			case 2:
 				request.getRequestDispatcher("WEB-INF/MenuAdmin.jsp").forward(request, response);
-				response.getWriter().append(user).append(" ").append(pass);
+				//response.getWriter().append(user).append(" ").append(pass);
 				break;
 			case 3:
 				request.getRequestDispatcher("WEB-INF/MenuUsuario.jsp").forward(request, response);
-				response.getWriter().append(user).append(" ").append(pass);
+				//response.getWriter().append(user).append(" ").append(pass);
 				break;
 			default:
 				break;}}

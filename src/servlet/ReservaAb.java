@@ -26,6 +26,7 @@ import controlers.CtrlReserva;
 import util.Emailer;
 import util.Fechas;
 
+import org.apache.catalina.Session;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
@@ -89,8 +90,6 @@ public class ReservaAb extends HttpServlet {
 
 		
 		 
-		
-		 
 		 private void insert(HttpServletRequest request, HttpServletResponse response)throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
 			 	Fechas f = new Fechas();
@@ -108,11 +107,12 @@ public class ReservaAb extends HttpServlet {
 		        ele=cele.getById(idelemento);
 		        
 		        //Date hoy= new Date();
-		       
-		        CtrlABMPersona ctrlP=new CtrlABMPersona();
-		        Persona per = new Persona();
-		        String dni = request.getParameter("dni");
-		        per=ctrlP.getByDni(dni);
+		       Persona p=(Persona)request.getSession().getAttribute("user");
+		        
+		       // CtrlABMPersona ctrlP=new CtrlABMPersona();
+		        //Persona per = new Persona();
+		        //String dni = request.getParameter("dni");
+		        //per=ctrlP.getByDni(dni);
 		        Reserva r= new Reserva();
 		        r.setElemento(ele);
 		       // r.setId_reserva(0);
@@ -120,22 +120,23 @@ public class ReservaAb extends HttpServlet {
 				r.setHora_ini(hora);
 				r.setHora_fin(horaF);
 				r.setDetalle(detalle);
-				r.setPersona(per);
+				r.setPersona(p);
 				
 				//if(fecha.after(hoy)){
 			boolean valida=cres.validar(r);      	    	
 			if(valida){
-						  	
-				if(cres.getPendientes(per, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max())
+										  	
+				if(cres.getPendientes(p, ele.getTipo_Elem()).size() < r.getElemento().getTipo_Elem().getCant_max())
 				{
 					r.setEstado(estado);
 					cres.add(r); 
-					String id=String.valueOf(r.getId_reserva());       
+					//String id=String.valueOf(r.getId_reserva());       
 					//response.getWriter().append("Reserva registrada con el nro: ").append(id);
 					request.setAttribute("reservada", "ok");
+					//response.sendRedirect("../ReservaAb");
+			        
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
-		    	
-					//System.out.print(obj);
+		    						
 					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
 						}
 				else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");
@@ -143,6 +144,7 @@ public class ReservaAb extends HttpServlet {
 						
 			else response.getWriter().append("No cumple con la cantidad de días de anticipación");
 			}
+		 
 		 
 		 
 		    private void update(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -158,8 +160,8 @@ public class ReservaAb extends HttpServlet {
 				
 		    }
 		 
-		    private void cancelar(HttpServletRequest request, HttpServletResponse response)
-		            throws Exception {
+		    
+		    private void cancelar(HttpServletRequest request, HttpServletResponse response)throws Exception {
 			 	CtrlReserva	cres = new CtrlReserva();
 			 	int id_reserva = Integer.parseInt(request.getParameter("id_reserva"));
 		 
@@ -167,6 +169,7 @@ public class ReservaAb extends HttpServlet {
 		        r.setId_reserva(id_reserva);
 		        cres.update(r);
 		        request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);} 
+		    
 		    
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -189,9 +192,9 @@ public class ReservaAb extends HttpServlet {
 		    	
 		    	java.sql.Time hFin=cres.convertirHora(request.getParameter("hora_fin"));
 		    	
-		    	 Date hoy= new Date();		
+		    	 //Date hoy= new Date();		
      	    	    	 
-			   	if(f.after(hoy)){
+			   	//if(f.after(hoy)){
 		    		r.setFecha(f);
 		    		r.setHora_ini(h);
 		    		r.setHora_fin(hFin);
@@ -208,11 +211,9 @@ public class ReservaAb extends HttpServlet {
 		    				
 		    				else request.setAttribute("valido","ok");
 		    				request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
-		    			else response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    			 else response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
 		    		//else response.getWriter().append("No cumple con la cantidad de días de anticipación");}
-			   	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");
-		    	
-		    }
+			   //	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");}
 		    
 }
 

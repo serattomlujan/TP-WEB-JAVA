@@ -7,6 +7,8 @@
 <%@page import="entity.Persona"%>
 
 
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,16 +21,8 @@
    		document.signin.action=met;
    		//document.getElementById("myFrom").submit();
       }
-      /*function validarFechaMenorActual(date){
-      var x=new Date();
-      Date f=controlers.CtrlReserva.convertirFecha(date);
-      var fecha = date;
-      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
-      var today = new Date();
- 	  if (f >= today)
-        alert ("La fecha ingresada debe ser superior a la actual"); no funciona
-}*/
-
+      
+     
  function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
       alert("Debe ingresar sólo números");
@@ -55,6 +49,14 @@ function isValidDate(day,month,year)
     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
 }
 
+function mensajesAgregar(msj){
+switch(msj){
+case "ok": alert("Reserva registrada");break;
+case "sum": alert("Supera la cantidad máxima de reservas de ese tipo");break;
+case "anticip": alert("No cumple con la cantidad de días de anticipación");break;
+default: alert("La reserva no se pudo realizar"); break;}
+}
+
 function validarFecha(inp){
    
    patron = /^\d{4}\d{2}\d{2}$/
@@ -68,9 +70,13 @@ function validarFecha(inp){
         var a=inp.substr(0,4);
         var m=inp.substr(4,2);
         var d=inp.substr(6,2);
-        
+        var hoy=new Date();
+        var fe=new Date(a,m,d);
+       
         if(!isValidDate(d,m,a))
-   			 alert("Ingrese una fecha válida");}
+   			 alert("Ingrese una fecha válida");
+   	    else if(fe<hoy) alert ("La fecha ingresada debe ser mayor a la actual");}
+   			 
     }
     
 
@@ -124,12 +130,12 @@ function validarFecha(inp){
 		
 	</select><br><br></font>
 	
-Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" required size="8" maxlength="8" 
+Fecha(aaaammdd) <input type="text" name="fecha" id="fecha"  required size="8" maxlength="8" 
 <%if (fecha!=null){  %>value="<%=fecha%>" <%} %>onChange="validarFecha(this.value)"><br>
 
-	<br>Hora Inicio (hhmm)  <input name="hora" id="hora"  required size="4"  maxlength="4" 
+	<br>Hora Inicio (hhmm)  <input name="hora" id="hora" required size="4"  maxlength="4" 
 	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
-	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin" required size="4"  maxlength="4" 
+	  Hora Fin (hhmm)  <input name="hora_fin" id="hora_fin"  required size="4"  maxlength="4" 
 	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
 	  <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
@@ -143,20 +149,22 @@ Fecha(aaaammdd) <input type="text" name="fecha" id="fecha" required size="8" max
 	<br> Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea>
 	<% if(request.getAttribute("reservada")==null)
 	{ %><div style="visibility:hidden;color:red;"><% }
-	else{ %><div style="visibility:visible; color:red;"><%} %>
+	else{%><div style="visibility:visible; color:red;"><%} %>
 	<b>RESERVA REGISTRADA</b></div>
 	
 	<br><br>
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
 	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
-	 else %>disabled<%; %>>Agregar</button>
+	 else %> disabled<%; %>>Agregar</button>
 
 	<!--  <% if(p.getCategoria().getId_categoria()==1) %> <a href="/WEB-INF/MenuEncargado.jsp" ><br>Home </a><%;
-	 if(p.getCategoria().getId_categoria()==2)%> <a href="MenuAdmin" ><br>Home </a><%;
+	 if(p.getCategoria().getId_categoria()==2)%> <a href="Menu" ><br>Home </a><%;
 	  if(p.getCategoria().getId_categoria()==3)%>><a href="/WEB-INF/MenuUsuario.jsp"><br>Home </a><%;%>
+	 -->
 	 
-	 <a href="#" title="volver" onclick="window.open('WEB-INF/MenuAdmin.jsp')">Menu</a>-->
-		<a href="#" title="salir" onclick="window.close()">Salir</a>
+	 <a href="javascript:window.history.go(-3);"><br>Menu</a>
+	 <a href="javascript:window.history.back();">Volver</a>
+	 <a href="#" title="salir" onclick="window.close()">Salir</a>
 	
 
 </form>

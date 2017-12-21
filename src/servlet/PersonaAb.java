@@ -119,9 +119,7 @@ public class PersonaAb extends HttpServlet {
 		   	    response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
 		   	    //request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 			    
-		   	    //response.sendRedirect("WEB-INF/ABMCPersona.jsp");
-		        
-		        
+		   	    		        
 					}
 				catch (Exception e){
 					e.printStackTrace();

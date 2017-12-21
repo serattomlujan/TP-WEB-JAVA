@@ -40,7 +40,7 @@ public class ReservasPendientes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getPathInfo());
+		//System.out.println(request.getPathInfo());
 		try{
         	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
         		this.list(request, response);
@@ -95,7 +95,7 @@ public class ReservasPendientes extends HttpServlet {
 			 int ok=ctrlR.cambiarEstado(r);
 			 if (ok==1)
 			 {
-				 System.out.println(ok); 
+				 //System.out.println(ok); 
 			        response.sendRedirect("../ReservasPendientes");
 			        
 			 }
