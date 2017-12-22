@@ -63,12 +63,12 @@
 </head> 
 
 <body bgcolor="Pink" style="height: 291px; ">
+<center>
 
 <% Persona usuarioLog=((Persona)session.getAttribute("user")); %>
 	
-	<h1> SISTEMA DE GESTION DE RESERVAS</h1><h2>Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h2>
-	
-	 <table>
+	<h1><font face="verdana" color="white"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="purple">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
+	</center>
 <div class="drop">
 
 

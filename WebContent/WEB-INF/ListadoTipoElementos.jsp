@@ -9,7 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><title>Listar Tipos de Elementos</title><font face="arial"> <b><h2> LISTADO DE TIPOS DE ELEMENTOS </h2>
+</head><center><title>Listar Tipos  Elementos</title><hr color="purple"><font face="arial" color="purple"><b><h2> LISTADO TIPOS DE ELEMENTOS </h2><hr color="purple"><br><br>
 <body>
 
 	
@@ -41,9 +41,19 @@
 			%>
 	</table><br>		
 	</div>
+	<br>
+
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
+	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
+	<hr color="pink">
+	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="PersonaAb">PERSONAS</a>
+			   <a href="ElementoAb">ELEMENTOS</a>
+			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink"><hr color="purple">
 	
-	<a href="#" title="Regresar a página anterior" onclick="history.back()">Volver</a>
-	<a href="#" title="salir" onclick="window.close()">Salir</a>
-	
-</form></body>
+</form></center></body>
 </html>

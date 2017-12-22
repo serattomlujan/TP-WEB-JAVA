@@ -25,6 +25,7 @@
 	list-style-type:none;
 	height:30px;
 	text-align: center;
+	
 }
 .drop_menu li { float:; }
 .drop_menu li a:hover {background-color:#FF66CC;}
@@ -60,15 +61,17 @@
 }
 .drop_menu li:hover ul li a:hover { background:#005555; }</style>
 
+
 </head> 
 
-<body bgcolor="Pink" style="height: 291px; ">
+<body bgcolor="pink")><center>
 
 <% Persona usuarioLog=((Persona)session.getAttribute("user")); %>
 	
-	<h1> SISTEMA DE GESTION DE RESERVAS</h1><h2>Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></h2>
+	<h1><font face="verdana" color="white"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="purple">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
+	</center>
 	
-	 <table>
+	 <center>
 <div class="drop">
 
 
@@ -79,10 +82,10 @@
 			   <li><a href="ReservasPendientes"> RESERVAS PENDIENTES</a></li>
 			   <li><a href="PersonaAb">PERSONAS</a></li>
 			   <li><a href="ElementoAb">ELEMENTOS</a></li>
-			   <li><a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
-			   <li><a href="ListadoElementos">LISTADO de ELEMENTOS</a></li>
-			   <li><a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a></li>
-			   <li><a href="ListadodePersona">LISTADO de PERSONAS</a></li> 
+			   <li><a href="TipoElementoAb">TIPO ELEMENTOS</a>
+			   <li><a href="ListadoElementos">LISTADO ELEMENTOS</a></li>
+			   <li><a href="ListadoTipoElementos">LISTADO TIPOS ELEMENTOS</a></li>
+			   <li><a href="ListadodePersona">LISTADO PERSONAS</a></li> 
 	
  
 		  <li><a href="Login.html">CERRAR SESION</a></li>

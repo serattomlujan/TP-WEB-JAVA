@@ -77,30 +77,31 @@
 		}%>
 		
 
-
+<center>
 
 <form class="form-signin" name="signin" action="" method="POST"> <h2 class="form-signin-heading" >
-
-	<font face="arial"> <b>PERSONAS</b><br></font></h2>
+	<hr color="PURPLE">
+	<font face="arial" color="PURPLE"> <b>P E R S O N A S</b><br></font></h2>
+		<hr color="PURPLE"><br><br>
 	
-	<font face="arial">ID <input name="idpersona" id="idpersona" type="text" readonly="readonly" value="<%=id%>"></font>
-	 <font face="arial"><br><br>DNI <input  required name="dni" id="dni" <%if (dni!=null){  %> value="<%=dni%>"<%} %> 
+	<strong><font face="arial">ID: <input name="idpersona" id="idpersona" type="text" readonly="readonly" value="<%=id%>"></font>
+	 <font face="arial">&nbsp;&nbsp;DNI: <input  required name="dni" id="dni" <%if (dni!=null){  %> value="<%=dni%>"<%} %> 
 	 size="8" maxlength="8" onChange="validarSiNumero(this.value);">
 	 <i><b></b></i></font> 
 	
-	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button><%	
+	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><%	
  	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
 	<b><font face="arial" color="blue"><br>EL DNI INGRESADO NO ESTÁ REGISTRADO</font></b></div>
-	<font face="arial"><br>Nombre <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" >
+	<font face="arial"><br>Nombre:  <input type="text" name="nombre_per" id="nombre_per" size="15" value="<%=nombre_per%>" >
 	<i><b></b></i></font>
-	<font face="arial"><br><br>Apellido <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
+	<font face="arial">&nbsp;&nbsp;Apellido:  <input type="text" name="apellido" id="apellido" size="15" value="<%=apellido%>" >
 	<i><b></b></i></font>
-	<font face="arial"><br><br>Email <input name="email" id="email" value="<%=email%>" onChange="validarEmail(this.value)"><i><b></b></i></font>
-	<font face="arial"><br><br>Usuario <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
-	<font face="arial"><br><br>Contraseña <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
-	<font face="arial"><br><br>Categoría 
+	<font face="arial">&nbsp;&nbsp;Email:  <input name="email" id="email" value="<%=email%>" onChange="validarEmail(this.value)"><i><b></b></i></font>
+	<font face="arial"><br><br>Usuario: <input name="usuario" id="usuario" value="<%=usuario%>"><i><b></b></i></font>
+	<font face="arial">&nbsp;&nbsp;Contraseña: <input type="password" name="contrasenia" id="contrasenia" value="<%=contrasenia%>"><i><b></b></i></font>
+	<font face="arial"><br><br>Categoría: 
 	<%CtrlABMPersona ctrl= new CtrlABMPersona();
 		ArrayList<Categoria> cats=new ArrayList<Categoria>();
 		cats=ctrl.getCategorias(); %>
@@ -112,10 +113,10 @@
 			else {%><option  selected value="<%=categ.getId_categoria()%>"><%=categ.getDescripcion()%> 
 			</option><%;}%>
 			  </select>
-		<br><br>
+		
 	</font>
 	<input type="checkbox" name="habilitado" id="habilitado" value="habilitado" 
-	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br><br></font>
+	<%if(habilitado) {%> checked <%}%>> <font face="arial">Habilitado<br></font>
 	
 	<%if(request.getAttribute("nueva")==null)
 	{ %><div style="visibility:hidden;"><% }
@@ -124,17 +125,28 @@
 	
 	
 	<button class="btn btn-lg" id="insert"
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%;} else %> onclick="javascript: submitForm('insert');alert('Persona ingresada con éxito')"style="color: black;  background-color: Pink; width: 115px" type="submit">Agregar</button>
-	<button name="update" id="update" onclick="javascript: submitForm('update');alert('Los datos de la persona fueron modificados')" style="color: black;  background-color: Pink; width: 115px" type="submit">Modificar</button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('delete');alert('Los datos de la persona fueron eliminados')" style="color: black;  background-color: Pink; width: 115px" type="submit">Borrar</button>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else {%> onclick="javascript: submitForm('insert');alert('Persona ingresada con éxito')"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Agregar</strong></button>
+	<button name="update" id="update" onclick="javascript: submitForm('update');alert('Los datos de la persona fueron modificados')" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Modificar</strong></button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete');alert('Los datos de la persona fueron eliminados')" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Borrar</strong></button>
 	
-		<br><a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
-	
-	<a href="#" title="Regresar a página anterior" onclick="history.back()">Atrás</a>
-	<a href="#" title="salir" onclick="window.close()">Salir</a>
+		<br>
+
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right"><font face="arial">Atrás</h6></a>
+	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br><font>
+	<hr color="pink">
+	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="PersonaAb">PERSONAS</a>
+			   <a href="ElementoAb">ELEMENTOS</a>
+			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink">
+			   <hr color="purple">
+			   
 	
  
-</form>
+</form></center>
 
 </body>
 

@@ -16,8 +16,8 @@
    		//document.getElementById("myFrom").submit();
       }
 </script>
-</head><title>Reservas Pendientes</title><font face="arial"> 
-<h2><b> RESERVAS PENDIENTES</h2>
+</head><center><title>Reservas Pendientes</title><hr color="purple"><font face="arial" color="purple"> 
+<h2><b> RESERVAS PENDIENTES</h2><hr color="purple"><br><br>
 <body>
 
 	
@@ -60,8 +60,19 @@
 	</form>		
 	</div>
 	<!-- <button type="submit" style="color: black;  background-color: aqua; width: 115px">Cancelar Reserva</button> -->
-	<a href="#" title="Regresar a página anterior" onclick="history.back()">Volver</a>
-	<a href="#" title="salir" onclick="window.close()">Salir</a>
+<br>
+
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
+	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
+	<hr color="pink">
+	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="PersonaAb">PERSONAS</a>
+			   <a href="ElementoAb">ELEMENTOS</a>
+			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink"><hr color="purple">
 	
-</form></body>
+</form></center></body>
 </html>

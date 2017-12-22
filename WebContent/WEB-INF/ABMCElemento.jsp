@@ -41,19 +41,19 @@
 %>
 
 
-
+<center>
 <form class="form-signin" name="signin" action="" method="POST">
-		
-		<font face="arial"><h2><b>ELEMENTOS</h2> <br></font>
-		<font face="arial">ID <input name="idelemento" id="idelemento"type="text" readonly="readonly" value="<%=id %>"><br><br>
-		<font face="arial">Nombre <input name="nombre" required id="nombre"  <%if (nombre!=null){  %>value="<%=nombre%>"<%} %>><i><b></b></i>
-		<button type="submit"  onclick="javascript: submitForm('ElementoAb/buscar')" style="color: black;  background-color: Pink; width: 115px">Buscar</button>
+		<hr color="purple">
+		<font face="arial" color="purple"><h2><b>E L E M E N T O S</h2> </font><hr color="purple"> <br><br>
+<strong>		<font face="arial">ID: <input name="idelemento" id="idelemento"type="text" readonly="readonly" value="<%=id %>">
+		<font face="arial">&nbsp;&nbsp;Nombre: <input name="nombre" required id="nombre"  <%if (nombre!=null){  %>value="<%=nombre%>"<%} %>><i><b></b></i>
+		<button type="submit"  onclick="javascript: submitForm('ElementoAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button>
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
 	<b><font face="arial" color="blue"><br>EL NOMBRE DEL ELEMENTO NO EXISTE</font></b></div>
 	
-		<font face="arial"><br><br>Tipo Elemento
+		<font face="arial"><br>Tipo Elemento:
 		<%CtrlABMElemento ctrl= new CtrlABMElemento();
 		ArrayList<Tipo_Elemento> tipos=new ArrayList<Tipo_Elemento>();
 		tipos=ctrl.getTipos(); %>
@@ -68,19 +68,32 @@
 	
 		
 		</select><br><br><br>
-	<i><b></b></i>
+	<i><b></b></i></strong>
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert');alert('Elemento ingresado con éxito')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px">Agregar</button><i><b></b></i>
-	<button type="submit" onclick="javascript: submitForm('update');alert('Elemento modificado con éxito')" style="color: black;  background-color: Pink; width: 115px">Modificar</button><i><b></b></i>
-	<button type="submit" onclick="javascript: submitForm('delete');alert('Elemento eliminado con éxito')" style="color: black;  background-color:Pink; width: 115px">Borrar</button>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert');alert('Elemento ingresado con éxito')"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px"><strong>Agregar</strong></button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('update');alert('Elemento modificado con éxito')" style="color: black;  background-color: Pink; width: 115px"><strong>Modificar</strong></button><i><b></b></i>
+	<button type="submit" onclick="javascript: submitForm('delete');alert('Elemento eliminado con éxito')" style="color: black;  background-color:Pink; width: 115px"><strong>Borrar</strong></button>
 	
-	<br><a href="#" title="Menu" onclick="javascript: submitForm('/Start')">Menu</a>
-	<a href="#" title="Regresar a página anterior" onclick="history.back()">Atrás</a>
-	<a href="#" title="salir" onclick="window.close()">   Salir</a>
+	<br>
+
+	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
+	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
+	<hr color="pink">
+	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="PersonaAb">PERSONAS</a>
+			   <a href="ElementoAb">ELEMENTOS</a>
+			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink">
+			   <hr color="purple">
+	</font></center>
 	
 
 
-</form>
+
+</form></center>
 	</body>
 
 </html>
