@@ -59,13 +59,6 @@ function cleanForm(frm){
 	}
 }
 
-function mensajesAgregar(msj){
-switch(msj){
-case "ok": alert("Reserva registrada");break;
-case "sum": alert("Supera la cantidad máxima de reservas de ese tipo");break;
-case "anticip": alert("No cumple con la cantidad de días de anticipación");break;
-default: alert("La reserva no se pudo realizar"); break;}
-}
 
 function validarFecha(inp){
    
@@ -162,7 +155,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	{ %><div style="visibility:hidden;color:red;"><% }
 
 	else if(request.getAttribute("reservada")=="ok"){%><div style="visibility:visible; color:blue;">
-	<b>RESERVA REGISTRADA</b></div><br><%}
+	<b>RESERVA REGISTRADA!!!</b></div><br><%}
 	else if(request.getAttribute("reservada")=="limite"){ %><div style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>SUPERA EL LIMITE DE TIEMPO PARA ESE TIPO DE ELEMENTO</font></b></div><%;}
 	else if(request.getAttribute("reservada")=="maximo") {%><div style="visibility:visible; color: blue">

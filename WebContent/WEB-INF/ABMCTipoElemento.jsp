@@ -47,7 +47,7 @@
 <center>
 <form class="form-signin" name="signin" action="" method="POST"><hr color="purple">
 		<font face="arial" color="purple"><h2> <b>T I P O S   DE   E L E M E N T O S</h2></font><hr color="purple"><br><br>
-		<font face="arial">ID: <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
+		<font face="arial">ID: <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly" size=5">
 		<font face="arial">&nbsp;&nbsp;Nombre: <input name="nombre_tipo" id="nombre_tipo" required <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
 		<button type="submit" name="buscar" onclick="javascript: submitForm('/TP_Web3/TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button>

@@ -40,7 +40,7 @@ public class Fechas {
     }
 	
 	public java.sql.Date ParseFecha2(String f) throws ParseException, java.text.ParseException {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
          java.util.Date parsed = format.parse(f);
          //System.out.println(parsed);
          java.sql.Date fecha = new java.sql.Date(parsed.getTime());

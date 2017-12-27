@@ -124,7 +124,7 @@ public class DataReserva {
  					PreparedStatement.RETURN_GENERATED_KEYS
  					);
  			java.sql.Date sqlDate = new java.sql.Date(r.getFecha().getTime());
- 			System.out.println(sqlDate);
+ 			//System.out.println(sqlDate);
  			stmt.setDate(1,sqlDate);
  			stmt.setTime(2, r.getHora_ini());
  			stmt.setTime(3, r.getHora_fin());
