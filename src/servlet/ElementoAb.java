@@ -107,8 +107,9 @@ public class ElementoAb extends HttpServlet {
 			   	    
 			        cele.add(ele);
 			   	    String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
-			        response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
-			   	//	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+			        //response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
+			   	    request.setAttribute("nuevo", "ok");
+			   	    request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 			        
 						}
 					catch (Exception e){
@@ -140,7 +141,8 @@ public class ElementoAb extends HttpServlet {
 		        cele.update(ele);
 		   	    		
 		   	    //response.getWriter().append("Los datos del elemento fueron modificados");
-		    	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
+		        request.setAttribute("nuevo", "modif");
+		        request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 		        }
 				catch (Exception e){
 					e.printStackTrace();
@@ -158,7 +160,7 @@ public class ElementoAb extends HttpServlet {
 		      
 		        ele.setNombre(idele);		       
 		        cele.delete(ele);
-		        
+		        request.setAttribute("nuevo", "elim");
 		    	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);}
 		        //response.getWriter().append("Los datos del elemento fueron eliminados");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?

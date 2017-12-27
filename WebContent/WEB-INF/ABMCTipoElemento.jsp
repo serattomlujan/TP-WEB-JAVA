@@ -50,7 +50,7 @@
 		<font face="arial">ID: <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
 		<font face="arial">&nbsp;&nbsp;Nombre: <input name="nombre_tipo" id="nombre_tipo" required <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
-		<button type="submit" name="buscar" onclick="javascript: submitForm('TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button>
+		<button type="submit" name="buscar" onclick="javascript: submitForm('/TP_Web3/TipoElementoAb/buscar')"style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button>
 		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }
 			else{ %><div style="visibility:visible;"><%} %>
 			<b><font face="arial" color="blue"><br>EL NOMBRE DEL TIPO DE ELEMENTO NO EXISTE</font></b></div>
@@ -60,10 +60,20 @@
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>
 		<font face="arial">Encargado<br><br></font>
 		
+	<%if(request.getAttribute("nuevo")==null)
+	{ %><div style="visibility:hidden;"><% }
+	else if(request.getAttribute("nuevo")=="ok"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>EL TIPO DE ELEMENTO FUE REGISTRADO</font></b></div><%}
+	else if(request.getAttribute("nuevo")=="modif"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>LOS DATOS FUERON MODIFICADOS</font></b></div><%;}
+	else if(request.getAttribute("nuevo")=="elim") {%><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>EL TIPO DE ELEMENTO FUE ELIMINADO</font><%;}%></b><br><br></div>
+	
+		
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert');alert('Tipo ingresado con éxito')"<%} %> style="color: black;  background-color: Pink; width: 120px"><strong>Agregar</strong></button>
-	<button type="submit" onclick="javascript: submitForm('update');alert('Tipo modificado con éxito')" style="color: black;  background-color: Pink; width: 115px"><strong>Modificar</strong></button>
-	<button type="submit" onclick="javascript: submitForm('delete');alert('Tipo eliminado con éxito')" style="color: black;  background-color: Pink; width: 115px"><strong>Borrar</strong></button></font>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert');"<%} %> style="color: black;  background-color: Pink; width: 120px"><strong>Agregar</strong></button>
+	<button type="submit" onclick="javascript: submitForm('update');" style="color: black;  background-color: Pink; width: 115px"><strong>Modificar</strong></button>
+	<button type="submit" onclick="javascript: submitForm('delete');" style="color: black;  background-color: Pink; width: 115px"><strong>Borrar</strong></button></font>
 	
 	<br>
 
@@ -78,7 +88,7 @@
 			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a> 
-			   <a href="Login.html">CERRAR SESIÓN</a>
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
 			   <hr color="pink"><hr color="purple">
 	
 	

@@ -91,7 +91,7 @@
 	 size="8" maxlength="8" onChange="validarSiNumero(this.value);">
 	 <i><b></b></i></font> 
 	
-	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><%	
+	<button class="btn btn-lg" type="submit" name="buscar" onclick="javascript: submitForm('/TP_Web3/PersonaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><%	
  	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
@@ -122,14 +122,18 @@
 	
 	<%if(request.getAttribute("nueva")==null)
 	{ %><div style="visibility:hidden;"><% }
-	else{ %><div style="visibility:visible; color: red"><%} %>
-	<b><font face="arial" color="blue"><br>LA PERSONA FUE REGISTRADA</font></b></div>
+	else if(request.getAttribute("nueva")=="ok"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>LA PERSONA FUE REGISTRADA</font></b></div><%}
+	else if(request.getAttribute("nueva")=="modif"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>LOS DATOS FUERON MODIFICADOS</font></b></div><%;}
+	else if(request.getAttribute("nueva")=="elim") {%><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>LA PERSONA FUE ELIMINADA</font><%;}%></b><br><br></div>
 	
 	
 	<button class="btn btn-lg" id="insert"
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else {%> onclick="javascript: submitForm('insert');alert('Persona ingresada con éxito')"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Agregar</strong></button>
-	<button name="update" id="update" onclick="javascript: submitForm('update');alert('Los datos de la persona fueron modificados')" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Modificar</strong></button>
-	<button name="delete" id="delete" onclick="javascript: submitForm('delete');alert('Los datos de la persona fueron eliminados')" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Borrar</strong></button>
+	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else {%> onclick="javascript: submitForm('insert');"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Agregar</strong></button>
+	<button name="update" id="update" onclick="javascript: submitForm('update');" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Modificar</strong></button>
+	<button name="delete" id="delete" onclick="javascript: submitForm('delete');" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Borrar</strong></button>
 	
 		<br>
 
@@ -145,7 +149,7 @@
 			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
-			   <a href="Login.html">CERRAR SESIÓN</a><hr color="pink">
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a><hr color="pink">
 			   <hr color="purple">
 		
 	

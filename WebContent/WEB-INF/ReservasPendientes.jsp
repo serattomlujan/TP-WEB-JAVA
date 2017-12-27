@@ -76,11 +76,11 @@
 			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
-			   <a href="Login.html">CERRAR SESIÓN</a>
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
 			    <hr color="pink"><hr color="purple">
 			   <%}else{ %>	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> MIS RESERVAS</a>
-			   <a href="Login.html">CERRAR SESIÓN</a> <hr color="pink">
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a> <hr color="pink">
 			   <hr color="purple"><%} %>
 		   
 	

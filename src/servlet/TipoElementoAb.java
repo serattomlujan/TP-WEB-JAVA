@@ -110,6 +110,8 @@ public class TipoElementoAb extends HttpServlet {
 			 
 		        ctipoele.add(tipoele);
 		        String id= String.valueOf(ctipoele.getByNomTipo(nombre_tipo).getIdtipo_elemento());
+		        
+		        request.setAttribute("nuevo", "ok");
 		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		        //response.getWriter().append("Tipo de Elemento ingresado con éxito con el nro: ").append(id);
 		 		}
@@ -140,6 +142,7 @@ public class TipoElementoAb extends HttpServlet {
 		        tipoele.setEncargado(encargado);
 		        
 		       ctipoele.update(tipoele);
+		       request.setAttribute("nuevo", "modif");
 		       request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		    //   response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
 		        
@@ -154,6 +157,7 @@ public class TipoElementoAb extends HttpServlet {
 			 	tipoele.setNombre_tipo(nombre_tipo);
 		        ctipoele.delete(tipoele);
 		       // response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
+		        request.setAttribute("nuevo", "elim");
 		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		    }
 		       

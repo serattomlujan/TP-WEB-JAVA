@@ -23,6 +23,11 @@
    		//document.getElementById("myFrom").submit();
       }
 
+function formReset()
+{
+document.getElementById("signin").reset();
+}
+
  function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
       alert("Debe ingresar sólo números");
@@ -47,6 +52,12 @@ function isValidDate(day,month,year)
     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
 }
 
+function cleanForm(frm){
+	var inputs = document.frm.getElementsByTagName("input");
+	for(var i=0;i<inputs.length;i++){
+	inputs[i].value = "";
+	}
+}
 
 function mensajesAgregar(msj){
 switch(msj){
@@ -109,8 +120,7 @@ function validarFecha(inp){
 %>
 <center>
 
-<form class="form-signin" name="signin" action="" method="POST" > <h2 class="form-signin-heading">
-	<!--<input id="idreserva" name="idreserva" value="<%=p.getDni()%>" style="visibility:hidden;"/>-->
+<form class="form-signin" name="signin" id="signin"action="" method="POST" > <h2 class="form-signin-heading">
 	
 	<hr color="purple">
 	<font face="arial" color="purple"> <b>R E S E R V A S </font></h2>
@@ -137,7 +147,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
 	 &nbsp;&nbsp;&nbsp; Hora Fin:   <input name="hora_fin"  id="hora_fin" required size="4"  maxlength="4" 
 	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
-	 <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
+	 <button name="buscar" id="buscar" onclick="javascript: submitForm('/TP_Web3/ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
 		for(Elemento e: el){ %>
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}}%>
@@ -145,7 +155,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	<%	if(request.getAttribute("valido")==null)
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
-	<b><font face="arial" color="blue"><br>NO HAY ELEMENTOS DISPONIBLES</font></b></div>
+	<b><font face="arial" color="blue"><br>NO HAY ELEMENTOS DISPONIBLES DE ESE TIPO</font></b></div>
 	Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea>
 	<% if(request.getAttribute("reservada")==null)
 	{ %><div style="visibility:hidden;color:red;"><% }
@@ -157,7 +167,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
 	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
 	 else %> disabled<%; %>><strong>Agregar</strong></button>
-	 <input type="reset" name="Borrar" id="Borrar" value="Limpiar" class="boton" style="color: black;  background-color: Pink; width: 115px" /> 
+	 <input type="reset" name="Borrar" id="Borrar" value="Limpiar" class="boton" onclick="cleanForm('signin')"style="color: black;  background-color: Pink; width: 115px" /> 
 	 
 
 	 
@@ -177,12 +187,12 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
-			   <a href="Login.html">CERRAR SESIÓN</a>
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
 			    <hr color="pink">
 	<hr color="purple">
 	<%}else{ %>	<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> MIS RESERVAS</a>
-			   <a href="Login.html">CERRAR SESIÓN</a> <hr color="pink">
+			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a> <hr color="pink">
 			   <hr color="purple"><%} %>
 		   
 
