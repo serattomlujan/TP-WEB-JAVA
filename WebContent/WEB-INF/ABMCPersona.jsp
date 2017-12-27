@@ -74,7 +74,9 @@
 		else{
 			
 			dni=request.getParameter("dni");
-		}%>
+		}
+		
+		Persona p=(Persona)session.getAttribute("user");%>
 		
 
 <center>
@@ -84,7 +86,7 @@
 	<font face="arial" color="PURPLE"> <b>P E R S O N A S</b><br></font></h2>
 		<hr color="PURPLE"><br><br>
 	
-	<strong><font face="arial">ID: <input name="idpersona" id="idpersona" type="text" readonly="readonly" value="<%=id%>"></font>
+	<strong><font face="arial">ID: <input name="idpersona" id="idpersona" type="text" size="5"readonly="readonly" value="<%=id%>"></font>
 	 <font face="arial">&nbsp;&nbsp;DNI: <input  required name="dni" id="dni" <%if (dni!=null){  %> value="<%=dni%>"<%} %> 
 	 size="8" maxlength="8" onChange="validarSiNumero(this.value);">
 	 <i><b></b></i></font> 
@@ -105,7 +107,7 @@
 	<%CtrlABMPersona ctrl= new CtrlABMPersona();
 		ArrayList<Categoria> cats=new ArrayList<Categoria>();
 		cats=ctrl.getCategorias(); %>
-		<select name="categoria" required="id=" id="categoria" style="width: 154px; height: 29px">
+		<select name="categoria" required="id=" id="categoria" style="width: 195px; height: 29px">
 			<%for(Categoria ca : cats){%>
 			<option value="<%=ca.getId_categoria()%>"> <%=ca.getDescripcion()%></option><%;}%>
 			<%if(categ.getDescripcion()==null){ %>
@@ -134,16 +136,18 @@
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right"><font face="arial">Atrás</h6></a>
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br><font>
 	<hr color="pink">
-	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
-			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
-			   <a href="PersonaAb">PERSONAS</a>
-			   <a href="ElementoAb">ELEMENTOS</a>
-			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
-			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
-			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
-			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink">
+	<center><font face="verdana" size="1" color="pink">
+			   <a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
+			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>
+			   <a href="/TP_Web3/TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
+			   <a href="Login.html">CERRAR SESIÓN</a><hr color="pink">
 			   <hr color="purple">
-			   
+		
 	
  
 </form></center>

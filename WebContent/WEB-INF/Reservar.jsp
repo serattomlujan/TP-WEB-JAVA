@@ -130,12 +130,12 @@ function validarFecha(inp){
 		
 	</select><br><br></font>
 	
-Fecha: <input type="text" name="fecha" id="fecha" value="aaaammdd" required size="8" maxlength="8" 
+Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" maxlength="8" 
 <%if (fecha!=null){  %>value="<%=fecha%>" <%} %>onChange="validarFecha(this.value)">
 
-&nbsp;&nbsp;Hora Inicio:  <input name="hora" id="hora" value="hhmm" required size="4"  maxlength="4" 
+&nbsp;&nbsp;Hora Inicio(hhmm):  <input name="hora" id="hora"  required size="4"  maxlength="4" 
 	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
-	 &nbsp;&nbsp;&nbsp; Hora Fin:   <input name="hora_fin" value="hhmm" id="hora_fin" required size="4"  maxlength="4" 
+	 &nbsp;&nbsp;&nbsp; Hora Fin:   <input name="hora_fin"  id="hora_fin" required size="4"  maxlength="4" 
 	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
 	 <button name="buscar" id="buscar" onclick="javascript: submitForm('ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
@@ -157,11 +157,9 @@ Fecha: <input type="text" name="fecha" id="fecha" value="aaaammdd" required size
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
 	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
 	 else %> disabled<%; %>><strong>Agregar</strong></button>
+	 <input type="reset" name="Borrar" id="Borrar" value="Limpiar" class="boton" style="color: black;  background-color: Pink; width: 115px" /> 
+	 
 
-	<!--  <% if(p.getCategoria().getId_categoria()==1) %> <a href="/WEB-INF/MenuEncargado.jsp" ><br>Home </a><%;
-	 if(p.getCategoria().getId_categoria()==2)%> <a href="Menu" ><br>Home </a><%;
-	  if(p.getCategoria().getId_categoria()==3)%>><a href="/WEB-INF/MenuUsuario.jsp"><br>Home </a><%;%>
-	 -->
 	 
 
 	<br>
@@ -169,15 +167,24 @@ Fecha: <input type="text" name="fecha" id="fecha" value="aaaammdd" required size
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
 	<hr color="pink">
-	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
-			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
-			   <a href="PersonaAb">PERSONAS</a>
-			   <a href="ElementoAb">ELEMENTOS</a>
-			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
-			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
-			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
-			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink">
+	<%if(p.getCategoria().getId_categoria()==2){ %>
+	<center><font face="verdana" size="1" color="pink">
+			   <a href="/TP_Web3/ReservaAb">RESERVAR ELEMENTO</a>
+			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
+			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>
+			   <a href="/TP_Web3/TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
+			   <a href="Login.html">CERRAR SESIÓN</a>
+			    <hr color="pink">
 	<hr color="purple">
+	<%}else{ %>	<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
+			   <a href="/TP_Web3/ReservasPendientes"> MIS RESERVAS</a>
+			   <a href="Login.html">CERRAR SESIÓN</a> <hr color="pink">
+			   <hr color="purple"><%} %>
+		   
 
 </form></center>
  

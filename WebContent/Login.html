@@ -32,7 +32,7 @@
 
     <div class="container">
 
-        <form class="form-signin" name="signin" action="Start" method="POST"><br><br>
+ <form class="form-signin" name="signin" action="Start" method="POST"><br><br>
         <h2> <script type="text/javascript">
 				window.setInterval (BlinkIt, 500);
 				var color = "pink";
@@ -46,16 +46,29 @@
 <div id="blink"><font face="verdana">Iniciar Sesión</font></div><br><br>
 <div id="blink" onclick="parent.location=></div></h2><br><br><br>
         <label for="user" class="sr-only"> <font face="VERDANA" size="3"> Usuario: </label>
-        <input  name="user" id="user" class="form-control" required=" " autofocus="" type=""/>
-        <label for="inputPass" class="sr-only"><font face="VERDANA"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clave:</label>
-        <input name="pass" id="pass" class="form-control"  required="" type="Password"/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button><br><br><br><br>
+        <input  name="user" id="user" class="form-control" required=" " autofocus="" type="">
+        <label for="inputPass" class="sr-only"><font face="VERDANA"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clave: </label>
+        <input name="pass" id="pass" class="form-control"  required="" type="Password"/><br>
         
-        <a href=# title="Olvido" onclick= 'alert("ES USTED MUY DESCUIDADO, HAGA MEMORIA!")'>Olvidé mi contraseña</a><br><font color="#FF66CC" face="VERDANA"><b></b>
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" onChange='validarUsuario()' style="color: black;  background-color: Pink; width: 115px" >Entrar</button><br><br><br><br>
+</div>  
+<script type="text/javascript">
+function validarUsuario(){
+if (request.getAttribute("habilitado")==null){alert("Usuario y/o contraseña incorrectos");}
+else if(request.getAttribute("habilitado")=="no"){alert("Usuario no habilitado.Comuníquese con un Administrador");}
+
+}
+</script>
+
+<div style="visibility:visible;color:red;"onkeypress='validarUsuario()' onmousemove='validarUsuario()'></div>
+
+		<a href=# title="Olvido" onclick= 'alert("ES USTED MUY DESCUIDADO, HAGA MEMORIA!")' size="1">Olvidé mi contraseña</a><br><font color="#FF66CC" face="VERDANA"><b></b>
         <hr color="pink">
+        
+
       </form>
 
-    </div> <!-- /container -->
+     <!-- /container -->
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

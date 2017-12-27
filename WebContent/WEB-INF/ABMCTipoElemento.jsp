@@ -46,7 +46,7 @@
 %>
 <center>
 <form class="form-signin" name="signin" action="" method="POST"><hr color="purple">
-		<font face="arial" color="purple"><h2> <b>T I P O S    E L E M E N T O S</h2></font><hr color="purple"><br><br>
+		<font face="arial" color="purple"><h2> <b>T I P O S   DE   E L E M E N T O S</h2></font><hr color="purple"><br><br>
 		<font face="arial">ID: <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly">
 		<font face="arial">&nbsp;&nbsp;Nombre: <input name="nombre_tipo" id="nombre_tipo" required <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
@@ -54,9 +54,9 @@
 		<%	if(request.getAttribute("valido")==null){ %><div style="visibility:hidden;"><% }
 			else{ %><div style="visibility:visible;"><%} %>
 			<b><font face="arial" color="blue"><br>EL NOMBRE DEL TIPO DE ELEMENTO NO EXISTE</font></b></div>
-		<font face="arial"> <br></font>Cantidad Máxima: <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);">
+		<font face="arial"> <br></font>Cantidad Máxima: <input name="cant_max" id="cant_max" value="<%=cantidad%>" onChange="validarSiNumero(this.value);"><br><br>
 		&nbsp;&nbsp;Tiempo límite:  <input name="lim_tiempo" id="lim_tiempo" value="<%=tiempo %>" onChange="validarSiNumero(this.value);">
-		&nbsp;&nbsp;Anticipación:  <input name="dias" id="dias" value="dias" value="<%=dias%>" onChange="validarSiNumero(this.value);"><br><br>
+		&nbsp;&nbsp;Días anticipación:  <input name="dias" id="dias"  value="<%=dias%>" onChange="validarSiNumero(this.value);"><br><br>
 		<input name="encargado" id="encargado" type="checkbox" value="encargado" <%if(encargado) {%> checked <%}%>>
 		<font face="arial">Encargado<br><br></font>
 		
@@ -71,13 +71,15 @@
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
 	<hr color="pink">
 	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
-			   <a href="ReservasPendientes"> RESERVAS PENDIENTES</a>
-			   <a href="PersonaAb">PERSONAS</a>
-			   <a href="ElementoAb">ELEMENTOS</a>
-			   <a href="TipoElementoAb">TIPOS de ELEMENTOS</a>
-			   <a href="ListadoElementos">LISTADO de ELEMENTOS</a>
-			   <a href="ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
-			   <a href="ListadodePersona">LISTADO de PERSONAS</a> <hr color="pink"><hr color="purple">
+			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
+			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
+			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>
+			   <a href="/TP_Web3/TipoElementoAb">TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoElementos">LISTADO de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
+			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a> 
+			   <a href="Login.html">CERRAR SESIÓN</a>
+			   <hr color="pink"><hr color="purple">
 	
 	
 	</form>

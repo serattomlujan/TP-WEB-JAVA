@@ -65,10 +65,22 @@ public class Start extends HttpServlet {
 			} catch (Exception e) {
 				response.setStatus(502);
 			}
-			if(pers==null) response.getWriter().append("Usuario y/o contraseña incorrectos");
-			else if(!pers.getHabilitado()){response.getWriter().append("Usuario no habilitado. Comuníquese con un Administrador");}
+			
+			if(pers==null) {
+				response.getWriter().append("Usuario y/o contraseña incorrectos");
+				request.setAttribute("habilitado", null);
+				//request.getRequestDispatcher("/Login.html").forward(request, response);
+				 
+			}
+			else if(!pers.getHabilitado()){
+				response.getWriter().append("Usuario no habilitado. Comuníquese con un Administrador");
+				request.setAttribute("habilitado", "no");
+				//request.getRequestDispatcher("/Login.html").forward(request, response);
+				 }
+			
 			else {
 			request.getSession().setAttribute("user", pers);
+			request.setAttribute("habilitado", "ok");
 			
 			logger.log(Level.INFO,"log in "+pers.getDni());
 			
