@@ -156,12 +156,20 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	{ %><div style="visibility:hidden;"><% }
 	else{ %><div style="visibility:visible;"><%} %>
 	<b><font face="arial" color="blue"><br>NO HAY ELEMENTOS DISPONIBLES DE ESE TIPO</font></b></div>
-	Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea>
+	Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
+	
 	<% if(request.getAttribute("reservada")==null)
 	{ %><div style="visibility:hidden;color:red;"><% }
 
-	else{%><div style="visibility:visible; color:blue;"><%} %>
-	<b>RESERVA REGISTRADA</b></div>
+	else if(request.getAttribute("reservada")=="ok"){%><div style="visibility:visible; color:blue;">
+	<b>RESERVA REGISTRADA</b></div><br><%}
+	else if(request.getAttribute("reservada")=="limite"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>SUPERA EL LIMITE DE TIEMPO PARA ESE TIPO DE ELEMENTO</font></b></div><%;}
+	else if(request.getAttribute("reservada")=="maximo") {%><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>SUPERA LA CANTIDAD MAXIMA DE RESERVAS DE ESE TIPO</font></b></div><%;}
+	else if(request.getAttribute("reservada")=="anticip") {%><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>NO CUMPLE CON LA CANTIDAD DE DIAS DE ANTICIPACION</font></b><%;}%><br><br></div>
+	
 
 	
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"

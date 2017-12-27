@@ -139,10 +139,20 @@ public class ReservaAb extends HttpServlet {
 		    						
 					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
 						}
-				else response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");
+				else {
+					request.setAttribute("reservada", "maximo");
+					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+		    		
+					//response.getWriter().append("Supera la cantidad máxima de reservas de ese tipo");
+				}
 				}
 						
-			else response.getWriter().append("No cumple con la cantidad de días de anticipación");
+			else {
+				request.setAttribute("reservada", "anticip");
+				request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+	    		
+				//response.getWriter().append("No cumple con la cantidad de días de anticipación");
+			}
 			}
 		 
 		 
@@ -207,11 +217,18 @@ public class ReservaAb extends HttpServlet {
 		    				if (elems.size()>0)
 		    				{		
 		    					request.setAttribute("disponibles", elems);
-		    					request.setAttribute("reserva", r);}
+		    					request.setAttribute("reserva", r);
+		    					}
 		    				
 		    				else request.setAttribute("valido","ok");
 		    				request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
-		    			 else response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    			 else {
+		    				 request.setAttribute("reservada", "limite");
+		    				 request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+			    		
+		    			 }
+		    				 //response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    			 }
 		    		//else response.getWriter().append("No cumple con la cantidad de días de anticipación");}
 			   //	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");}
 		    
