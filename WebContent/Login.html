@@ -11,26 +11,11 @@
 
     <title>Login</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="style/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="style/start.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="style/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
-
+ 
   <body><center>
 
-    <div class="container">
+ <div class="container">
 
  <form class="form-signin" name="signin" action="Start" method="POST"><br><br>
         <h2> <script type="text/javascript">
@@ -43,36 +28,29 @@
 				blink.style.fontSize='36px';}
 			 </script>
 <hr color="pink">
-<div id="blink"><font face="verdana">Iniciar Sesión</font></div><br><br>
+<div id="blink"><font face="verdana">Iniciar Sesión</font></div></h2><br><br>
 <div id="blink" onclick="parent.location=></div></h2><br><br><br>
-        <label for="user" class="sr-only"> <font face="VERDANA" size="3"> Usuario: </label>
-        <input  name="user" id="user" class="form-control" required=" " autofocus="" type="">
-        <label for="inputPass" class="sr-only"><font face="VERDANA"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clave: </label>
-        <input name="pass" id="pass" class="form-control"  required="" type="Password"/><br>
+        <label for="user" class="sr-only"> <font face="VERDANA" size="3"><b>Usuario:</b> </label>
+        <input  name="user" id="user" class="form-control" required autofocus type="text">
+        <label for="inputPass" class="sr-only"><font face="VERDANA"><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clave: </b></label>
+        <input name="pass" id="pass" class="form-control"  required type="Password"/><br><br>
         
-	    <button class="btn btn-lg btn-primary btn-block" type="submit" onChange='validarUsuario()' style="color: black;  background-color: Pink; width: 115px" >Entrar</button><br><br><br><br>
-</div>  
+	    <button class="btn btn-lg btn-primary btn-block" type="submit" style="color: black;  background-color: Pink; width: 115px" ><b>Entrar</b></button><br><br><br><br>
+ 
 <script type="text/javascript">
 function validarUsuario(){
-if (request.getAttribute("habilitado")==null){alert("Usuario y/o contraseña incorrectos");}
-else if(request.getAttribute("habilitado")=="no"){alert("Usuario no habilitado.Comuníquese con un Administrador");}
-
+var msj=request.getAttribute("habilitado");
+if (msj=="incorrecto") alert("Usuario y/o contraseña incorrectas");
+else if(msj=="no") alert("Usuario no habilitado. Póngase en contacto con el administrador");
+else alert("Usuario y contraseña correctos");
 }
 </script>
+ 
+<!--  <a href=# title="Olvido" onclick= 'validarUsuario()'><b>Verificar usuario</b></a><br><font color="#FF66CC" face="VERDANA"></font><b></b>-->
 
-<div style="visibility:visible;color:red;"onkeypress='validarUsuario()' onmousemove='validarUsuario()'></div>
+<a href=# title="Olvido" onclick= 'alert("ES USTED MUY DESCUIDADO, HAGA MEMORIA!")'><b>Olvidé mi contraseña</b></a><br><font color="#FF66CC" face="VERDANA"></font><b></b>
+<hr color="pink"></hr>
+</div> 
+</form></div>
 
-		<a href=# title="Olvido" onclick= 'alert("ES USTED MUY DESCUIDADO, HAGA MEMORIA!")' size="1">Olvidé mi contraseña</a><br><font color="#FF66CC" face="VERDANA"><b></b>
-        <hr color="pink">
-        
-
-      </form>
-
-     <!-- /container -->
-
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="style/ie10-viewport-bug-workaround.js"></script>
-  
-</center>
 </body></html>

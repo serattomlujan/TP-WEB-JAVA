@@ -33,7 +33,7 @@
 	display:block;
 	color:#fff;
 	text-decoration:none;
-	font:12px arial, verdana, sans-serif;
+	font:12px verdana, sans-serif;
 }
 
 /* Submenu */

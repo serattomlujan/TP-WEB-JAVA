@@ -17,6 +17,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!--  <LINK REL=StyleSheet HREF="estiloLogin.css" TYPE="text/css" MEDIA=screen> -->
+
 <title>Menú Principal</title>
 <style>.drop_menu{
 	background:#FF66CC;
@@ -25,6 +27,7 @@
 	list-style-type:none;
 	height:30px;
 	text-align: center;
+	
 }
 .drop_menu li { float:; }
 .drop_menu li a:hover {background-color:#FF66CC;}
@@ -33,7 +36,7 @@
 	display:block;
 	color:#fff;
 	text-decoration:none;
-	font:12px arial, verdana, sans-serif;
+	font:12px verdana, sans-serif;
 }
 
 /* Submenu */
@@ -60,9 +63,10 @@
 }
 .drop_menu li:hover ul li a:hover { background:#005555; }</style>
 
+
 </head> 
 
-<body bgcolor="Pink" style="height: 291px; "><center>
+<body bgcolor="pink"><center>
 
 <% Persona usuarioLog=((Persona)session.getAttribute("user")); %>
 	

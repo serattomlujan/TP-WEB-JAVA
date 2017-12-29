@@ -68,7 +68,7 @@ public class Start extends HttpServlet {
 			
 			if(pers==null) {
 				response.getWriter().append("Usuario y/o contraseña incorrectos");
-				request.setAttribute("habilitado", null);
+				request.setAttribute("habilitado", "incorrecto");
 				//request.getRequestDispatcher("/Login.html").forward(request, response);
 				 
 			}

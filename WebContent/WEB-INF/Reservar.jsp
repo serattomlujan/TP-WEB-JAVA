@@ -60,6 +60,12 @@ function cleanForm(frm){
 }
 
 
+
+  function limpiarFormulario() {
+    document.getElementById("signin").reset();
+  }
+
+
 function validarFecha(inp){
    
    patron = /^\d{4}\d{2}\d{2}$/
@@ -96,6 +102,7 @@ function validarFecha(inp){
 	
 	if(request.getAttribute("reserva")!=null){
 		reserva=(Reserva)request.getAttribute("reserva");
+		//tipo=reserva.getElemento().getTipo_Elem();
 		fecha=String.valueOf(reserva.getFecha());
 		hora=String.valueOf(reserva.getHora_ini());
 		hora_fin=String.valueOf(reserva.getHora_fin());}
@@ -166,9 +173,11 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 
 	
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
-	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%}
+	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%;}
 	 else %> disabled<%; %>><strong>Agregar</strong></button>
-	 <input type="reset" name="Borrar" id="Borrar" value="Limpiar" class="boton" onclick="cleanForm('signin')"style="color: black;  background-color: Pink; width: 115px" /> 
+	<button type="reset"name="Limpiar" id="limpiar" style="color: black;  background-color: Pink; width: 115px"><strong>Limpiar</strong></button>
+	<!--  <button id="limpiar" style="color: black;  background-color: Pink; width: 115px">Limpiar</button>
+     -->
 	 
 
 	 
