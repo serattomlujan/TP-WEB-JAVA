@@ -64,11 +64,12 @@ public class Persona implements Serializable {
 		this.habilitado = habilitado;
 	}
 	
-	public Persona (String dni, String nombre, String apellido, boolean habilitado){
+	public Persona (String dni, String nombre, String apellido, boolean habilitado, String email){
 		 this.setDni(dni);
 		 this.setNombre(nombre);
 		 this.setApellido(apellido);
 		 this.setHabilitado(habilitado);
+		 this.setEmail(email);
 	
 		 }
 	public Persona(){}

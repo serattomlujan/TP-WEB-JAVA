@@ -52,8 +52,8 @@ function isValidDate(day,month,year)
     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
 }
 
-function cleanForm(frm){
-	var inputs = document.frm.getElementsByTagName("input");
+function cleanForm(){
+	var inputs = document.signin.getElementsByTagName("input");
 	for(var i=0;i<inputs.length;i++){
 	inputs[i].value = "";
 	}
@@ -175,7 +175,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" m
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
 	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%;}
 	 else %> disabled<%; %>><strong>Agregar</strong></button>
-	<button type="reset"name="Limpiar" id="limpiar" style="color: black;  background-color: Pink; width: 115px"><strong>Limpiar</strong></button>
+	<button type="button"name="Limpiar" id="limpiar" onclick= "cleanForm()"style="color: black;  background-color: Pink; width: 115px"><strong>Limpiar</strong></button>
 	<!--  <button id="limpiar" style="color: black;  background-color: Pink; width: 115px">Limpiar</button>
      -->
 	 
