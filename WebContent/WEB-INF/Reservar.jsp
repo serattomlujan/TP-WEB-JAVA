@@ -54,9 +54,14 @@ function isValidDate(day,month,year)
 
 function cleanForm(){
 	var inputs = document.signin.getElementsByTagName("input");
+	var select = document.signin.getElementsByTagName("select")
 	for(var i=0;i<inputs.length;i++){
 	inputs[i].value = "";
 	}
+	for(var i=0;i<select.length;i++){
+	select[i].value = "";
+	}
+	
 }
 
 
@@ -140,7 +145,7 @@ function validarFecha(inp){
 		
 	</select><br><br></font>
 	
-Fecha(aaaammdd): <input type="text" name="fecha" id="fecha"  required size="8" maxlength="8" 
+Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" maxlength="8" 
 <%if (fecha!=null){  %>value="<%=fecha%>" <%} %>onChange="validarFecha(this.value)">
 
 &nbsp;&nbsp;Hora Inicio(hhmm):  <input name="hora" id="hora"  required size="4"  maxlength="4" 
