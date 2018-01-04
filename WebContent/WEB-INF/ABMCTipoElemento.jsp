@@ -62,6 +62,8 @@
 		
 	<%if(request.getAttribute("nuevo")==null)
 	{ %><div style="visibility:hidden;"><% }
+	else if(request.getAttribute("nuevo")=="error"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>NO PUEDE REALIZARSE LA OPERACIÓN</font></b></div><%}
 	else if(request.getAttribute("nuevo")=="ok"){ %><div style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>EL TIPO DE ELEMENTO FUE REGISTRADO</font></b></div><%}
 	else if(request.getAttribute("nuevo")=="modif"){ %><div style="visibility:visible; color: blue">
@@ -71,7 +73,7 @@
 	
 		
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('TipoElementoAb/insert')"<%} else{ %> onclick="javascript: submitForm('insert');"<%} %> style="color: black;  background-color: Pink; width: 120px"><strong>Agregar</strong></button>
+	<%if(request.getAttribute("buscar")!=null) {%> onclick="javascript: submitForm('insert')"<%} else{ %> disabled<%} %> style="color: black;  background-color: Pink; width: 120px"><strong>Agregar</strong></button>
 	<button type="submit" onclick="javascript: submitForm('update');" style="color: black;  background-color: Pink; width: 115px"><strong>Modificar</strong></button>
 	<button type="submit" onclick="javascript: submitForm('delete');" style="color: black;  background-color: Pink; width: 115px"><strong>Borrar</strong></button></font>
 	

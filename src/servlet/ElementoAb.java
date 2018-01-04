@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controlers.CtrlABMElemento;
 import controlers.CtrlABMPersona;
+import controlers.CtrlABMTipoElemento;
 import entity.Categoria;
 import entity.Tipo_Elemento;
 import entity.Elemento;
@@ -94,10 +95,12 @@ public class ElementoAb extends HttpServlet {
 					CtrlABMElemento	cele = new CtrlABMElemento();
 			    	
 				 	String nombre = request.getParameter("nombre");
-			        int id_tipo=Integer.parseInt(request.getParameter("tipo"));
-			            
-			        //validaer que los getpara sean distintos d enull
-			 
+				 	String tipo=request.getParameter("tipo");
+				 	
+				 	request.setAttribute("nuevo", "ok");
+				 	
+				 	if(!tipo.equals("Seleccione un tipo")){		 	
+			        int id_tipo=Integer.parseInt(tipo);
 			        Elemento ele = new Elemento();
 			        ele.setNombre(nombre);
 			        ArrayList<Tipo_Elemento> tipos=cele.getTipos();
@@ -105,10 +108,10 @@ public class ElementoAb extends HttpServlet {
 			        	if(ti.getIdtipo_elemento()==id_tipo) ele.setTipo_Elem(ti);
 			        }
 			   	    
-			        cele.add(ele);
-			   	    String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
+			        cele.add(ele);}
+			   	    //String id= String.valueOf(cele.getByNombre(nombre).getIdelemento());
 			        //response.getWriter().append("Elemento ingresado con éxito con el nro: ").append(id);
-			   	    request.setAttribute("nuevo", "ok");
+				 	else request.setAttribute("nuevo", "error");
 			   	    request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 			        
 						}
@@ -126,22 +129,27 @@ public class ElementoAb extends HttpServlet {
 		            throws Exception {
 			   try{
 			    CtrlABMElemento	cele = new CtrlABMElemento();
+			    CtrlABMTipoElemento ctiel=new CtrlABMTipoElemento();
 			    String nombre = request.getParameter("nombre");
 			    String idele = request.getParameter("idelemento");
+			    request.setAttribute("nuevo", "modif");
+		        if(idele!=""){  
 			    int idelemento= Integer.parseInt(idele.trim());
 		        Tipo_Elemento tp = new Tipo_Elemento();
 		        String tipele=request.getParameter("tipo");
+		         
 		        int tipo_elemento= Integer.parseInt(tipele.trim());
+		       	   
 		        tp.setIdtipo_elemento(tipo_elemento);
-		        System.out.println(tipo_elemento);
+		        //System.out.println(tipo_elemento);
 		        Elemento ele = new Elemento();
 		        ele.setIdelemento(idelemento);
 		        ele.setNombre(nombre);
 		        ele.setTipo_Elem(tp);
 		        cele.update(ele);
-		   	    		
+		        }
 		   	    //response.getWriter().append("Los datos del elemento fueron modificados");
-		        request.setAttribute("nuevo", "modif");
+		        else request.setAttribute("nuevo", "error");
 		        request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);
 		        }
 				catch (Exception e){
@@ -155,13 +163,15 @@ public class ElementoAb extends HttpServlet {
 		            throws Exception {
 		    	CtrlABMElemento	cele = new CtrlABMElemento();
 		    	  String idele = request.getParameter("nombre");
+		    	  String id=request.getParameter("idelemento");
 				 //int idelemento= Integer.parseInt(idele.trim());
 		    	Elemento ele = new Elemento();
 		      
 		        ele.setNombre(idele);		       
 		        cele.delete(ele);
 		        request.setAttribute("nuevo", "elim");
-		    	request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);}
+		        if(id=="")request.setAttribute("nuevo", "error");
+		        request.getRequestDispatcher("/WEB-INF/ABMCElemento.jsp").forward(request, response);}
 		        //response.getWriter().append("Los datos del elemento fueron eliminados");} // es necesaria esta lista?
 		 //solo listado redirecciona al .jsp y el resto?
 		    

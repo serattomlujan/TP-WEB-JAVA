@@ -15,7 +15,7 @@ public class DataElemento {
 		 	stmt = FactoryConexion.getInstancia().getConn().createStatement();
 		 	rst = stmt.executeQuery("select * from elementos e "
 		 			+ "inner join tipo_elemento t on e.idtipo_elemento = t.idtipo_elemento "
-		 			+ "order by t.nombre_tipo,e.nombre");
+		 			+ "order by e.idelemento, t.nombre_tipo, e.nombre");
 		 	if(rst!=null){
 		 		while(rst.next()){
 		 			Elemento el=new Elemento();

@@ -137,7 +137,7 @@ public class ReservaAb extends HttpServlet {
 			        
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 		    						
-					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada",r.getEstado());
+					Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada", r.getEstado());
 						}
 				else {
 					request.setAttribute("reservada", "maximo");

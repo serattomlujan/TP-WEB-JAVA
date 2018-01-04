@@ -94,7 +94,10 @@ public class TipoElementoAb extends HttpServlet {
 			 
 			 	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
 			 	String nombre_tipo = request.getParameter("nombre_tipo");
-			 	int cant_max = Integer.parseInt(request.getParameter("cant_max"));
+			 	String cant=request.getParameter("cant_max");
+			 	request.setAttribute("nuevo", "ok");
+			 	if(cant!=""){
+			 	int cant_max = Integer.parseInt(cant);
 			 	int lim_tiempo = Integer.parseInt(request.getParameter("lim_tiempo"));
 			 	int dias_anticip = Integer.parseInt(request.getParameter("dias"));
 		        boolean encargado = request.getParameter("encargado") != null;
@@ -108,10 +111,10 @@ public class TipoElementoAb extends HttpServlet {
 		        tipoele.setEncargado(encargado);
 			 	
 			 
-		        ctipoele.add(tipoele);
-		        String id= String.valueOf(ctipoele.getByNomTipo(nombre_tipo).getIdtipo_elemento());
+		        ctipoele.add(tipoele);}
+		        //String id= String.valueOf(ctipoele.getByNomTipo(nombre_tipo).getIdtipo_elemento());
+			 	else request.setAttribute("nuevo", "error");
 		        
-		        request.setAttribute("nuevo", "ok");
 		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		        //response.getWriter().append("Tipo de Elemento ingresado con éxito con el nro: ").append(id);
 		 		}
@@ -127,6 +130,8 @@ public class TipoElementoAb extends HttpServlet {
 		            throws Exception {
 		    	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
 		    	String id_tipo = request.getParameter("idtipo_elemento");
+		    	request.setAttribute("nuevo", "modif");
+		    	if(id_tipo!=""){
 		    	int id_tipoelemento=Integer.parseInt(id_tipo.trim());
 		    	String nombre_tipo = request.getParameter("nombre_tipo");
 			 	int cant_max = Integer.parseInt(request.getParameter("cant_max"));
@@ -141,8 +146,10 @@ public class TipoElementoAb extends HttpServlet {
 		        tipoele.setDias_anticip(dias_anticip);
 		        tipoele.setEncargado(encargado);
 		        
-		       ctipoele.update(tipoele);
-		       request.setAttribute("nuevo", "modif");
+		        ctipoele.update(tipoele);}
+		    	
+		    	else request.setAttribute("nuevo", "error");
+		      
 		       request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		    //   response.getWriter().append("Los datos del tipo de elemento  fueron modificados"); 
 		        
@@ -152,12 +159,14 @@ public class TipoElementoAb extends HttpServlet {
 		            throws Exception {
 		    	CtrlABMTipoElemento ctipoele = new CtrlABMTipoElemento();
 		    	String nombre_tipo = request.getParameter("nombre_tipo");
+		    	String id=request.getParameter("idtipo_elemento");
 		    	
 			 	Tipo_Elemento tipoele = new Tipo_Elemento();
 			 	tipoele.setNombre_tipo(nombre_tipo);
 		        ctipoele.delete(tipoele);
 		       // response.getWriter().append("Los datos del tipo de elemento fueron eliminados"); 
 		        request.setAttribute("nuevo", "elim");
+		        if(id=="")request.setAttribute("nuevo", "error");
 		        request.getRequestDispatcher("/WEB-INF/ABMCTipoElemento.jsp").forward(request, response);
 		    }
 		       

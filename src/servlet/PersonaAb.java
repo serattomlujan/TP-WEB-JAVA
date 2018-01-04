@@ -89,8 +89,9 @@ public class PersonaAb extends HttpServlet {
 			 	CtrlABMPersona	cpers = new CtrlABMPersona();
 		    	
 			 	String dni = request.getParameter("dni");
-			 	//System.out.print(dni);
 			 	String nombre = request.getParameter("nombre_per");
+			 	request.setAttribute("nueva", "ok");
+			 	if(nombre!=""){
 		        String apellido = request.getParameter("apellido");
 		        String usuario = request.getParameter("usuario");
 		        String contrasenia = request.getParameter("contrasenia");
@@ -98,8 +99,6 @@ public class PersonaAb extends HttpServlet {
 		        boolean habilitado = request.getParameter("habilitado") != null;
 		        String email=request.getParameter("email");
 			       
-		        //validaer que los getpara sean distintos d enull
-		 
 		        Persona per = new Persona();
 		        ArrayList<Categoria> cats=cpers.getCategorias();
 		        for(Categoria c:cats){
@@ -112,10 +111,10 @@ public class PersonaAb extends HttpServlet {
 		   	    per.setUsuario(usuario);
 		   	    per.setContrasenia(contrasenia);
 		   	    per.setEmail(email);
-		   	    cpers.add(per);
-		   	    String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
+		   	    cpers.add(per);}
+		   	    //String id= String.valueOf(cpers.getByDni(dni).getIdpersona());
 		   	    
-		   	    request.setAttribute("nueva", "ok");
+			 	else request.setAttribute("nueva", "error");
 		   	    //response.getWriter().append("Persona ingresada con éxito con el nro: ").append(id);
 		   	    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 			    
@@ -133,29 +132,24 @@ public class PersonaAb extends HttpServlet {
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
 				 	
-			    	//int id=Integer.parseInt(request.getParameter("idpersona"));
-				 	String ida=request.getParameter("idpersona");
+			    	String ida=request.getParameter("idpersona");
+			    	request.setAttribute("nueva", "modif");
+			    	if(ida!=""){
 				 	int id=Integer.parseInt(ida.trim());
 				 	String dni = request.getParameter("dni");
-				 	//System.out.print(request.getParameter("dni"));
 				 	String nombre = request.getParameter("nombre_per");
 			        String apellido = request.getParameter("apellido");
 			        String usuario = request.getParameter("usuario");
 			        String contrasenia = request.getParameter("contrasenia");
 			        String id_cat=request.getParameter("categoria");
-			        //System.out.print(request.getParameter("categoria"));
 			        boolean habilitado = request.getParameter("habilitado") != null;
 			        String email = request.getParameter("email");
-			        
-				       
-			        //validar que los getpara sean distintos d enull
-			 
+			        			        
 			        Persona per = new Persona();
 			        ArrayList<Categoria> cats=cpers.getCategorias();
 			        for(Categoria c:cats){
 			        	if(c.getId_categoria()==Integer.parseInt(id_cat)) per.setCategoria(c);
 			        }
-			        //System.out.print(Integer.parseInt(id));
 			        per.setIdpersona(id);
 			   	    per.setNombre(nombre);
 			   	    per.setApellido(apellido);
@@ -168,7 +162,8 @@ public class PersonaAb extends HttpServlet {
 			   	    todas=cpers.getAll();
 			   	    for(Persona p: todas)
 			   	    	if(p.getIdpersona()==per.getIdpersona()) cpers.update(per);
-			   	    request.setAttribute("nueva", "modif");
+			    	}
+			    	else request.setAttribute("nueva", "error");
 			   //	    response.getWriter().append("Los datos de la persona fueron modificados");
 				    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
 			   	    
@@ -187,30 +182,23 @@ public class PersonaAb extends HttpServlet {
 		    	try{
 					 
 				 	CtrlABMPersona	cpers = new CtrlABMPersona();
-			    	
-
-				 	Persona pers=new Persona();
+			    	Persona pers=new Persona();
 				 	String dni= request.getParameter("dni");
+				 	String id=request.getParameter("idpersona");
+				 	pers.setDni(dni);
 				 	
-				 	if (dni=="")
-				 		{
-				 		response.getWriter().append("dni vacio");
-				 		}
-				 	else
-				 	{	
-					pers.setDni(dni);
-				 	
-				 	pers=cpers.getByDni(dni);
+				 	//pers=cpers.getByDni(dni);
 				 	
 				 	cpers.delete(pers);
 
 			   	 //  	response.getWriter().append("Los datos de la persona fueron eliminados");
 				 	request.setAttribute("nueva", "elim");
+				 	if(id=="")request.setAttribute("nueva", "error");
 				    request.getRequestDispatcher("/WEB-INF/ABMCPersona.jsp").forward(request, response);
-				 	}
+				 	
 			        }
 					catch (Exception e){
-						System.out.println("error");
+						//System.out.println("error");
 						e.printStackTrace();
 						}
 			 		}

@@ -23,10 +23,6 @@
    		//document.getElementById("myFrom").submit();
       }
 
-function formReset()
-{
-document.getElementById("signin").reset();
-}
 
  function validarSiNumero(numero){
     if (!/^([0-9])*$/.test(numero))
@@ -77,7 +73,7 @@ function validarFecha(inp){
    if (!patron.test(inp)) {
        alert("Ingrese una fecha válida");}
        
-   var patron=new RegExp("^(19|20)+([0-9]{2})([0-9]{1,2})([0-9]{1,2})$");
+   var patron=new RegExp("^(20)+([0-9]{2})([0-9]{1,2})([0-9]{1,2})$");
  
     if(inp.search(patron)==0)
     {
@@ -164,15 +160,15 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" ma
 	Detalle <textarea name="detalle"style="width: 212px; height: 67px; "></textarea><br><br>
 	
 	<% if(request.getAttribute("reservada")==null)
-	{ %><div style="visibility:hidden;color:red;"><% }
+	{ %><div id="mensaje" style="visibility:hidden;color:red;"><% }
 
-	else if(request.getAttribute("reservada")=="ok"){%><div style="visibility:visible; color:blue;">
+	else if(request.getAttribute("reservada")=="ok"){%><div id="mensaje" style="visibility:visible; color:blue;">
 	<b>RESERVA REGISTRADA!!!</b></div><br><%}
-	else if(request.getAttribute("reservada")=="limite"){ %><div style="visibility:visible; color: blue">
+	else if(request.getAttribute("reservada")=="limite"){ %><div id="mensaje" style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>SUPERA EL LIMITE DE TIEMPO PARA ESE TIPO DE ELEMENTO</font></b></div><%;}
-	else if(request.getAttribute("reservada")=="maximo") {%><div style="visibility:visible; color: blue">
+	else if(request.getAttribute("reservada")=="maximo") {%><div id="mensaje" style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>SUPERA LA CANTIDAD MAXIMA DE RESERVAS DE ESE TIPO</font></b></div><%;}
-	else if(request.getAttribute("reservada")=="anticip") {%><div style="visibility:visible; color: blue">
+	else if(request.getAttribute("reservada")=="anticip") {%><div id="mensaje" style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>NO CUMPLE CON LA CANTIDAD DE DIAS DE ANTICIPACION</font></b><%;}%><br><br></div>
 	
 

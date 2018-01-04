@@ -15,7 +15,7 @@ public class DataTipoElemento {
 		ArrayList<Tipo_Elemento> tipos= new ArrayList<Tipo_Elemento>();
 		try{
 			stmt = FactoryConexion.getInstancia().getConn().createStatement();
-			rs = stmt.executeQuery("select * from tipo_elemento order by nombre_tipo");
+			rs = stmt.executeQuery("select * from tipo_elemento order by idtipo_elemento, nombre_tipo");
 			if(rs!=null){
 				while(rs.next()){
 					Tipo_Elemento t=new Tipo_Elemento();

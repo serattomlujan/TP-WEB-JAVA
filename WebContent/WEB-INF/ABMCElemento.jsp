@@ -57,12 +57,12 @@
 		<%CtrlABMElemento ctrl= new CtrlABMElemento();
 		ArrayList<Tipo_Elemento> tipos=new ArrayList<Tipo_Elemento>();
 		tipos=ctrl.getTipos(); %>
-		<select name="tipo" id="tipo"style="width: 154px; height: 29px">
+		<select name="tipo" id="tipo" required style="width: 154px; height: 29px">
 		
 		<%for(Tipo_Elemento t : tipos){%>
 		<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%} %>
 		<%if(ti.getNombre_tipo() == null){ %>
-			 <option selected value="defecto">Seleccione un tipo</option><%;}
+			 <option selected>Seleccione un tipo</option><%;}
 			else {%><option selected value="<%=ti.getIdtipo_elemento()%>"><%=ti.getNombre_tipo()%> 
 			</option><%;}%>
 	
@@ -71,8 +71,10 @@
 	<i><b></b></i></strong>
 	<%if(request.getAttribute("nuevo")==null)
 	{ %><div style="visibility:hidden;"><% }
+	else if(request.getAttribute("nuevo")=="error"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>NO PUEDE REALIZARSE LA OPERACIÓN</font></b></div><%}
 	else if(request.getAttribute("nuevo")=="ok"){ %><div style="visibility:visible; color: blue">
-	<b><font face="arial" color="blue"><br>EL ELEMENTO FUE REGISTRADo</font></b></div><%}
+	<b><font face="arial" color="blue"><br>EL ELEMENTO FUE REGISTRADO</font></b></div><%}
 	else if(request.getAttribute("nuevo")=="modif"){ %><div style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>LOS DATOS FUERON MODIFICADOS</font></b></div><%;}
 	else if(request.getAttribute("nuevo")=="elim") {%><div style="visibility:visible; color: blue">
@@ -80,7 +82,7 @@
 	
 	
 	<button type="submit" 
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('ElementoAb/insert');"<%} else{ %> onclick="javascript: submitForm('insert')"<%} %> style="color: black;  background-color: Pink; width: 115px"><strong>Agregar</strong></button><i><b></b></i>
+	<%if(request.getAttribute("buscar")!=null) {%> onclick="javascript: submitForm('insert');"<%} else{ %> disabled<%;} if(request.getAttribute("nuevo")=="ok"){%> disabled <%} %> style="color: black;  background-color: Pink; width: 115px"><strong>Agregar</strong></button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('update')" style="color: black;  background-color: Pink; width: 115px"><strong>Modificar</strong></button><i><b></b></i>
 	<button type="submit" onclick="javascript: submitForm('delete')" style="color: black;  background-color:Pink; width: 115px"><strong>Borrar</strong></button>
 	

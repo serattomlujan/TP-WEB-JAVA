@@ -122,6 +122,8 @@
 	
 	<%if(request.getAttribute("nueva")==null)
 	{ %><div style="visibility:hidden;"><% }
+	else if(request.getAttribute("nueva")=="error"){ %><div style="visibility:visible; color: blue">
+	<b><font face="arial" color="blue"><br>NO PUEDE REALIZARSE LA OPERACION</font></b></div><%}
 	else if(request.getAttribute("nueva")=="ok"){ %><div style="visibility:visible; color: blue">
 	<b><font face="arial" color="blue"><br>LA PERSONA FUE REGISTRADA</font></b></div><%}
 	else if(request.getAttribute("nueva")=="modif"){ %><div style="visibility:visible; color: blue">
@@ -131,7 +133,7 @@
 	
 	
 	<button class="btn btn-lg" id="insert"
-	<%if(request.getAttribute("buscar")==null) {%> onclick="javascript: submitForm('PersonaAb/insert')"<%} else {%> onclick="javascript: submitForm('insert');"<%} %>style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Agregar</strong></button>
+	<%if(request.getAttribute("buscar")!=null) {%> onclick="javascript: submitForm('insert')"<%} else {%> disabled<%} %> style="color: black;  background-color: Pink; width: 120px"><strong>Agregar</strong></button>
 	<button name="update" id="update" onclick="javascript: submitForm('update');" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Modificar</strong></button>
 	<button name="delete" id="delete" onclick="javascript: submitForm('delete');" style="color: black;  background-color: Pink; width: 115px" type="submit"><strong>Borrar</strong></button>
 	
