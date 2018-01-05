@@ -94,6 +94,8 @@ public class ReservaAb extends HttpServlet {
 			 	CtrlReserva	cres = new CtrlReserva();
 			 	Fechas f = new Fechas();
 			 	java.sql.Date fecha=f.ParseFecha2(request.getParameter("fecha"));
+			 	//if(fecha.){
+			 	
 		    	Fechas h= new Fechas();
 		    	Fechas hf= new Fechas();
 		    	Time hora = h.ParseHora(request.getParameter("hora"));
@@ -102,21 +104,17 @@ public class ReservaAb extends HttpServlet {
 		        String detalle = request.getParameter("detalle");
 		        CtrlABMElemento cele=new CtrlABMElemento();
 		        Elemento ele = new Elemento();
-		        int idelemento = Integer.parseInt(request.getParameter("elemento"));
+		        String idele=request.getParameter("elemento");
 		        
+		        int idelemento = Integer.parseInt(idele);
 		        ele=cele.getById(idelemento);
 		        
 		        //Date hoy= new Date();
-		       Persona p=(Persona)request.getSession().getAttribute("user");
+		        Persona p=(Persona)request.getSession().getAttribute("user");
 		        
-		       // CtrlABMPersona ctrlP=new CtrlABMPersona();
-		        //Persona per = new Persona();
-		        //String dni = request.getParameter("dni");
-		        //per=ctrlP.getByDni(dni);
 		        Reserva r= new Reserva();
 		        r.setElemento(ele);
-		       // r.setId_reserva(0);
-				r.setFecha(fecha);
+		        r.setFecha(fecha);
 				r.setHora_ini(hora);
 				r.setHora_fin(horaF);
 				r.setDetalle(detalle);
@@ -137,7 +135,7 @@ public class ReservaAb extends HttpServlet {
 			        
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 		    						
-					Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada", r.getEstado());
+					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada", r.getEstado());
 						}
 				else {
 					request.setAttribute("reservada", "maximo");
@@ -153,6 +151,9 @@ public class ReservaAb extends HttpServlet {
 	    		
 				//response.getWriter().append("No cumple con la cantidad de días de anticipación");
 			}
+			//}
+		       // else {request.setAttribute("reservada", "error");
+		        //request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);}
 			}
 		 
 		 
@@ -184,7 +185,7 @@ public class ReservaAb extends HttpServlet {
 		   
 		    private void buscar(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		    	
-		    	request.setAttribute("reservada", null);
+		    	request.setAttribute("reservada", "no");
 		    	CtrlReserva	cres = new CtrlReserva();
 		    	CtrlABMTipoElemento cti=new CtrlABMTipoElemento();
 		    	Reserva r=new Reserva();
@@ -192,6 +193,7 @@ public class ReservaAb extends HttpServlet {
 		    	Tipo_Elemento ti= new Tipo_Elemento();
 		    	
 		    	String id=request.getParameter("tipo");
+		    	if(!id.equals("Seleccione un tipo")){
 		    	int id_tipo = Integer.parseInt(id.trim());
 		    	
 		      	ti=cti.getById(id_tipo);
@@ -226,8 +228,13 @@ public class ReservaAb extends HttpServlet {
 		    				 request.setAttribute("reservada", "limite");
 		    				 request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 			    		
-		    			 }
-		    				 //response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
+		    			 }}
+		    	else{request.setAttribute("reservada", "error");
+				 request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
+		    	}
+		    		
+		    	//request.setAttribute("reservada", null);
+		    	//response.getWriter().append("Supera el límite de tiempo para ese tipo de elemento");}
 		    			 }
 		    		//else response.getWriter().append("No cumple con la cantidad de días de anticipación");}
 			   //	else response.getWriter().append("La fecha ingresada debe ser mayor a la actual");}

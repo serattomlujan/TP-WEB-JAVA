@@ -134,7 +134,7 @@ function validarFecha(inp){
 		ArrayList<Tipo_Elemento> tipos=new ArrayList<Tipo_Elemento>();
 		if(p.getCategoria().getId_categoria()==1) tipos=ctrl.getAll();
 		else tipos=ctrl.getAllEncargado();%>
-		<select name="tipo" id="tipo" required style="width: 154px; height: 29px">
+		<select name="tipo" id="tipo" required value="" style="width: 154px; height: 29px">
 		<option>Seleccione un tipo </option>
 		<%for(Tipo_Elemento t : tipos){%>
 			<option value="<%=t.getIdtipo_elemento()%>"><%=t.getNombre_tipo()%></option><%;}%>
@@ -148,7 +148,8 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" ma
 	<%if (fecha!=null){  %>value="<%=hora%>" <%} %> onChange="checkTime(this.value)"> 
 	 &nbsp;&nbsp;&nbsp; Hora Fin:   <input name="hora_fin"  id="hora_fin" required size="4"  maxlength="4" 
 	   <%if (fecha!=null){  %>value="<%=hora_fin%>"<%} %>onChange="checkTime(this.value)">
-	 <button name="buscar" id="buscar" onclick="javascript: submitForm('/TP_Web3/ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><br><br>	Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
+	 <button name="buscar" id="buscar" onclick="javascript: submitForm('/TP_Web3/ReservaAb/buscar')" style="color: black;  background-color: Pink; width: 115px"><strong>Buscar</strong></button><br><br>	
+	 Elemento <select name="elemento" id="elemento"style="width: 147px; height: 27px">
 		<%if(el!=null){
 		for(Elemento e: el){ %>
 			<option value="<%=e.getIdelemento()%>"><%=e.getNombre()%></option><%;}}%>
@@ -162,6 +163,8 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" ma
 	<% if(request.getAttribute("reservada")==null)
 	{ %><div id="mensaje" style="visibility:hidden;color:red;"><% }
 
+	else if(request.getAttribute("reservada")=="error"){%><div id="mensaje" style="visibility:visible; color:blue;">
+	<b>NO PUEDE REALIZARSE LA OPERACION</b></div><br><%}
 	else if(request.getAttribute("reservada")=="ok"){%><div id="mensaje" style="visibility:visible; color:blue;">
 	<b>RESERVA REGISTRADA!!!</b></div><br><%}
 	else if(request.getAttribute("reservada")=="limite"){ %><div id="mensaje" style="visibility:visible; color: blue">
@@ -174,7 +177,7 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" ma
 
 	
 	<i><b></b></i><button name="insert" type="submit" id="insert" style="color: black;  background-color: Pink; width: 115px"
-	 <%if(request.getAttribute("reservada")==null){ %>onclick="javascript: submitForm('insert')" <%;}
+	 <%if(request.getAttribute("reservada")=="no" || request.getAttribute("disponibles")!=null){ %>onclick="javascript: submitForm('insert')" <%;}
 	 else %> disabled<%; %>><strong>Agregar</strong></button>
 	<button type="button"name="Limpiar" id="limpiar" onclick= "cleanForm()"style="color: black;  background-color: Pink; width: 115px"><strong>Limpiar</strong></button>
 	<!--  <button id="limpiar" style="color: black;  background-color: Pink; width: 115px">Limpiar</button>
