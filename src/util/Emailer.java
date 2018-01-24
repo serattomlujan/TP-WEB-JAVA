@@ -32,10 +32,17 @@ public class Emailer {
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream("app.properties");
 		try {
 			props = new Properties();
-			props.load(inputStream);
+			/*props.load(inputStream);*/
 			
+			  props.put("mail.smtp.auth", "true");
+			  props.put("mail.smtp.starttls.enable", "true");
+			  props.put("mail.smtp.host", "smtp.gmail.com");
+			  props.put("mail.smtp.port", "587");
+			  props.put("mail.username", "reservar2017java@gmail.com");
+			  props.put("mail.password","Java2017");
+			 
 			
-		} catch (IOException e) {
+		} catch (Error e) {
 			logger.log(Level.ERROR, e.getMessage());
 			e.printStackTrace();
 		}

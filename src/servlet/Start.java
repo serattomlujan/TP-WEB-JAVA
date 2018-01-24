@@ -80,6 +80,7 @@ public class Start extends HttpServlet {
 			
 			else {
 			request.getSession().setAttribute("user", pers);
+			request.getSession().setAttribute("email",pers.getEmail());
 			request.setAttribute("habilitado", "ok");
 			
 			logger.log(Level.INFO,"log in "+pers.getDni());

@@ -111,7 +111,6 @@ public class ReservaAb extends HttpServlet {
 		        
 		        //Date hoy= new Date();
 		        Persona p=(Persona)request.getSession().getAttribute("user");
-		        
 		        Reserva r= new Reserva();
 		        r.setElemento(ele);
 		        r.setFecha(fecha);
@@ -134,9 +133,10 @@ public class ReservaAb extends HttpServlet {
 					//response.sendRedirect("../ReservaAb");
 			        
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
-		    						
-					//Emailer.getInstance().send("marianabsanchez@hotmail.com","Reserva realizada", r.getEstado());
-						}
+		    		System.out.println(p.getEmail());				
+					Emailer.getInstance().send(p.getEmail(),"Reserva realizada","Su Reserva fue realizada con exito.El estado de su Reserva es :"+r.getEstado());
+					System.out.println("Enviando Mail.....");
+				}
 				else {
 					request.setAttribute("reservada", "maximo");
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);

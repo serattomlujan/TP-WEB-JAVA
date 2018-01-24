@@ -15,6 +15,7 @@ import controlers.CtrlABMPersona;
 import controlers.CtrlReserva;
 import entity.Persona;
 import entity.Reserva;
+import util.Emailer;
 
 
 
@@ -41,6 +42,7 @@ public class ReservasPendientes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//System.out.println(request.getPathInfo());
+		
 		try{
         	if(request.getPathInfo()==null || request.getPathInfo().isEmpty()){
         		this.list(request, response);
@@ -52,6 +54,7 @@ public class ReservasPendientes extends HttpServlet {
 	            
 	            case "/cancelarReserva":
 	                this.cancelarReserva(request, response);
+
 	                break;
 	 	     
 	            default:
@@ -96,7 +99,10 @@ public class ReservasPendientes extends HttpServlet {
 			 if (ok==1)
 			 {
 				 //System.out.println(ok); 
-			        response.sendRedirect("../ReservasPendientes");
+				 Persona p=(Persona)request.getSession().getAttribute("user");
+				Emailer.getInstance().send(p.getEmail(),"Reserva Cancelada","El estado de su Reserva es :Cancelada");
+				System.out.println("Enviando Mail.....");
+		        response.sendRedirect("../ReservasPendientes");
 			        
 			 }
 			 
