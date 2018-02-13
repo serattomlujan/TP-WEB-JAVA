@@ -9,7 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><center><title>Listar Personas</title><hr color="purple"><font face="arial" color="purple"> <b> <h2>LISTADO DE PERSONAS </h2><hr color="purple"><br><br>
+</head><center><title>Listar Personas</title><hr color="Pink"><font face="arial" color="black"> <b> <h2>LISTADO DE PERSONAS </h2><hr color="pink"><br><br>
 <body>
 
 	
@@ -56,7 +56,7 @@
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a> 
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
-			   <hr color="pink"><hr color="purple">
+			   <hr color="pink"><hr color="Black">
 			  
 			   
 	

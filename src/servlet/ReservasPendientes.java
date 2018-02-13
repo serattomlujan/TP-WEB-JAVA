@@ -100,7 +100,7 @@ public class ReservasPendientes extends HttpServlet {
 			 {
 				 //System.out.println(ok); 
 				 Persona p=(Persona)request.getSession().getAttribute("user");
-				Emailer.getInstance().send(p.getEmail(),"Reserva Cancelada","El estado de su Reserva es :Cancelada");
+				 Emailer.getInstance().send(p.getEmail(),"Reserva ha sido cancelada","Su Reserva" +" "+r.getId_reserva()+" "+ "fue cancelada");
 				System.out.println("Enviando Mail.....");
 		        response.sendRedirect("../ReservasPendientes");
 			        

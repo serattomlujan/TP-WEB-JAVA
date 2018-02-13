@@ -19,7 +19,7 @@
 <head>
 <title>Menú Principal</title>
 <style>.drop_menu{
-	background:#FF66CC;
+	background:#FFFFFF;
 	padding:0;
 	margin:0;
 	list-style-type:none;
@@ -28,11 +28,11 @@
 	
 }
 .drop_menu li { float:; }
-.drop_menu li a:hover {background-color:#FF66CC;}
+.drop_menu li a:hover {background-color:#FFCCCC;}
 .drop_menu li a {
 	padding:9px 20px;
 	display:block;
-	color:#fff;
+	color:#FF66CC;
 	text-decoration:none;
 	font:12px verdana, sans-serif;
 }
@@ -44,11 +44,11 @@
 	top:-9999px;
 	list-style-type:none;
 }
-.drop_menu li:hover { position:relative; background:#5FD367; }
+.drop_menu li:hover { position:relative; background:#FFF5EE; }
 .drop_menu li:hover ul {
 	left:0px;
 	top:30px;
-	background:#5FD367;
+	background:#FFCCCC;
 	padding:0px;
 }
 
@@ -57,18 +57,18 @@
 	display:block;
 	width:168px;
 	text-indent:15px;
-	background-color:#5FD367;
+	background-color:#FFCCCC;
 }
-.drop_menu li:hover ul li a:hover { background:#005555; }</style>
+.drop_menu li:hover ul li a:hover { background:#FFCCCC }</style>
 
 
 </head> 
 
-<body bgcolor="pink"><center>
+<body bgcolor="white"><center>
 
 <% Persona usuarioLog=((Persona)session.getAttribute("user")); %>
 	
-	<h1><font face="verdana" color="white"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="purple">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
+	<h1><font face="verdana" color="pink"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="black">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
 	</center>
 	
 	 <center>
@@ -97,7 +97,7 @@
 </div>
 
 <!--  <div>
-<h1> <b><i><big><FONT FACE="CALIBRI" COLOR="white"> Gracias por su visita </FONT></big></i></b></h1>
+<h1> <b><i><big><FONT FACE="CALIBRI" COLOR=pink"> Gracias por su visita </FONT></big></i></b></h1>
 </div>
 -->
 </body>

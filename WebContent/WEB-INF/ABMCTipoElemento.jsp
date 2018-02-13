@@ -45,8 +45,8 @@
 		
 %>
 <center>
-<form class="form-signin" name="signin" action="" method="POST"><hr color="purple">
-		<font face="arial" color="purple"><h2> <b>T I P O S   DE   E L E M E N T O S</h2></font><hr color="purple"><br><br>
+<form class="form-signin" name="signin" action="" method="POST"><hr color="pink">
+		<font face="arial" color="pink"><h2> <b>T I P O S   DE   E L E M E N T O S</h2></font><hr color="pink"><br><br>
 		<font face="arial">ID: <input name="idtipo_elemento" id="idtipo_elemento" value="<%=id %>" type="text" readonly="readonly" size=5">
 		<font face="arial">&nbsp;&nbsp;Nombre: <input name="nombre_tipo" id="nombre_tipo" required <%if (nombre!=null){  %>value="<%=nombre%>" <%} %>><i><b></b></i>
 		
@@ -82,7 +82,7 @@
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
 	<hr color="pink">
-	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+	<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
 			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
 			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>
@@ -91,7 +91,7 @@
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a> 
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
-			   <hr color="pink"><hr color="purple">
+			   <hr color="pink"><hr color="pink">
 	
 	
 	</form>

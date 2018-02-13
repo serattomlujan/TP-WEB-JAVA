@@ -18,8 +18,10 @@
    		//document.getElementById("myFrom").submit();
       }
 </script>
-</head><center><title>Reservas Pendientes</title><hr color="purple"><font face="arial" color="purple"> 
-<h2><b> RESERVAS PENDIENTES</h2><hr color="purple"><br><br>
+</head><center><title>Reservas Pendientes</title><hr color="pink">
+<font face="arial" color="black"> 
+
+<h2><b> RESERVAS PENDIENTES</h2><hr color="pink"><br><br>
 <body>
 <% Persona p=(Persona)session.getAttribute("user");%>
 	
@@ -68,7 +70,7 @@
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
 	<hr color="pink">
 	<%if(p.getCategoria().getId_categoria()==2){ %>
-		<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+		<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
 			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
 			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>
@@ -81,7 +83,7 @@
 			   <%}else{ %>	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> MIS RESERVAS</a>
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a> <hr color="pink">
-			   <hr color="purple"><%} %>
+			   <hr color="pink"><%} %>
 		   
 	
 </form></center></body>

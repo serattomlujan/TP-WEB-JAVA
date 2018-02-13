@@ -123,9 +123,9 @@ function validarFecha(inp){
 
 <form class="form-signin" name="signin" id="signin"action="" method="POST" > <h2 class="form-signin-heading">
 	
-	<hr color="purple">
-	<font face="arial" color="purple"> <b>R E S E R V A S </font></h2>
-	<hr color="purple"><br><br>
+	<hr color="pink">
+	<font face="arial" color="pink"> <b>R E S E R V A S </font></h2>
+	<hr color="pink"><br><br>
 	<font face="arial">
 	<font face="arial"> <i><b></b></i></font>
 	<font face="arial">Tipo Elemento: 
@@ -203,11 +203,11 @@ Fecha(aaaammdd): <input type="text" name="fecha" id="fecha" required size="8" ma
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a>
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
 			    <hr color="pink">
-	<hr color="purple">
+	<hr color="pink">
 	<%}else{ %>	<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> MIS RESERVAS</a>
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a> <hr color="pink">
-			   <hr color="purple"><%} %>
+			   <hr color="pink"><%} %>
 		   
 
 </form></center>
