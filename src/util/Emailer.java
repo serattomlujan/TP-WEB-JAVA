@@ -27,6 +27,7 @@ public class Emailer {
 		return instance;
 	}
 	
+	
 	private Emailer() throws Exception{
 		
 		InputStream inputStream=getClass().getClassLoader().getResourceAsStream("app.properties");
