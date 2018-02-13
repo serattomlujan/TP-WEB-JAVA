@@ -134,7 +134,7 @@ public class ReservaAb extends HttpServlet {
 			        
 					request.getRequestDispatcher("/WEB-INF/Reservar.jsp").forward(request, response);
 		    		System.out.println(p.getEmail());				
-					Emailer.getInstance().send(p.getEmail(),"Reserva realizada","Su Reserva fue realizada con exito.El estado de su Reserva es :"+r.getEstado());
+					Emailer.getInstance().send(p.getEmail(),"Reserva realizada","Su Reserva"+" "+r.getId_reserva()+"para el día"+" "+r.getFecha()+" "+ "a las"+r.getHora_ini()+" "+ "de"+" "+r.getElemento()+" "+ "está"+" "+r.getEstado());                                                                  
 					System.out.println("Enviando Mail.....");
 				}
 				else {

@@ -82,7 +82,7 @@
 	<a href="#" title="Regresar a página anterior" onclick="history.back()"><h6 align="right">Atrás</h6></a>
 	<a href="#" title="salir" onclick="window.close()"> <h6 align="right">Salir</h6></a><br>
 	<hr color="pink">
-	<center><font face="verdana" size="1" color="pink"><a href='ReservaAb'>RESERVAR ELEMENTO</a>
+	<center><font face="verdana" size="1" color="pink"><a href='/TP_Web3/ReservaAb'>RESERVAR ELEMENTO</a>
 			   <a href="/TP_Web3/ReservasPendientes"> RESERVAS PENDIENTES</a>
 			   <a href="/TP_Web3/PersonaAb">PERSONAS</a>
 			   <a href="/TP_Web3/ElementoAb">ELEMENTOS</a>

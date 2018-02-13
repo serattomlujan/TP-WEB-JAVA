@@ -82,9 +82,9 @@
 <center>
 
 <form class="form-signin" name="signin" action="" method="POST"> <h2 class="form-signin-heading" >
-	<hr color="PURPLE">
-	<font face="arial" color="PURPLE"> <b>P E R S O N A S</b><br></font></h2>
-		<hr color="PURPLE"><br><br>
+	<hr color="PINK">
+	<font face="arial" color="PINK"> <b>P E R S O N A S</b><br></font></h2>
+		<hr color="PINK"><br><br>
 	
 	<strong><font face="arial">ID: <input name="idpersona" id="idpersona" type="text" size="5"readonly="readonly" value="<%=id%>"></font>
 	 <font face="arial">&nbsp;&nbsp;DNI: <input  required name="dni" id="dni" <%if (dni!=null){  %> value="<%=dni%>"<%} %> 

@@ -142,6 +142,7 @@ public class TipoElementoAb extends HttpServlet {
 		        Tipo_Elemento tipoele = new Tipo_Elemento();
 		        tipoele.setIdtipo_elemento(id_tipoelemento);
 		        tipoele.setNombre_tipo(nombre_tipo);
+		        tipoele.setLim_tiempo(lim_tiempo);
 		        tipoele.setCant_max(cant_max);
 		        tipoele.setDias_anticip(dias_anticip);
 		        tipoele.setEncargado(encargado);

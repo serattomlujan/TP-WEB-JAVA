@@ -123,9 +123,9 @@ function validarFecha(inp){
 
 <form class="form-signin" name="signin" id="signin"action="" method="POST" > <h2 class="form-signin-heading">
 	
-	<hr color="purple">
-	<font face="arial" color="purple"> <b>R E S E R V A S </font></h2>
-	<hr color="purple"><br><br>
+	<hr color="PINK">
+	<font face="arial" color="PINK"> <b>R E S E R V A S </font></h2>
+	<hr color="PINK"><br><br>
 	<font face="arial">
 	<font face="arial"> <i><b></b></i></font>
 	<font face="arial">Tipo Elemento: 

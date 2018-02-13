@@ -9,7 +9,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-</head><center><title>Listar Personas</title><hr color="purple"><font face="arial" color="purple"> <b> <h2>LISTADO DE PERSONAS </h2><hr color="purple"><br><br>
+</head><center><title>Listar Personas</title><hr color="PINK"><font face="arial" color="black"> <b> <h2>LISTADO DE PERSONAS </h2><hr color="PINK"><br><br>
 <body>
 
 	

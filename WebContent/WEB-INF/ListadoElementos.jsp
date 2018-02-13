@@ -15,8 +15,8 @@
 	<center>
 	
 	
-	<center><title>Listar Elementos</title><hr color="purple"><font face="arial" color="Purple"> <b> <h2> LISTADO DE ELEMENTOS</h2></b></center><hr color="purple"><div>
-	<br><br><strong><table border="1" color="purple" >
+	<center><title>Listar Elementos</title><hr color="PINK"><font face="arial" color="black"> <b> <h2> LISTADO DE ELEMENTOS</h2></b></center><hr color="PINK"><div>
+	<br><br><strong><table border="1" color="BLACK" >
 		<tr >
 		   <td><strong> ID  </strong></td>
 		  <td><strong> NOMBRE </strong></td>
@@ -51,6 +51,6 @@
 			   <a href="/TP_Web3/ListadoTipoElementos">LISTADO de TIPOS de ELEMENTOS</a>
 			   <a href="/TP_Web3/ListadodePersona">LISTADO de PERSONAS</a> 
 			   <a href="/TP_Web3/Login.html">CERRAR SESIÓN</a>
-			   <hr color="pink"><hr color="purple">
+			   <hr color="black"><hr color="black">
 	</font></strong></form></body>
 </html>

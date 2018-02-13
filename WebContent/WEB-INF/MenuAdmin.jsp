@@ -19,20 +19,19 @@
 <head>
 <title>Menú Principal</title>
 <style>.drop_menu{
-	background:#FF66CC;
+	background:#FFFFFF;
 	padding:0;
 	margin:0;
 	list-style-type:none;
 	height:30px;
 	text-align: center;
-	
 }
 .drop_menu li { float:; }
-.drop_menu li a:hover {background-color:#FF66CC;}
+.drop_menu li a:hover {background-color:#FFCCCC;}
 .drop_menu li a {
 	padding:9px 20px;
 	display:block;
-	color:#fff;
+	color:#FF66CC;
 	text-decoration:none;
 	font:12px verdana, sans-serif;
 }
@@ -60,15 +59,13 @@
 	background-color:#5FD367;
 }
 .drop_menu li:hover ul li a:hover { background:#005555; }</style>
-
-
 </head> 
 
-<body bgcolor="pink"><center>
+<body bgcolor="white"><center>
 
 <% Persona usuarioLog=((Persona)session.getAttribute("user")); %>
 	
-	<h1><font face="verdana" color="white"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="purple">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
+	<h1><font face="verdana" color="pink"> SISTEMA DE GESTION DE RESERVAS</h1><h2><marquee><font face="verdana" color="BLACK">Bienvenido <%=((Persona)session.getAttribute("user")).getNombre()%></marquee></font></h2>
 	</center>
 	
 	 <center>
